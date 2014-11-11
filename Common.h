@@ -45,6 +45,8 @@
 #define INC_DIFF		30000000 //30 sec
 #define INC_PEN			1 	 	//msec
 
+#define INC_SIMTIME			0.1 
+
 /**
 * defines the sign of a (-1, 0 or 1)
 */

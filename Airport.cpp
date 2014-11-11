@@ -3,6 +3,23 @@
  *
  *  Created on: 17/07/2014
  *      Author: paco
+ *
+ *  Copyright 2014 Francisco Martín
+ *
+ *  This file is part of ATCSim.
+ *
+ *  ATCSim is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  ATCSim is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "Airport.h"
@@ -11,8 +28,15 @@
 #include <stdio.h>
 
 #include "GUI.h"
+
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
+#include <GL/glu.h>
 #include <GL/gl.h>
-#include <GL/glut.h>
+#endif
+
 #include <cstdlib>
 
 Airport::Airport() {
@@ -30,6 +54,7 @@ Airport::Airport() {
 	sec = 0;
 	points = INIT_POINTS;
 	max_flights = INIT_MAX_FLIGHTS;
+    SimTimeMod = 1.0;
 }
 
 Airport::~Airport() {
@@ -118,7 +143,7 @@ Airport::step()
 	if(!flights.empty())
 		for(it = flights.begin(); it!=flights.end(); ++it)
 		{
-			(*it)->update(delta_t);
+			(*it)->update(SimTimeMod * delta_t);
 			(*it)->draw();
 		}
 
@@ -232,7 +257,7 @@ Airport::checkLandings()
 	{
 
 		if((final_pos.distance((*it)->getPosition()) < LANDING_DIST) &&
-				(toDegrees(fabs((*it)->getBearing() - toRadians(LANDING_BEAR)))<LANDING_BEAR_MAX_ERROR) &&
+				(toDegrees(normalizePi(fabs((*it)->getBearing() - toRadians(LANDING_BEAR))))<LANDING_BEAR_MAX_ERROR) &&
 				((*it)->getSpeed()<LANDING_SPEED))
 		{
 
@@ -244,6 +269,14 @@ Airport::checkLandings()
 			it++;
 	}
 
+}
+
+void
+Airport::UpdateSimTime(float inc)
+{
+    SimTimeMod = SimTimeMod + inc;
+    
+    if(SimTimeMod < 0) SimTimeMod = 0;
 }
 
 void
@@ -278,6 +311,9 @@ Airport::draw()
 	snprintf(points_txt, 255, "Level: %d\t\tPoints: %d ", max_flights, points);
 
 	textDisplay->displayText(points_txt, GUI::win_width-300, 25, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_TIMES_ROMAN_24);
+
+	snprintf(points_txt, 255, "Time speed: x%3.1f", SimTimeMod);
+	textDisplay->displayText(points_txt, 10, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 
 	char help_txt[255];
 	strcpy(help_txt, "Press Mouse3 and move mouse to change orientation");

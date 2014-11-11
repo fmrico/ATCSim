@@ -6,8 +6,14 @@
  */
 
 #include "GUI.h"
+
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
+#include <GL/glu.h>
 #include <GL/gl.h>
-#include <GL/glut.h>
+#endif
 
 #include <iostream>
 #include <math.h>
@@ -37,7 +43,11 @@ float GUI::cam_beta = INIT_CAM_B;
 float GUI::cam_x = INIT_CAM_X;
 float GUI::cam_y = INIT_CAM_Y;
 float GUI::cam_z = INIT_CAM_Z;
-
+const int GUI::win_width  = 1024;
+const int GUI::win_height = 768;
+const float GUI::field_of_view_angle = 60;
+const float GUI::x_near = 1.0f;
+const float GUI::x_far = 40000.0f;
 
 GUI::GUI(int argc, char *argv[]) {
 
@@ -117,6 +127,12 @@ GUI::keyboard(unsigned char key, int mousePositionX, int mousePositionY )
 	case 'd':
 		dlat -= desp;
 		break;
+    case '+':
+        Airport::getInstance()->UpdateSimTime(INC_SIMTIME);
+        break;
+    case '-':
+        Airport::getInstance()->UpdateSimTime(-INC_SIMTIME);
+        break;
 	case 'c':
 		cam_alpha = INIT_CAM_A;
 		cam_beta = INIT_CAM_B;

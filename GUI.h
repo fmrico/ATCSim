@@ -3,6 +3,23 @@
  *
  *  Created on: 16/07/2014
  *      Author: paco
+ *
+ *  Copyright 2014 Francisco Martín
+ *
+ *  This file is part of ATCSim.
+ *
+ *  ATCSim is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  ATCSim is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef GUI_H_
@@ -22,14 +39,14 @@ public:
 	void init();
 	void run();
 
-	static const int win_width  = 1024;
-	static const int win_height = 768;
+	static const int win_width;
+	static const int win_height;
 
 private:
 
-	static const float field_of_view_angle = 60;
-	static const float x_near = 1.0f;
-	static const float x_far = 40000.0f;
+	static const float field_of_view_angle;
+	static const float x_near;
+	static const float x_far;
 
 	static void render();
 	static void step();
