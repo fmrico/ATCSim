@@ -314,13 +314,18 @@ Airport::draw()
 
 	snprintf(points_txt, 255, "Time speed: x%3.1f", SimTimeMod);
 	textDisplay->displayText(points_txt, 10, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
-
 	char help_txt[255];
 	strcpy(help_txt, "Press Mouse3 and move mouse to change orientation");
 	textDisplay->displayText(help_txt, GUI::win_width-310, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	strcpy(help_txt, "<Tab> Change flight info");
-	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-160, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-200, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	strcpy(help_txt, "<w>Move camera forward");
+	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-180, GUI::win_width,
+GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+	strcpy(help_txt, "<+>Speed up time");
+	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-160, GUI::win_width,
+GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+	strcpy(help_txt, "<->Slow down time");
 	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-140, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	strcpy(help_txt, "<s>Move camera backward");
 	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-120, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
