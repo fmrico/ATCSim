@@ -16,11 +16,17 @@
 #include <string>
 #include <stdlib.h>
 
-#define COLLISION_DISTANCE 100.0f
+#define COLLISION_DISTANCE 1000.0f
 #define CRASH_Z 20.0f
 #define CRASH_INC 25.0f
 #define CRASH_SPEED 10.0f
 #define INIT_MAX_FLIGHTS 5
+
+
+#define AIRPORT_DISTANCE_MAX 	20000.0f
+#define FLIGHT_HEIGHT	 		2000.0f
+#define LANDING_STRIP_L	 		750.0f
+#define LANDING_STRIP_W	 		80.0f
 
 //Conditions for landing
 

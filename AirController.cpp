@@ -52,7 +52,7 @@ AirController::doWork()
 	r1.pos = pos1;
 	r1.speed = 500.0;
 	r2.pos = pos2;
-	r2.speed = 18.0;
+	r2.speed = 19.0;
 	r3.pos = pos3;
 	r3.speed = 15.0;
 
