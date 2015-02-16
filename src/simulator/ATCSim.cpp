@@ -23,15 +23,19 @@
  */
 
 #include <stdio.h>
-#include "GUI.h"
+#include "Airport.h"
+#include "AirController.h"
+#include "IceComms.h"
 
 int main(int argc, char **argv)
 {
-	GUI gui(argc, argv);
+	IceComms::getInstance()->startServer();
 
-	gui.init();
-	gui.run();
-
+	while(true)
+	{
+		Airport::getInstance()->step();
+		AirController::getInstance()->doWork();
+	}
 	return 0;
 
 }
