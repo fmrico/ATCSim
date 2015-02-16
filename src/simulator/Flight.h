@@ -46,20 +46,20 @@ public:
 
 	std::list<Route> *getRoute() { return &route;};
 	bool routed() { return !route.empty();};
-	void setFocused(bool state) { focused = state;};
-	bool getFocused() { return focused;};
 	Position getPosition() { return pos;};
 	float getInclination() { return inclination;};
 	float getBearing() { return bearing;};
 	float getSpeed() { return speed;};
 	float getPoints() {return points;};
 	std::string getId(){return id;};
+	void setFocused(bool state) { focused = state;};
+	bool getFocused() { return focused;};
 
 private:
 	std::string id;
 	Position pos, last_pos;
 	float bearing, inclination;
-	float speed;
+	float speed, w_speed;
 	std::list<Route> route;
 	bool focused;
 

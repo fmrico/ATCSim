@@ -27,27 +27,36 @@
 
 #include "Singleton.h"
 #include "Flight.h"
-
+#include "ATCDisplay.h"
 #include <math.h>
 
 #include <list>
 
 
 
-class Airport: public Singleton<Airport> {
+class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface
+{
 public:
 	Airport();
 	virtual ~Airport();
 
 	void step();
-	void draw();
-    
+	//void draw();
 
     void NextFocus();
     
 	std::list<Flight*> getFlights() {return flights;};
     Flight* getFocused(){return (*focus);};
     void UpdateSimTime(float inc);
+
+	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
+	virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
+	virtual void UpdateSimT(float inc, const Ice::Current&);
+	virtual void NextFocus(const Ice::Current&);
+	virtual float getSimT(const Ice::Current&);
+	virtual int getMaxFlights(const Ice::Current&);
+	virtual int getPoints(const Ice::Current&);
+
 
 private:
     
@@ -68,6 +77,10 @@ private:
 	int max_flights;
 	long crono;
     float SimTimeMod;
+
+    pthread_mutex_t mutex;
+
+
 };
 
 #endif /* AIRPORT_H_ */

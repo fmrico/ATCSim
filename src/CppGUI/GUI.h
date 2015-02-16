@@ -29,6 +29,9 @@
 
 #include "TextDisplay.h"
 #include "colours.h"
+#include "ATCDisplay.h"
+
+#include <vector>
 
 class GUI {
 public:
@@ -36,9 +39,13 @@ public:
 	virtual ~GUI();
 
 
-	void init();
+	void init(ATCDisplay::AirportInterfacePrx as);
 	void run();
 
+	static void DrawFlight(ATCDisplay::ATCDFlight flight);
+	static void DrawAirport();
+
+	static ATCDisplay::ATCDFlight getFlightFocused();
 	static const int win_width;
 	static const int win_height;
 
@@ -60,7 +67,8 @@ private:
 	static float cam_alpha, cam_beta;
 	static float cam_x, cam_y, cam_z;
 
-
+	static ATCDisplay::AirportInterfacePrx airportsim;
+	static ATCDisplay::ATCDAirport airportinfo;
 
 };
 
