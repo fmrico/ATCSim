@@ -13,6 +13,7 @@ include_directories(${GLUT_INCLUDE_DIR}
 	src/lib/
 	src/ICE/cpp
 )
+find_package(Threads REQUIRED)
 
 FIND_LIBRARY(ice_lib Ice)
 FIND_LIBRARY(iceutil_lib IceUtil)
@@ -42,11 +43,13 @@ add_executable(cppgui
 target_link_libraries(ATCSim
    ${ice_lib}
    ${iceutil_lib}
+   ${CMAKE_THREAD_LIBS_INIT}
 )
 
 target_link_libraries(cppgui 
  	${ice_lib}
    	${iceutil_lib}
+	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES} 
 	${GLUT_LIBRARY} 
 )
