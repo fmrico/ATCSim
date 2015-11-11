@@ -20,7 +20,7 @@
 #define CRASH_Z 20.0f
 #define CRASH_INC 25.0f
 #define CRASH_SPEED 10.0f
-#define INIT_MAX_FLIGHTS 1
+#define INIT_MAX_FLIGHTS 2
 
 #define MAX_FLIFGT_W	0.2f //12 grados/sec
 #define DIST_POINT 	200.0 //15 grados/sec
@@ -53,9 +53,9 @@
 #define CRASH_SPEED_POINTS 	(-25)
 
 #define INC_DIFF		30000000 //30 sec
-#define INC_PEN			0 	 	//fligts/inc
+#define INC_PEN			1 	 	//fligts/inc
 
-#define INC_SIMTIME			0.1 
+#define INC_SIMTIME			0.1
 
 /**
 * defines the sign of a (-1, 0 or 1)
