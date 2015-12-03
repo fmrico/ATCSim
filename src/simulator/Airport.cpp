@@ -291,11 +291,12 @@ Airport::checkLandings()
 		{
 
 			std::cerr<<"Flight "<<(*it)->getId()<<" landed"<<std::endl;
+			points += (int)(*it)->getPoints();
+
 			it = removeFlight((*it)->getId());
 
 			std::cerr<<"*";
 
-			points += (int)(*it)->getPoints();
 
 			return;
 		}else
