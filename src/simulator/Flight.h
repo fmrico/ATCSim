@@ -55,17 +55,12 @@ public:
 	void setFocused(bool state) { focused = state;};
 	bool getFocused() { return focused;};
 
-	float updateW(float ideal_w, float w_max);
-	float updateV(float ideal_acc, float max_acc, float speed, float delta_t);
-	float getS(float v, float theta1, float theta2, float w_max);
-
 private:
 	std::string id;
 	Position pos, last_pos;
 	float bearing, inclination;
 	float speed, w_speed;
 	std::list<Route> route;
-	std::list<Route>::iterator it;
 	bool focused;
 
 	float points;
