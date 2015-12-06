@@ -37,6 +37,9 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <iterator>
+
+using namespace std;
 
 Flight::~Flight() {
 	// TODO Auto-generated destructor stub
@@ -57,121 +60,58 @@ Flight::Flight(std::string _id, Position _pos, float _bearing, float _inclinatio
 	w_speed = 0.0f;
 }
 
-
-float
-Flight::updateW(float ideal_w, float w_max)
-{
-	float new_w;
-
-		if(fabs(ideal_w) > w_max)
-		{
-			new_w = (fabs(ideal_w)/ideal_w) * w_max;
-		}else{
-			new_w = ideal_w;
-		}
-
-	return new_w;
-}
-
-
-float
-Flight::updateV(float ideal_acc, float max_acc, float speed, float delta_t)
-{
-	float new_speed, acc;
-
-		if(abs(ideal_acc) > max_acc)
-		{
-			acc = (ideal_acc/fabs(ideal_acc)) * max_acc;
-		}else{
-			acc = ideal_acc;
-		}
-
-	return new_speed = speed + acc*delta_t;
-}
-
-
-float
-Flight::getS(float v, float theta1, float theta2, float w_max)
-{
-	float t = fabs((theta1-theta2)/w_max);
-	float s = v*t;
-	return s;
-
-}
-
 void
 Flight::update(float delta_t)
 {
 	float trans;
-	Position CPpos1;
-	Position CPpos2;
+	Position CPpos;
+	Route r1;
 
 	if(routed())
 	{
-
 		float goal_bearing, diff_bearing, new_w;
+		
 
-		it = route.begin();
+		CPpos = r1.pos;
+		
 
-		CPpos1 = it->pos;
-		float goal_speed1 = it->speed;
-		it++;
-		CPpos2 = it->pos;
-		float goal_speed2 = it->speed;
+		pos.angles(CPpos, goal_bearing, inclination);
+		
 
-		float goal_bearing1, goal_bearing2;
-		float goal_inclination1, goal_inclination2;
-
-		pos.angles(CPpos1, goal_bearing1, goal_inclination1);
-		pos.angles(CPpos2, goal_bearing2, goal_inclination2);
-
-		goal_bearing1 = normalizePi(goal_bearing1 + M_PI);
-		goal_bearing2 = normalizePi(goal_bearing2 + M_PI);
-
-		float theta1 = normalizePi(goal_bearing1 - bearing);
-		float theta2 = normalizePi(goal_bearing2 - bearing);
-
-		float alpha1 = normalizePi(goal_inclination1-inclination);
-		float alpha2 = normalizePi(goal_inclination2-inclination);
+		goal_bearing = normalizePi(goal_bearing + M_PI);
+		diff_bearing = normalizePi(goal_bearing - bearing);
+		
+		
+		new_w = diff_bearing;
+		
 
 
-		float ideal_w = theta1;
-		float w_max = MAX_FLIFGT_W;
-		new_w = updateW(ideal_w, w_max);
+		if(fabs(new_w)>MAX_FLIFGT_W) new_w = (fabs(new_w)/new_w) * MAX_FLIFGT_W;
+		//cout<<bearing<<"\t"<<goal_bearing<<"\t"<<goal_bearing2<<endl;
+		//std::cout<<"["<<id<<"]angle = "<<bearing<<"\tnew = "<<goal_bearing<<"\t["<<diff_bearing<<"]\tideal w = "<<new_w<<" -> "<<new_w<<std::endl;
 
 		bearing = bearing + new_w*delta_t;
 
-		float ideal_w_inclination = alpha1;
-    float w_max_inclination = MAX_FLIFGT_W;
-    float new_w_inclination = updateW(ideal_w_inclination,w_max_inclination);
+		float goal_speed, diff_speed, acc;
 
-		inclination = inclination + new_w_inclination*delta_t;
+		goal_speed = route.front().speed;
+		acc = (goal_speed - speed);
 
-    float max_acc = MAX_ACELERATION;
-		float ideal_acc =(goal_speed1-speed);
-		speed = updateV(ideal_acc, max_acc, speed, delta_t);
+		if(fabs(acc)>MAX_ACELERATION) acc = (acc/fabs(acc))*MAX_ACELERATION;
 
-    float s = getS(speed, theta1, theta2, w_max);
-    float s_inclination = getS(speed, alpha1,alpha2,w_max_inclination);
+		speed = speed + acc*delta_t;
 
-		if((pos.distance(CPpos1)<s)||(pos.distance(CPpos1)<s_inclination))
-		{
-			new_w = fabs(theta2 - theta1)/delta_t;
-			new_w_inclination = fabs(alpha2-alpha1)/delta_t;
-			route.pop_front();
-		}
-
-		//std::cout<<"["<<id<<"]angle = "<<bearing<<"\tnew = "<<goal_bearing<<"\t["<<diff_bearing<<"]\tideal w = "<<new_w<<" -> "<<new_w_b<<std::endl;
 		//std::cout<<"["<<id<<"]speed = "<<speed<<"\tnew = "<<goal_speed<<"\t["<<acc<<"]\t"<<std::endl;
 
+		
+
 	}else
-	{
 		inclination = 0.0;
-	}
 
 	last_pos = pos;
 
 	trans = speed * delta_t;
+
 
 	pos.set_x(pos.get_x() + trans * cos(bearing) * cos(inclination));
 	pos.set_y(pos.get_y() + trans * sin(bearing) * cos(inclination));
@@ -179,11 +119,12 @@ Flight::update(float delta_t)
 
 //	if(pos.distance(last_pos) > pos.distance(CPpos))
 //		route.pop_front();
+	if(pos.distance(CPpos)<space_turn){
+					route.pop_front();
+		}
 
-	if(pos.distance(CPpos1)<DIST_POINT)
-		route.pop_front();
+		points = points - delta_t;
 
-	points = points - delta_t;
 
 }
 //
