@@ -47,9 +47,8 @@ AirController::doWork()
 			Position pos1(1500.0, 0.0, 50.0);
 			Position pos2(200.0, 0.0, 25.0);
 			Position pos3(-750.0, 0.0, 25.0);
-			Position pos4(8000.0, 1000, 200.0);
 
-			Route r0, r1, r2, r3, r4;
+			Route r0, r1, r2, r3;
 
 			r0.pos = pos0;
 			r0.speed = 500.0;
@@ -59,8 +58,6 @@ AirController::doWork()
 			r2.speed = 19.0;
 			r3.pos = pos3;
 			r3.speed = 15.0;
-			r4.pos = pos4;
-			r4.speed = 540.0;
 
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
@@ -70,7 +67,6 @@ AirController::doWork()
 					(*it)->getRoute()->push_front(r2);
 					(*it)->getRoute()->push_front(r1);
 					(*it)->getRoute()->push_front(r0);
-					(*it)->getRoute()->push_front(r4);
 
 				}
 			}
