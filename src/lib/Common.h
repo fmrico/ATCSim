@@ -52,7 +52,7 @@
 #define CRASH_INC_POINTS	(-25)
 #define CRASH_SPEED_POINTS 	(-25)
 
-#define INC_DIFF		300000000 //30 sec
+#define INC_DIFF		30000000//30 sec 
 #define INC_PEN			1 	 	//fligts/inc
 
 #define INC_SIMTIME			0.1

@@ -37,6 +37,9 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <iterator>
+
+using namespace std;
 
 Flight::~Flight() {
 	// TODO Auto-generated destructor stub
@@ -62,21 +65,30 @@ Flight::update(float delta_t)
 {
 	float trans;
 	Position CPpos;
+	Route r1;
 
 	if(routed())
 	{
 		float goal_bearing, diff_bearing, new_w;
+		
 
-		CPpos = route.front().pos;
+		CPpos = r1.pos;
+		
+
 		pos.angles(CPpos, goal_bearing, inclination);
+		
 
 		goal_bearing = normalizePi(goal_bearing + M_PI);
 		diff_bearing = normalizePi(goal_bearing - bearing);
+		
+		
 		new_w = diff_bearing;
+		
+
 
 		if(fabs(new_w)>MAX_FLIFGT_W) new_w = (fabs(new_w)/new_w) * MAX_FLIFGT_W;
-
-		//std::cout<<"["<<id<<"]angle = "<<bearing<<"\tnew = "<<goal_bearing<<"\t["<<diff_bearing<<"]\tideal w = "<<new_w<<" -> "<<new_w_b<<std::endl;
+		//cout<<bearing<<"\t"<<goal_bearing<<"\t"<<goal_bearing2<<endl;
+		//std::cout<<"["<<id<<"]angle = "<<bearing<<"\tnew = "<<goal_bearing<<"\t["<<diff_bearing<<"]\tideal w = "<<new_w<<" -> "<<new_w<<std::endl;
 
 		bearing = bearing + new_w*delta_t;
 
@@ -90,6 +102,8 @@ Flight::update(float delta_t)
 		speed = speed + acc*delta_t;
 
 		//std::cout<<"["<<id<<"]speed = "<<speed<<"\tnew = "<<goal_speed<<"\t["<<acc<<"]\t"<<std::endl;
+
+		
 
 	}else
 		inclination = 0.0;
@@ -105,11 +119,12 @@ Flight::update(float delta_t)
 
 //	if(pos.distance(last_pos) > pos.distance(CPpos))
 //		route.pop_front();
+	if(pos.distance(CPpos)<space_turn){
+					route.pop_front();
+		}
 
-	if(pos.distance(CPpos)<DIST_POINT)
-		route.pop_front();
+		points = points - delta_t;
 
-	points = points - delta_t;
 
 }
 //
