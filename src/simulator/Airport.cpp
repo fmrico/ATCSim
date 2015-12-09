@@ -317,9 +317,20 @@ Airport::checkFlightsInStorm()
 	for(it = flights.begin(); it != flights.end(); ++it)
 	{
 		bool in=false;
-		float dist = (*it)->getPosition().distance(storm->getPosition());
+		float xf,yf, zf, xs, ys, zs;
+		float dist;
 
-		in = dist < storm->getRadious();
+		xf = (*it)->getPosition().get_x();
+		yf = (*it)->getPosition().get_y();
+		zf = (*it)->getPosition().get_z();
+		xs = storm->getPosition().get_x();
+		ys = storm->getPosition().get_y();
+		zs = storm->getPosition().get_z();
+
+		dist = sqrt((xf-xs)*(xf-xs)+(yf-ys)*(yf-ys));
+
+
+		in = dist < storm->getRadious() && fabs(zs-zf)<storm->getHeight();
 		(*it)->setInStorm(in);
 
 
