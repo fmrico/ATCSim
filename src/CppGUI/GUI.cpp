@@ -115,6 +115,9 @@ GUI::render()
 	for(it=flights.begin(); it!=flights.end(); ++it)
 		DrawFlight(*it);
 
+	ATCDisplay::ATCDStorm storm = airportsim->getStorm();
+	DrawStorm(storm);
+
 	textDisplay = TextDisplay::getInstance();
 
 	textDisplay->calculateFramesPerSecond();
@@ -279,6 +282,20 @@ void
 GUI::step()
 {
 
+}
+
+void
+GUI::DrawStorm(ATCDisplay::ATCDStorm storm)
+{
+	//std::cerr<<"("<<storm.pos.x<<", "<<storm.pos.y<<", "<<storm.pos.z<<") ["<<storm.height<<","<<storm.radious<<", "<<storm.speed<<"]"<<std::endl;
+
+	//Podemos pintar muchas esferas, o polígonos
+	glPushMatrix();
+	glColor3f(1.0f,1.0f,1.0f);
+	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
+
+	glutWireTorus(storm.height, storm.radious-storm.height/2.0, 30, 30);
+	glPopMatrix();
 }
 
 void

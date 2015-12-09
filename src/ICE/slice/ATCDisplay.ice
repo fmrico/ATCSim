@@ -8,6 +8,15 @@ module ATCDisplay {
 
 	["java:type:java.util.LinkedList<ATCDPosition>"]
 	sequence<ATCDPosition> ATCDRoute;
+
+	struct ATCDStorm{
+		bool valid;
+		float speed;
+		ATCDPosition pos;
+		float bearing;
+		float radious;
+		float height; 
+	};
 	
 	struct ATCDFlight{
 		float points;
@@ -42,6 +51,7 @@ module ATCDisplay {
 		
 	interface AirportInterface {
 		idempotent ATCDFlights getFlights();
+		idempotent ATCDStorm getStorm();
 		idempotent ATCDAirport getAirportInfo();
 		void UpdateSimT(float inc);
 		void NextFocus();

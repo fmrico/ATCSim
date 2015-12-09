@@ -54,8 +54,9 @@ Airport::Airport() {
 	points = INIT_POINTS;
 	max_flights = INIT_MAX_FLIGHTS;
 	SimTimeMod = 1.0;
+	storm = NULL;
 
-	 pthread_mutex_init(&mutex, NULL);
+	pthread_mutex_init(&mutex, NULL);
 }
 
 Airport::~Airport() {
@@ -63,6 +64,54 @@ Airport::~Airport() {
 	for(it = flights.begin(); it!=flights.end(); ++it)
 		delete(*it);
 	flights.clear();
+}
+
+
+void
+Airport::checkFinishStorm()
+{
+	float x, y, z, dist;
+
+	x = storm->getPosition().get_x();
+	y = storm->getPosition().get_y();
+
+	dist = sqrt(x*x+y*y);
+
+	if(sqrt(x*x+y*y)>(AIRPORT_DISTANCE_MAX*1.5))
+	{
+		delete storm;
+		storm=NULL;
+		std::cerr<<"Storm gone"<<std::endl;
+	}
+
+}
+
+void
+Airport::generate_storm()
+{
+
+	float angle, x, y, z, rad, height, bearing, speed;
+
+	//Storm Pos
+	angle = toRadians((float)(rand() % 360 - 180));
+	x = fabs(AIRPORT_DISTANCE_MAX*1.5 * cos(angle)); //Only positive, for GyV3D!!!!!!!!!!!
+	y = AIRPORT_DISTANCE_MAX*1.5 * sin(angle);
+	z = ((float)rand() / RAND_MAX)*(STORM_MIN_ELEVATION-STORM_MIN_ELEVATION)+STORM_MIN_ELEVATION;
+
+	//Storm height
+	height = ((float)rand() / RAND_MAX)*(STORM_MAX_HEIGHT-STORM_MIN_HEIGHT)+STORM_MIN_HEIGHT;
+
+	//Radius
+	rad =  ((float)rand() / RAND_MAX)*(STORM_MAX_RAD-STORM_MIN_RAD)+STORM_MIN_RAD;
+
+	//Bearing
+	bearing = toRadians((float)(rand() % 360 - 180));
+
+	//Speed
+	speed = ((float)rand() / RAND_MAX)*(STORM_MAX_SPEED-STORM_MIN_SPEED)+STORM_MIN_SPEED;
+	Position ipos(x, y, z);
+	storm = new Storm(ipos, bearing, speed, rad, height);
+
 }
 
 void
@@ -161,12 +210,26 @@ Airport::step()
 			//(*it)->draw();
 		}
 
-	pthread_mutex_lock (&mutex);
-	checkLandings();
-	checkCollisions();
-	checkCrashes();
-	pthread_mutex_unlock (&mutex);
+		pthread_mutex_lock (&mutex);
+		checkLandings();
+		checkCollisions();
+		checkCrashes();
+		pthread_mutex_unlock (&mutex);
 	}
+
+	pthread_mutex_lock (&mutex);
+
+	if(storm==NULL)
+	{
+		generate_storm();
+	}
+	else
+	{
+		storm->update(SimTimeMod * delta_t);
+		checkFlightsInStorm();
+		checkFinishStorm();
+	}
+	pthread_mutex_unlock (&mutex);
 
 	if(flights.size()<max_flights)
 	{
@@ -174,6 +237,9 @@ Airport::step()
 		generate_flight();
 		pthread_mutex_unlock (&mutex);
 	}
+
+
+
 
 }
 
@@ -241,6 +307,27 @@ Airport::checkCollisions()
 	}
 }
 
+void
+Airport::checkFlightsInStorm()
+{
+	if(flights.empty() || storm==NULL ) return;
+
+	std::list<Flight*>::iterator it;
+
+	for(it = flights.begin(); it != flights.end(); ++it)
+	{
+		bool in=false;
+		float dist = (*it)->getPosition().distance(storm->getPosition());
+
+		in = dist < storm->getRadious();
+		(*it)->setInStorm(in);
+
+
+		//std::cerr<<"["<<(*it)->getId()<<" = "<<dist<<" < "<<storm->getRadious()<<std::endl;
+
+
+	}
+}
 
 void
 Airport::checkCrashes()
@@ -277,7 +364,7 @@ Airport::checkLandings()
 {
 	if(flights.empty()) return;
 
-	 //pthread_mutex_lock (&mutex);
+	//pthread_mutex_lock (&mutex);
 	std::list<Flight*>::iterator it;
 
 	it = flights.begin();
@@ -302,7 +389,7 @@ Airport::checkLandings()
 		}else
 			it++;
 	}
-	 //pthread_mutex_unlock (&mutex);
+	//pthread_mutex_unlock (&mutex);
 }
 
 void
@@ -313,11 +400,39 @@ Airport::UpdateSimTime(float inc)
 	if(SimTimeMod < 0) SimTimeMod = 0;
 }
 
+ATCDisplay::ATCDStorm
+Airport::getStorm(const Ice::Current&)
+{
+	pthread_mutex_lock (&mutex);
+	ATCDisplay::ATCDStorm ret;
+
+	if(storm==NULL)
+	{
+		ret.valid =false;
+		return ret;
+	}else
+		ret.valid =true;
+
+	ATCDisplay::ATCDPosition p;
+	p.x = storm->getPosition().get_x();
+	p.y = storm->getPosition().get_y();
+	p.z = storm->getPosition().get_z();
+
+	ret.pos = p;
+	ret.bearing = storm->getBearing();
+	ret.height = storm->getHeight();
+	ret.radious = storm->getRadious();
+	ret.speed = storm->getSpeed();
+
+	pthread_mutex_unlock (&mutex);
+	return ret;
+}
+
 ATCDisplay::ATCDFlights
 Airport::getFlights(const Ice::Current&)
 {
 
-	 pthread_mutex_lock (&mutex);
+	pthread_mutex_lock (&mutex);
 
 	//std::cerr<<"["<<flights.size()<<": ";
 	ATCDisplay::ATCDFlights ret;

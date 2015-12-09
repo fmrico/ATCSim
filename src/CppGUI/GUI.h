@@ -43,6 +43,7 @@ public:
 	void run();
 
 	static void DrawFlight(ATCDisplay::ATCDFlight flight);
+	static void DrawStorm(ATCDisplay::ATCDStorm storm);
 	static void DrawAirport();
 
 	static ATCDisplay::ATCDFlight getFlightFocused();

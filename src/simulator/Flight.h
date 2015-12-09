@@ -55,6 +55,9 @@ public:
 	void setFocused(bool state) { focused = state;};
 	bool getFocused() { return focused;};
 
+	bool getInStorm() {return inStorm;};
+	void setInStorm(bool in) {inStorm=in;};
+
 private:
 	std::string id;
 	Position pos, last_pos;
@@ -62,6 +65,8 @@ private:
 	float speed, w_speed;
 	std::list<Route> route;
 	bool focused;
+
+	bool inStorm;
 
 	float points;
 };
