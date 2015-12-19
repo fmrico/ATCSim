@@ -47,6 +47,7 @@ public:
     void NextFocus();
     
 	std::list<Flight*> getFlights() {return flights;};
+	Storm* getStorm() {return storm;};
     Flight* getFocused(){return (*focus);};
     void UpdateSimTime(float inc);
 
