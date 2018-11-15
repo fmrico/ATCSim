@@ -23,8 +23,8 @@
  */
 #include <string>
 
-#ifndef POSITION_STORM_H__
-#define POSITION_STORM_H__
+#ifndef TORMENTON_H__
+#define TORMENTON_H__
 
 #include "Position.h"
 #include "Common.h"
@@ -51,4 +51,4 @@ private:
 	float speed;
 };
 
-#endif  // POSITION_STORM_H__
+#endif  //  TORMENTON_H__
