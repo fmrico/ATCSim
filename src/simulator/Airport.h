@@ -22,8 +22,8 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef AIRPORT_H_
-#define AIRPORT_H_
+#ifndef SIMULATOR_AIRPORT_H__
+#define SIMULATOR_AIRPORT_H__
 
 #include "Singleton.h"
 #include "Flight.h"
@@ -45,7 +45,7 @@ public:
 	//void draw();
 
     void NextFocus();
-    
+
 	std::list<Flight*> getFlights() {return flights;};
 	Storm* getStorm() {return storm;};
     Flight* getFocused(){return (*focus);};
@@ -62,7 +62,7 @@ public:
 
 
 private:
-    
+
 	void checkLandings();
 	void checkCollisions();
 	void checkCrashes();
@@ -92,4 +92,4 @@ private:
 
 };
 
-#endif /* AIRPORT_H_ */
+#endif  // SIMULATOR_AIRPORT_H__
