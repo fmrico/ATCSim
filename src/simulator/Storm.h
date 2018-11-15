@@ -23,8 +23,8 @@
  */
 #include <string>
 
-#ifndef STORM_H_
-#define STORM_H_
+#ifndef POSITION_STORM_H__
+#define POSITION_STORM_H__
 
 #include "Position.h"
 #include "Common.h"
@@ -51,4 +51,4 @@ private:
 	float speed;
 };
 
-#endif /* STORM_H_ */
+#endif  // POSITION_STORM_H__
