@@ -26,29 +26,37 @@ find_package(PythonInterp)
 set(STYLE_FILTER)
 
 # disable unwanted filters
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/braces,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/semicolon,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/blank_line,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/comma,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/operators,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/parens,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/indent,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/comments,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/newline,)
-set(STYLE_FILTER ${STYLE_FILTER}-whitespace/tab,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/braces,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/semicolon,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/blank_line,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/comma,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/operators,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/parens,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/indent,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/comments,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/newline,)
+# set(STYLE_FILTER ${STYLE_FILTER}-whitespace/tab,)
 
-set(STYLE_FILTER ${STYLE_FILTER}-build/include_order,)
-set(STYLE_FILTER ${STYLE_FILTER}-build/include,)
-set(STYLE_FILTER ${STYLE_FILTER}-build/namespaces,)
-set(STYLE_FILTER ${STYLE_FILTER}-build/include_what_you_use,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/include_order,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/include,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/namespaces,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/include_what_you_use,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/class,)
+# set(STYLE_FILTER ${STYLE_FILTER}-build/header_guard,)
 
-set(STYLE_FILTER ${STYLE_FILTER}-readability/streams,)
-set(STYLE_FILTER ${STYLE_FILTER}-readability/todo,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/streams,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/todo,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/braces,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/casting,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/constructors,)
+# set(STYLE_FILTER ${STYLE_FILTER}-readability/function,)
 
-set(STYLE_FILTER ${STYLE_FILTER}-runtime/references,)
-set(STYLE_FILTER ${STYLE_FILTER}-runtime/int,)
-set(STYLE_FILTER ${STYLE_FILTER}-runtime/explicit,)
-set(STYLE_FILTER ${STYLE_FILTER}-runtime/printf,)
+# set(STYLE_FILTER ${STYLE_FILTER}-runtime/references,)
+# set(STYLE_FILTER ${STYLE_FILTER}-runtime/int,)
+# set(STYLE_FILTER ${STYLE_FILTER}-runtime/explicit,)
+# set(STYLE_FILTER ${STYLE_FILTER}-runtime/printf,)
+# set(STYLE_FILTER ${STYLE_FILTER}-runtime/operator,)
+set(STYLE_FILTER ${STYLE_FILTER}-runtime/threadsafe_fn,)
 
 # Add a target that runs cpplint.py
 #
@@ -63,6 +71,8 @@ function(add_style_check_target TARGET_NAME SOURCES_LIST)
 
   list(REMOVE_DUPLICATES SOURCES_LIST)
   list(SORT SOURCES_LIST)
+
+  list(REMOVE_ITEM SOURCES_LIST src/ICE/cpp/ATCDisplay.cpp src/ICE/cpp/ATCDisplay.h)
 
   add_custom_target(${TARGET_NAME}
     COMMAND "${CMAKE_COMMAND}" -E chdir

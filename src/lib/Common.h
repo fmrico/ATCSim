@@ -1,11 +1,27 @@
-/**
- * @file Math/Common.h
+/*
+ * Common.h
  *
- * This contains some often used mathematical definitions and functions.
+ *  Created on: 15/07/2014
+ *      Author: paco
  *
- * @author <a href="mailto:martin.kallnik@gmx.de">Martin Kallnik</a>
- * @author Max Risler
+ *  Copyright 2014 Francisco Martín
+ *
+ *  This file is part of ATCSim.
+ *
+ *  ATCSim is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  ATCSim is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 
 #ifndef __Math_Common_h__
@@ -62,7 +78,7 @@
 #define CRASH_INC_POINTS	(-25)
 #define CRASH_SPEED_POINTS 	(-25)
 
-#define INC_DIFF		30000000//30 sec 
+#define INC_DIFF		30000000//30 sec
 #define INC_PEN			1 	 	//fligts/inc
 
 #define INC_SIMTIME			0.1
