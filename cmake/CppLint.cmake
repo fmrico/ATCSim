@@ -68,7 +68,7 @@ function(add_style_check_target TARGET_NAME SOURCES_LIST)
     COMMAND "${CMAKE_COMMAND}" -E chdir
             "${CMAKE_CURRENT_SOURCE_DIR}"
             "${PYTHON_EXECUTABLE}"
-            "${CMAKE_SOURCE_DIR}/cpplint.py"
+            "${CMAKE_SOURCE_DIR}/cmake/cpplint.py"
             "--filter=${STYLE_FILTER}"
             "--counting=detailed"
             "--extensions=cpp,hpp,h"
