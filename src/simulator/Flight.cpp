@@ -48,7 +48,10 @@ Flight::Flight(std::string _id, Position _pos, float _bearing, float _inclinatio
 	pos = _pos;
 	bearing = _bearing;
 	inclination = _inclination;
-	speed = _speed;
+	//speed = _speed;
+	setSpeed(_speed);
+	std::cout << "JAIME speed: " << speed << std::endl;
+
 	route.clear();
 	inStorm = false;
 
@@ -83,7 +86,7 @@ Flight::update(float delta_t)
 
 		float goal_speed, diff_speed, acc;
 
-		goal_speed = route.front().speed;
+		goal_speed = checkSpeedLimits(route.front().speed);
 		acc = (goal_speed - speed);
 
 		if(fabs(acc)>MAX_ACELERATION) acc = (acc/fabs(acc))*MAX_ACELERATION;
@@ -121,6 +124,13 @@ Flight::update(float delta_t)
 
 
 }
+
+
+float Flight::checkSpeedLimits(float tgt_speed){
+	std::cout << "JAIME limit: " << (tgt_speed > CRASH_SPEED_MAX ? CRASH_SPEED_MAX : tgt_speed) << std::endl;
+	return (tgt_speed > CRASH_SPEED_MAX ? CRASH_SPEED_MAX : tgt_speed);
+}
+
 //
 //void
 //Flight::draw()

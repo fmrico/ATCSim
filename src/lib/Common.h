@@ -35,6 +35,7 @@
 #define COLLISION_DISTANCE 1000.0f
 #define CRASH_Z 20.0f
 #define CRASH_INC 25.0f
+#define CRASH_SPEED_MAX 265.0f   // Approx. 950 km/h
 #define CRASH_SPEED 10.0f
 #define INIT_MAX_FLIGHTS 1
 
