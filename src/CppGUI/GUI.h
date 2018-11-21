@@ -45,8 +45,10 @@ public:
 	static void DrawFlight(ATCDisplay::ATCDFlight flight);
 	static void DrawStorm(ATCDisplay::ATCDStorm storm);
 	static void DrawAirport();
+	static void DrawWaypoints();
 
 	static ATCDisplay::ATCDFlight getFlightFocused();
+	static ATCDisplay::ATCDWaypoints getWaypoints();
 	static const int win_width;
 	static const int win_height;
 

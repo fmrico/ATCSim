@@ -9,27 +9,36 @@ module ATCDisplay {
 	["java:type:java.util.LinkedList<ATCDPosition>"]
 	sequence<ATCDPosition> ATCDRoute;
 
+	struct ATCDWaypoint{
+		string name;
+		float x;
+		float y;
+	};
+
+	["java:type:java.util.LinkedList<ATCDWaypoint>"]
+	sequence<ATCDWaypoint> ATCDWaypoints;
+
 	struct ATCDStorm{
 		bool valid;
 		float speed;
 		ATCDPosition pos;
 		float bearing;
 		float radious;
-		float height; 
+		float height;
 	};
-	
+
 	struct ATCDFlight{
 		float points;
 		float speed;
-		bool focused;	
+		bool focused;
 		string id;
 		ATCDPosition pos;
 		float inclination;
 		float bearing;
-		float collisionRadious; 
+		float collisionRadious;
 		ATCDRoute flightRoute;
 	};
-	
+
 	["java:type:java.util.LinkedList<ATCDFlight>"]
 	sequence<ATCDFlight> ATCDFlights;
 
@@ -39,18 +48,19 @@ module ATCDisplay {
 		float length;
 		float orientation;
 	};
-	
+
 	["java:type:java.util.LinkedList<ATCDLandStrip>"]
 	sequence<ATCDLandStrip> ATCDLandStrips;
-	
+
 	struct ATCDAirport
 	{
 		ATCDLandStrips airportLandstrips;
 		float radious;
 	};
-		
+
 	interface AirportInterface {
 		idempotent ATCDFlights getFlights();
+		idempotent ATCDWaypoints getWaypoints();
 		idempotent ATCDStorm getStorm();
 		idempotent ATCDAirport getAirportInfo();
 		void UpdateSimT(float inc);
@@ -59,5 +69,5 @@ module ATCDisplay {
 		idempotent int getMaxFlights();
 		idempotent int getPoints();
 	};
-		
+
 };

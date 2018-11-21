@@ -499,6 +499,12 @@ Airport::getFlights(const Ice::Current&)
 	return ret;
 }
 
+ATCDisplay::ATCDWaypoints Airport::getWaypoints(const Ice::Current&)
+{
+
+}
+
+
 ATCDisplay::ATCDAirport
 Airport::getAirportInfo(const Ice::Current&)
 {

@@ -111,6 +111,7 @@ GUI::render()
 	ATCDisplay::ATCDFlights::iterator it;
 
 	DrawAirport();
+	DrawWaypoints();
 
 	for(it=flights.begin(); it!=flights.end(); ++it)
 		DrawFlight(*it);
@@ -472,3 +473,19 @@ GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 }
 
 
+ATCDisplay::ATCDWaypoints GUI::getWaypoints()
+{
+	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
+
+	return wpts;
+}
+
+void GUI::DrawWaypoints(){
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.8f, 0.8f, 0.8f);
+	glVertex3f(-200, 0, 1.0f);
+	glVertex3f(200, -200, 1.0f);
+	glVertex3f(200, 200, 1.0f);
+	glEnd();
+}

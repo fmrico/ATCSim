@@ -26,7 +26,10 @@
 #include "Airport.h"
 #include "Flight.h"
 #include "Position.h"
+#include "Waypoint.h"
 #include <list>
+#include <string>
+
 
 AirController::AirController() {
 	// TODO Auto-generated constructor stub
@@ -42,6 +45,8 @@ AirController::doWork()
 {
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
+
+			Waypoint wpt1(std::string("ASBIN"), 0, 0);
 
 			Position pos0(3500.0, 0.0, 100.0);
 			Position pos1(1500.0, 0.0, 50.0);

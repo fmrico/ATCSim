@@ -52,6 +52,7 @@ public:
     void UpdateSimTime(float inc);
 
 	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
+	virtual ATCDisplay::ATCDWaypoints getWaypoints(const Ice::Current&);
 	virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
 	virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
 	virtual void UpdateSimT(float inc, const Ice::Current&);
