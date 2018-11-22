@@ -48,7 +48,7 @@ public:
 	static void DrawWaypoints();
 
 	static ATCDisplay::ATCDFlight getFlightFocused();
-	static ATCDisplay::ATCDWaypoints getWaypoints();
+	//static ATCDisplay::ATCDWaypoints getWaypoints();
 	static const int win_width;
 	static const int win_height;
 

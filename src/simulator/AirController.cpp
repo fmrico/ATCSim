@@ -46,8 +46,6 @@ AirController::doWork()
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
-			Waypoint wpt1(std::string("ASBIN"), 0, 0);
-
 			Position pos0(3500.0, 0.0, 100.0);
 			Position pos1(1500.0, 0.0, 50.0);
 			Position pos2(200.0, 0.0, 25.0);

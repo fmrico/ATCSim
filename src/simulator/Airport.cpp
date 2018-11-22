@@ -56,6 +56,8 @@ Airport::Airport() {
 	SimTimeMod = 1.0;
 	storm = NULL;
 
+	loadWaypoints();
+
 	pthread_mutex_init(&mutex, NULL);
 }
 
@@ -66,6 +68,13 @@ Airport::~Airport() {
 	flights.clear();
 }
 
+void Airport::loadWaypoints(){
+	//TODO: read from file
+	Waypoint *wpt1 = new Waypoint("ASBIN", 0, 0);
+	Waypoint *wpt2 = new Waypoint("TOBEK", 500, 500);
+	waypoints.push_back(wpt1);
+	waypoints.push_back(wpt2);
+}
 
 void
 Airport::checkFinishStorm()
@@ -117,8 +126,6 @@ Airport::generate_storm()
 void
 Airport::generate_flight()
 {
-
-
 	std::cerr<<"Generate new flight";
 	float angle, x, y, z;
 	float bear, inc;
@@ -501,7 +508,30 @@ Airport::getFlights(const Ice::Current&)
 
 ATCDisplay::ATCDWaypoints Airport::getWaypoints(const Ice::Current&)
 {
+	pthread_mutex_lock (&mutex);
 
+	//std::cerr<<"["<<flights.size()<<": ";
+	ATCDisplay::ATCDWaypoints ret;
+
+	ret.clear();
+
+	std::list<Waypoint*>::iterator it;
+
+	for(it= waypoints.begin(); it!=waypoints.end(); ++it)
+	{
+		//std::cerr<<"D";
+		ATCDisplay::ATCDWaypoint wpt;
+		wpt.name = (*it)->getName();
+		wpt.x = (*it)->getX();
+		wpt.y = (*it)->getY();
+
+		//std::cerr<<"E";
+		ret.push_back(wpt);
+	}
+
+	//std::cerr<<"]"<<std::endl;
+	pthread_mutex_unlock (&mutex);
+	return ret;
 }
 
 

@@ -6,7 +6,7 @@
 
 class Waypoint {
 public:
-	Waypoint();
+	//Waypoint();
 	Waypoint(std::string name, float x, float y);
 	~Waypoint();
 

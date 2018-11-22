@@ -144,6 +144,13 @@ GUI::getFlightFocused()
 				return (*it);
 }
 
+/*
+ATCDisplay::ATCDWaypoints GUI::getWaypoints()
+{
+	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
+	return wpts;
+}
+*/
 
 void
 GUI::keyboard(unsigned char key, int mousePositionX, int mousePositionY )
@@ -473,19 +480,20 @@ GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 }
 
 
-ATCDisplay::ATCDWaypoints GUI::getWaypoints()
-{
-	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
-
-	return wpts;
-}
-
 void GUI::DrawWaypoints(){
 
-	glBegin(GL_POLYGON);
-	glColor3f(0.8f, 0.8f, 0.8f);
-	glVertex3f(-200, 0, 1.0f);
-	glVertex3f(200, -200, 1.0f);
-	glVertex3f(200, 200, 1.0f);
-	glEnd();
+	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
+	std::vector<ATCDisplay::ATCDWaypoint>::iterator it;
+
+	for(it=wpts.begin(); it!=wpts.end(); ++it){
+		ATCDisplay::ATCDWaypoint wpt = *it;
+
+		glBegin(GL_POLYGON);
+		glColor3f(0.6f, 0.6f, 0.6f);
+		glVertex3f(-200+wpt.x, wpt.y, 1.0f);
+		glVertex3f( 200+wpt.x, -200+wpt.y, 1.0f);
+		glVertex3f( 200+wpt.x,  200+wpt.y, 1.0f);
+		glEnd();
+	}//for
+
 }
