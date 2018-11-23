@@ -1,6 +1,5 @@
 sudo: required
 before_install:
-  - sudo apt-get install libiceutil35v5
   - sudo apt-get install libice-dev
   - sudo apt-get install libice
   - sudo apt-get install freeglut3-dev
