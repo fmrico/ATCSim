@@ -6,6 +6,8 @@ include(cmake/CppLint.cmake)
 SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
 
 find_package(OpenGL REQUIRED)
+find_package(Ice REQUIRED)
+
 include_directories(${OPENGL_INCLUDE_DIR})
 
 find_package(GLUT REQUIRED)
@@ -16,8 +18,6 @@ include_directories(${GLUT_INCLUDE_DIR}
 )
 find_package(Threads REQUIRED)
 
-FIND_LIBRARY(ice_lib Ice)
-FIND_LIBRARY(iceutil_lib IceUtil)
 
 set(CMAKE_CXX_FLAGS "-g -Wno-deprecated-declarations")
 
@@ -46,8 +46,7 @@ set(CPPGUI_SRCS
 
 add_library(ATCSimLib SHARED ${ATCSIM_SRCS})
 target_link_libraries(ATCSimLib
-  ${ice_lib}
-  ${iceutil_lib}
+  ${Ice_LIBRARIES}
 )
 
 # add the executable
@@ -58,15 +57,13 @@ add_executable(ATCSim
 add_executable(cppgui ${CPPGUI_SRCS})
 
 target_link_libraries(ATCSim
-   ${ice_lib}
-   ${iceutil_lib}
-   ${CMAKE_THREAD_LIBS_INIT}
+  ${Ice_LIBRARIES}
+  ${CMAKE_THREAD_LIBS_INIT}
    ATCSimLib
 )
 
 target_link_libraries(cppgui
- 	${ice_lib}
-  ${iceutil_lib}
+  ${Ice_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES}
 	${GLUT_LIBRARY}
@@ -88,23 +85,7 @@ add_style_check_target(cppgui_cpplint "${CPPGUI_SRCS}")
       get_filename_component(_test_name ${_test_file} NAME_WE)
       add_executable(${_test_name} ${_test_file})
       add_dependencies(${_test_name} googletest)
-      target_link_libraries(${_test_name} gtest gtest_main ${CMAKE_THREAD_LIBS_INIT} ${ice_lib} ${iceutil_lib} ATCSimLib)
+      target_link_libraries(${_test_name} gtest gtest_main ${CMAKE_THREAD_LIBS_INIT}   ${Ice_LIBRARIES} ATCSimLib)
       add_test(${_test_name} ${_test_name})
       set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
   endforeach()
-
-#  gtest_add_tests(TARGET tests
-#  add_executable(Position_test
-#    test/Position_test.cpp
-#    )
-#  target_link_libraries(Position_test
-#    ${GTEST_LIBRARY}
-#    ${GTEST_MAIN_LIBRARY}
-#    ${ice_lib}
-#    ${iceutil_lib}
-#    ${CMAKE_THREAD_LIBS_INIT}
-#    ATCSimLib
-#    )
-
-#    gtest_add_tests(NAME All_Position_test COMMAND Position_test)
-#endif()
