@@ -58,6 +58,8 @@ private:
 	static const float x_near;
 	static const float x_far;
 
+	static const int wpt_size;
+
 	static void render();
 	static void step();
 

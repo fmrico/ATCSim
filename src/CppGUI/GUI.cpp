@@ -67,6 +67,7 @@ const int GUI::win_height = 768;
 const float GUI::field_of_view_angle = 60;
 const float GUI::x_near = 1.0f;
 const float GUI::x_far = 40000.0f;
+const int GUI::wpt_size = 400;		// Waypoint size (world units)
 
 ATCDisplay::AirportInterfacePrx GUI::airportsim;
 ATCDisplay::ATCDAirport GUI::airportinfo;
@@ -485,15 +486,26 @@ void GUI::DrawWaypoints(){
 	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
 	std::vector<ATCDisplay::ATCDWaypoint>::iterator it;
 
+
+	std::string wpt_name;
 	for(it=wpts.begin(); it!=wpts.end(); ++it){
+
 		ATCDisplay::ATCDWaypoint wpt = *it;
 
 		glBegin(GL_POLYGON);
 		glColor3f(0.6f, 0.6f, 0.6f);
-		glVertex3f(-200+wpt.x, wpt.y, 1.0f);
-		glVertex3f( 200+wpt.x, -200+wpt.y, 1.0f);
-		glVertex3f( 200+wpt.x,  200+wpt.y, 1.0f);
+		glVertex3f(-0.5*wpt_size + wpt.x, wpt.y, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.x, -0.5*wpt_size + wpt.y, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.x,  0.5*wpt_size + wpt.y, 1.0f);
 		glEnd();
+
+		wpt_name = wpt.name;
+		glRasterPos2i(wpt.x + 1.5*wpt_size, wpt.y - 0.5*wpt_name.length()*0.5*wpt_size);	//TODO: center text
+		for(std::string::iterator i = wpt_name.begin(); i != wpt_name.end(); i++){
+			char c = *i;
+			glColor3d(1.0, 1.0, 1.0);
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+		}
 	}//for
 
 }
