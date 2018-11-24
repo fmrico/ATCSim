@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/googletest"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/googletest.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/googletest-complete.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-install.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-download.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-update.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-patch.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-configure.rule"
+		},
+		{
+			"file" : "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest"
+		],
+		"name" : "googletest"
+	}
+}

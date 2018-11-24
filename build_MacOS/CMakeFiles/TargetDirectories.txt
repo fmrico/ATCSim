@@ -1,0 +1,11 @@
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/edit_cache.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/test.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/Position_test.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/Flight_test.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui_cpplint.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/googletest.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSim_cpplint.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSim.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/rebuild_cache.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir
