@@ -17,7 +17,7 @@ include_directories(${GLUT_INCLUDE_DIR}
 find_package(Threads REQUIRED)
 
 FIND_LIBRARY(ice_lib Ice)
-FIND_LIBRARY(iceutil_lib IceUtil)
+#FIND_LIBRARY(iceutil_lib IceUtil)
 
 set(CMAKE_CXX_FLAGS "-g -Wno-deprecated-declarations")
 
