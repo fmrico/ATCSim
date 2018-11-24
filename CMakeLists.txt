@@ -6,7 +6,7 @@ include(cmake/CppLint.cmake)
 SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
 
 find_package(OpenGL REQUIRED)
-set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so.3.7.0")
+set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
 find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
