@@ -1,9 +1,11 @@
+dist: xenial
 sudo: required
 before_install:
   - sudo apt-get install libice-dev
-  - sudo apt-get install libice
+  - sudo apt-get install libice6
   - sudo apt-get install freeglut3-dev
   - sudo apt-get install cmake
+  - sudo apt-get install libiceutil35v5
 
 # Enable C++ support
 language: cpp
