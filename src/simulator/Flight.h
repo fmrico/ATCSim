@@ -50,6 +50,7 @@ public:
 	float getInclination() { return inclination;};
 	float getBearing() { return bearing;};
 	float getSpeed() { return speed;};
+	void setSpeed(float tgt_speed) {speed = checkSpeedLimits(tgt_speed);}
 	float getPoints() {return points;};
 	std::string getId(){return id;};
 	void setFocused(bool state) { focused = state;};
@@ -69,6 +70,8 @@ private:
 	bool inStorm;
 
 	float points;
+
+	float checkSpeedLimits(float tgt_speed);
 };
 
 #endif /* FLIGHT_H_ */
