@@ -5,7 +5,7 @@ before_install:
   - sudo apt-get install libice6
   - sudo apt-get install freeglut3-dev
   - sudo apt-get install cmake
-  - sudo apt-get install libiceutil35v5
+  - sudo apt-get install zeroc-ice-all-dev zeroc-ice-all-runtime zeroc-ice-slice zeroc-ice-utils
 
 # Enable C++ support
 language: cpp
