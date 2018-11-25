@@ -7,6 +7,8 @@
 #IncludeRegexTransform: 
 
 ../src/ICE/cpp/ATCDisplay.h
+IceUtil/PushDisableWarnings.h
+-
 Ice/ProxyF.h
 -
 Ice/ObjectF.h
@@ -116,6 +118,26 @@ math.h
 list
 -
 
+/Users/Pablo/git/ATCSim/src/simulator/Flight.cpp
+Flight.h
+/Users/Pablo/git/ATCSim/src/simulator/Flight.h
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+GL/gl.h
+-
+Common.h
+/Users/Pablo/git/ATCSim/src/simulator/Common.h
+iostream
+-
+string
+-
+math.h
+-
+
 /Users/Pablo/git/ATCSim/src/simulator/Flight.h
 string
 -
@@ -138,7 +160,33 @@ Singleton.h
 Airport.h
 /Users/Pablo/git/ATCSim/src/simulator/Airport.h
 
+/Users/Pablo/git/ATCSim/src/simulator/Position.cpp
+Position.h
 /Users/Pablo/git/ATCSim/src/simulator/Position.h
+math.h
+-
+
+/Users/Pablo/git/ATCSim/src/simulator/Position.h
+
+/Users/Pablo/git/ATCSim/src/simulator/Storm.cpp
+Storm.h
+/Users/Pablo/git/ATCSim/src/simulator/Storm.h
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+GL/gl.h
+-
+Common.h
+/Users/Pablo/git/ATCSim/src/simulator/Common.h
+iostream
+-
+string
+-
+math.h
+-
 
 /Users/Pablo/git/ATCSim/src/simulator/Storm.h
 string
