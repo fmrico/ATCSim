@@ -6,17 +6,24 @@ module ATCDisplay {
 		float z;
 	};
 
-	["java:type:java.util.LinkedList<ATCDPosition>"]
-	sequence<ATCDPosition> ATCDRoute;
-
 	struct ATCDWaypoint{
 		string name;
-		float x;
-		float y;
+		float lat;
+		float lon;
 	};
 
 	["java:type:java.util.LinkedList<ATCDWaypoint>"]
 	sequence<ATCDWaypoint> ATCDWaypoints;
+
+	struct ATCDRoute{
+		ATCDPosition pos;
+		ATCDWaypoint wpt;
+		float speed;
+		float alt;
+	};
+
+	["java:type:java.util.LinkedList<ATCDRoute>"]
+	sequence<ATCDRoute> ATCDLegs;
 
 	struct ATCDStorm{
 		bool valid;
@@ -36,7 +43,7 @@ module ATCDisplay {
 		float inclination;
 		float bearing;
 		float collisionRadious;
-		ATCDRoute flightRoute;
+		ATCDLegs flightRoute;
 	};
 
 	["java:type:java.util.LinkedList<ATCDFlight>"]

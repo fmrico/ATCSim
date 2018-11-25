@@ -219,7 +219,7 @@ Airport::step()
 
 		pthread_mutex_lock (&mutex);
 		checkLandings();
-		checkCollisions();
+		//checkCollisions();	//TODO: uncomment
 		checkCrashes();
 		pthread_mutex_unlock (&mutex);
 	}
@@ -464,20 +464,45 @@ Airport::getFlights(const Ice::Current&)
 		//std::cerr<<"A";
 
 		std::list<Route>::iterator itr;
-		ATCDisplay::ATCDRoute atcdr;
-		atcdr.clear();
+		ATCDisplay::ATCDLegs atcdlegs;
+		atcdlegs.clear();
 
 		for(itr= (*it)->getRoute()->begin(); itr!=(*it)->getRoute()->end(); ++itr)
 		{
 			//std::cerr<<"B";
 			Route r= (*itr);
 
+			ATCDisplay::ATCDRoute* atcdr = new ATCDisplay::ATCDRoute();
+
+			if(r.wpt.getName() == ""){
+				ATCDisplay::ATCDPosition* atcdp = new ATCDisplay::ATCDPosition();
+				(*atcdp).x = r.pos.get_x();
+				(*atcdp).y = r.pos.get_y();
+				(*atcdp).z = r.pos.get_z();
+				(*atcdr).pos = (*atcdp);
+			}else{
+				ATCDisplay::ATCDWaypoint* atcdwpt = new ATCDisplay::ATCDWaypoint();
+				(*atcdwpt).name = r.wpt.getName();
+				(*atcdwpt).lat = r.wpt.getLat();
+				(*atcdwpt).lon = r.wpt.getLon();
+				(*atcdr).wpt = (*atcdwpt);
+			}
+
+			atcdlegs.push_back(*atcdr);
+/*
 			ATCDisplay::ATCDPosition p;
-			p.x = r.pos.get_x();
-			p.y = r.pos.get_y();
-			p.z = r.pos.get_z();
+			if(r.wpt.getName() == ""){
+				p.x = r.pos.get_x();
+				p.y = r.pos.get_y();
+				p.z = r.pos.get_z();
+			}else{
+				p.x = r.wpt.getLat();
+				p.y = r.wpt.getLon();
+				p.z = r.alt;
+			}
 
 			atcdr.push_back(p);
+*/
 		}
 
 		//std::cerr<<"C";
@@ -494,7 +519,8 @@ Airport::getFlights(const Ice::Current&)
 		f.id =  (*it)->getId();
 		f.bearing = (*it)->getBearing();
 		f.collisionRadious = COLLISION_DISTANCE;
-		f.flightRoute = atcdr;
+		//f.flightRoute = atcdr;
+		f.flightRoute = atcdlegs;
 		f.inclination = (*it)->getInclination();
 		f.pos = fp;
 		//std::cerr<<"E";
@@ -522,8 +548,8 @@ ATCDisplay::ATCDWaypoints Airport::getWaypoints(const Ice::Current&)
 		//std::cerr<<"D";
 		ATCDisplay::ATCDWaypoint wpt;
 		wpt.name = (*it)->getName();
-		wpt.x = (*it)->getX();
-		wpt.y = (*it)->getY();
+		wpt.lat = (*it)->getLat();
+		wpt.lon = (*it)->getLon();
 
 		//std::cerr<<"E";
 		ret.push_back(wpt);

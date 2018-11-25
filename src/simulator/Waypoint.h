@@ -6,21 +6,22 @@
 
 class Waypoint {
 public:
-	//Waypoint();
-	Waypoint(std::string name, float x, float y);
+	Waypoint();
+	Waypoint(std::string name, float lat, float lon);
+	//Waypoint(const Waypoint& other);
 	~Waypoint();
 
     std::string getName() {return name_;};
-	float getX() {return x_;};
-	float getY() {return y_;};
+	float getLat() {return lat_;};
+	float getLon() {return lon_;};
 
     void setName(std::string name){name_ = name;};
-	void setX(float x) {x_ = x;};
-	void setY(float y) {y_ = y;};
+	void setLat(float lat) {lat_ = lat;};
+	void setLon(float lon) {lon_ = lon;};
 
 private:
     std::string name_;
-    float x_, y_;
+    float lat_, lon_;
 };
 
 #endif  // SIMULATOR_WAYPOINT_H__

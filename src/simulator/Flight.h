@@ -27,12 +27,15 @@
 #define FLIGHT_H_
 
 #include "Position.h"
+#include "Waypoint.h"
 #include "Common.h"
 #include <list>
 
 typedef struct {
 	Position pos;
+	Waypoint wpt;
 	float speed;
+	float alt = -1;
 } Route;
 
 class Flight {

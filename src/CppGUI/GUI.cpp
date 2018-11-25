@@ -350,10 +350,10 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 
 	if(flight.focused)
 	{
-		ATCDisplay::ATCDRoute route = flight.flightRoute;
+		ATCDisplay::ATCDLegs legs = flight.flightRoute;
 
-		std::vector<ATCDisplay::ATCDPosition>::iterator it;
-		it = route.begin();
+		std::vector<ATCDisplay::ATCDRoute>::iterator it;
+		it = legs.begin();
 		TextDisplay *textDisplay = TextDisplay::getInstance();
 		char pos_str[255];
 
@@ -371,24 +371,24 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 		textDisplay->displayText(pos_str, 15, 175, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 
 
-		if(!route.empty())
+		if(!legs.empty())
 		{
 
 			glColor4f(0.0f,0.0f,1.0f, 1.0f);
 			glBegin(GL_LINES);
 
 			glVertex3f(flight.pos.x, flight.pos.y, flight.pos.z);
-			for(it = route.begin(); it!=route.end(); ++it)
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				glVertex3f((*it).x, (*it).y, (*it).z);
-				glVertex3f((*it).x, (*it).y, (*it).z);
+				glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+				glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
 			}
 			glEnd();
 
-			for(it = route.begin(); it!=route.end(); ++it)
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
 				glPushMatrix();
-				glTranslatef((*it).x, (*it).y,(*it).z);
+				glTranslatef((*it).pos.x, (*it).pos.y,(*it).pos.z);
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
 				gluQuadricTexture(quadratic, GL_TRUE);
@@ -400,9 +400,12 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			textDisplay->displayText((char *)"Route", 15, 230, GUI::win_width, GUI::win_height, BLUE, GLUT_BITMAP_HELVETICA_12);
 
 			int c = 0;
-			for(it = route.begin(); it!=route.end(); ++it)
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).x, (*it).y, (*it).z);
+				if((*it).pos.z == -1)
+					snprintf(pos_str, 255, "Position: (%lf, %lf, %s) m", (*it).pos.x, (*it).pos.y, "ALT. =");
+				else
+					snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).pos.x, (*it).pos.y, (*it).pos.z);
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 				c++;
 			}
@@ -494,13 +497,13 @@ void GUI::DrawWaypoints(){
 
 		glBegin(GL_POLYGON);
 		glColor3f(0.6f, 0.6f, 0.6f);
-		glVertex3f(-0.5*wpt_size + wpt.x, wpt.y, 1.0f);
-		glVertex3f( 0.5*wpt_size + wpt.x, -0.5*wpt_size + wpt.y, 1.0f);
-		glVertex3f( 0.5*wpt_size + wpt.x,  0.5*wpt_size + wpt.y, 1.0f);
+		glVertex3f(-0.5*wpt_size + wpt.lat, wpt.lon, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.lat, -0.5*wpt_size + wpt.lon, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.lat,  0.5*wpt_size + wpt.lon, 1.0f);
 		glEnd();
 
 		wpt_name = wpt.name;
-		glRasterPos2i(wpt.x + 1.5*wpt_size, wpt.y - 0.5*wpt_name.length()*0.5*wpt_size);	//TODO: center text
+		glRasterPos2i(wpt.lat + 1.5*wpt_size, wpt.lon - 0.5*wpt_name.length()*0.5*wpt_size);	//TODO: center text
 		for(std::string::iterator i = wpt_name.begin(); i != wpt_name.end(); i++){
 			char c = *i;
 			glColor3d(1.0, 1.0, 1.0);

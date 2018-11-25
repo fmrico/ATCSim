@@ -44,7 +44,6 @@ public:
 
 private:
 		float x, y, z;
-
 };
 
 #endif /* POSITION_H_ */

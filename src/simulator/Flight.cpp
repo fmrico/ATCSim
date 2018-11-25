@@ -70,7 +70,18 @@ Flight::update(float delta_t)
 	{
 		float goal_bearing, diff_bearing, new_w;
 
-		CPpos = route.front().pos;
+		//CPpos = route.front().pos;
+		Route r = route.front();
+		if(r.wpt.getName() == ""){
+			CPpos = r.pos;
+		}else{
+			if(r.alt == -1)	// Maintain altitude
+				CPpos = Position(r.wpt.getLat(), r.wpt.getLon(), (this->getPosition()).get_z());
+			else
+				CPpos = Position(r.wpt.getLat(), r.wpt.getLon(), r.alt);
+		}
+
+
 		pos.angles(CPpos, goal_bearing, inclination);
 
 		goal_bearing = normalizePi(goal_bearing + M_PI);
