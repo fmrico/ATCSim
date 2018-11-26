@@ -89,7 +89,8 @@ private:
 
     pthread_mutex_t mutex;
 
-
+		//he insertado un acumulador para el cambio de nivel
+		float acum;
 };
 
 #endif  // SIMULATOR_AIRPORT_H__

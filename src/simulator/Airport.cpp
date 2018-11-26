@@ -57,6 +57,8 @@ Airport::Airport() {
 	storm = NULL;
 
 	pthread_mutex_init(&mutex, NULL);
+
+	acum = 0;
 }
 
 Airport::~Airport() {
@@ -193,12 +195,15 @@ Airport::step()
 
 	delta_t = ((float)(ta-tb)) /1000000.0;
 	last_ts = tv;
-
-	if((ta-crono)>INC_DIFF)
+	acum = acum + delta_t;
+//En la siguiente funcion realizar un acumulador que se inicialice a 0 en cada cambio
+//de nivel el cual es tal que acum =0, y va cambiando segun acum = acum +(differencial del tiempo * factor de aceleracion)
+	if(acum>INC_DIFF)
 	{
 		max_flights += INC_PEN;
 		//std::cerr<<"Increase flights in "<<INC_PEN<<" to "<<max_flights<<std::endl;
-		crono = ta;
+
+		acum = 0;
 	}
 
 	if(!flights.empty())
