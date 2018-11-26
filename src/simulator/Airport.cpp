@@ -70,8 +70,8 @@ Airport::~Airport() {
 
 void Airport::loadWaypoints(){
 	//TODO: read from file
-	Waypoint *wpt1 = new Waypoint("ASBIN", 0, 0);
-	Waypoint *wpt2 = new Waypoint("TOBEK", 500, 500);
+	Waypoint *wpt1 = new Waypoint("TOBEK", 0, 0);
+	Waypoint *wpt2 = new Waypoint("ASBIN", -5000, 2000);
 	waypoints.push_back(wpt1);
 	waypoints.push_back(wpt2);
 }
@@ -219,7 +219,7 @@ Airport::step()
 
 		pthread_mutex_lock (&mutex);
 		checkLandings();
-		//checkCollisions();	//TODO: uncomment
+		checkCollisions();
 		checkCrashes();
 		pthread_mutex_unlock (&mutex);
 	}
@@ -472,37 +472,24 @@ Airport::getFlights(const Ice::Current&)
 			//std::cerr<<"B";
 			Route r= (*itr);
 
-			ATCDisplay::ATCDRoute* atcdr = new ATCDisplay::ATCDRoute();
+			ATCDisplay::ATCDRoute atcdr;
 
 			if(r.wpt.getName() == ""){
-				ATCDisplay::ATCDPosition* atcdp = new ATCDisplay::ATCDPosition();
-				(*atcdp).x = r.pos.get_x();
-				(*atcdp).y = r.pos.get_y();
-				(*atcdp).z = r.pos.get_z();
-				(*atcdr).pos = (*atcdp);
+				ATCDisplay::ATCDPosition atcdp;
+				atcdp.x = r.pos.get_x();
+				atcdp.y = r.pos.get_y();
+				atcdp.z = r.pos.get_z();
+				atcdr.pos = atcdp;
 			}else{
-				ATCDisplay::ATCDWaypoint* atcdwpt = new ATCDisplay::ATCDWaypoint();
-				(*atcdwpt).name = r.wpt.getName();
-				(*atcdwpt).lat = r.wpt.getLat();
-				(*atcdwpt).lon = r.wpt.getLon();
-				(*atcdr).wpt = (*atcdwpt);
+				ATCDisplay::ATCDWaypoint atcdwpt;
+				atcdwpt.name = r.wpt.getName();
+				atcdwpt.lat = r.wpt.getLat();
+				atcdwpt.lon = r.wpt.getLon();
+				atcdr.wpt = atcdwpt;
 			}
 
-			atcdlegs.push_back(*atcdr);
-/*
-			ATCDisplay::ATCDPosition p;
-			if(r.wpt.getName() == ""){
-				p.x = r.pos.get_x();
-				p.y = r.pos.get_y();
-				p.z = r.pos.get_z();
-			}else{
-				p.x = r.wpt.getLat();
-				p.y = r.wpt.getLon();
-				p.z = r.alt;
-			}
+			atcdlegs.push_back(atcdr);
 
-			atcdr.push_back(p);
-*/
 		}
 
 		//std::cerr<<"C";

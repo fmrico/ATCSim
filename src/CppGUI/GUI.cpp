@@ -377,18 +377,29 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			glColor4f(0.0f,0.0f,1.0f, 1.0f);
 			glBegin(GL_LINES);
 
+			// Draw track path lines
 			glVertex3f(flight.pos.x, flight.pos.y, flight.pos.z);
 			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
-				glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+				if((*it).wpt.name == ""){
+					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+				}else{
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
+				}
 			}
 			glEnd();
 
+			// Draw points of route
 			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
 				glPushMatrix();
-				glTranslatef((*it).pos.x, (*it).pos.y,(*it).pos.z);
+				if((*it).wpt.name == "")
+					glTranslatef((*it).pos.x, (*it).pos.y,(*it).pos.z);
+				else
+					glTranslatef((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
+
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
 				gluQuadricTexture(quadratic, GL_TRUE);
@@ -402,10 +413,15 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			int c = 0;
 			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				if((*it).pos.z == -1)
-					snprintf(pos_str, 255, "Position: (%lf, %lf, %s) m", (*it).pos.x, (*it).pos.y, "ALT. =");
-				else
+				if((*it).wpt.name == ""){
 					snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).pos.x, (*it).pos.y, (*it).pos.z);
+				}else{
+					std::string nameStr = (*it).wpt.name;
+					char* charStr = new char[nameStr.length()+1];
+					strcpy(charStr, nameStr.c_str());
+					snprintf(pos_str, 255, "WPT: %s (%lf, %lf, %lf) m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+				}
+
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 				c++;
 			}

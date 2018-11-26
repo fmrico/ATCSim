@@ -63,22 +63,29 @@ AirController::doWork()
 			r3.speed = 15.0;
 			*/
 
-			Route r3, r2;
+			Route r3, r2, r1;
 
-			r2.wpt = Waypoint("ASBIN", 0, 2000);
+			r2.wpt = Waypoint("ASBIN", -5000, 2000);
 			r2.speed = 200;
-			//r2.alt = 3000;
-			r3.wpt = Waypoint("TOBEK", 2000, 0);
+			r2.alt = 500;
+			/*r3.wpt = Waypoint("TOBEK", 2000, 0);
 			r3.speed = 250;
-			r3.alt = 3000;
+			r3.alt = 3000;*/
+			Position pos3(750.0, 0.0, 200.0);
+			r3.pos = pos3;
+			r3.speed = 100.0;
+
+			Position pos1(0.0, 0.0, 25.0);
+			r1.pos = pos1;
+			r1.speed = 15.0;
 
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
 				if((*it)->getRoute()->empty())
 				{
+					(*it)->getRoute()->push_back(r2);
 					(*it)->getRoute()->push_back(r3);
-					(*it)->getRoute()->push_front(r2);
-					//(*it)->getRoute()->push_front(r1);
+					(*it)->getRoute()->push_back(r1);
 					//(*it)->getRoute()->push_front(r0);
 				}
 			}
