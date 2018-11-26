@@ -20,6 +20,20 @@ googletest-prefix/src/googletest/googletest/include/gtest/gtest-death-test.h
 gtest/internal/gtest-death-test-internal.h
 googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-death-test-internal.h
 
+googletest-prefix/src/googletest/googletest/include/gtest/gtest-matchers.h
+memory
+-
+ostream
+-
+string
+-
+gtest/internal/gtest-internal.h
+googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-port.h
+googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-port.h
+gtest/gtest-printers.h
+googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-printers.h
+
 googletest-prefix/src/googletest/googletest/include/gtest/gtest-message.h
 limits
 -
@@ -101,6 +115,8 @@ gtest/internal/gtest-string.h
 googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-string.h
 gtest/gtest-death-test.h
 googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-death-test.h
+gtest/gtest-matchers.h
+googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-matchers.h
 gtest/gtest-message.h
 googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-message.h
 gtest/gtest-param-test.h

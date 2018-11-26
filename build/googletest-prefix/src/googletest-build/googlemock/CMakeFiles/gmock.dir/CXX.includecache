@@ -38,6 +38,12 @@ gmock/internal/gmock-port.h
 gtest/gtest.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gtest/gtest.h
 
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-function-mocker.h
+gmock/gmock-generated-function-mockers.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/gmock-generated-function-mockers.h
+gmock/internal/gmock-pp.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/internal/gmock-pp.h
+
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-generated-actions.h
 memory
 -
@@ -159,6 +165,8 @@ gmock/gmock-actions.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/gmock-actions.h
 gmock/gmock-cardinalities.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/gmock-cardinalities.h
+gmock/gmock-function-mocker.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/gmock-function-mocker.h
 gmock/gmock-generated-actions.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock/gmock-generated-actions.h
 gmock/gmock-generated-function-mockers.h
@@ -211,6 +219,8 @@ gtest/internal/gtest-port.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gtest/internal/gtest-port.h
 gmock/internal/custom/gmock-port.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock/internal/custom/gmock-port.h
+
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock-pp.h
 
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/src/gmock-all.cc
 gmock/gmock.h
@@ -306,6 +316,20 @@ gmock/internal/gmock-port.h
 gtest/internal/gtest-death-test-internal.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-death-test-internal.h
 
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-matchers.h
+memory
+-
+ostream
+-
+string
+-
+gtest/internal/gtest-internal.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-port.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-port.h
+gtest/gtest-printers.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-printers.h
+
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-message.h
 limits
 -
@@ -387,6 +411,8 @@ gtest/internal/gtest-string.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-string.h
 gtest/gtest-death-test.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-death-test.h
+gtest/gtest-matchers.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-matchers.h
 gtest/gtest-message.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-message.h
 gtest/gtest-param-test.h

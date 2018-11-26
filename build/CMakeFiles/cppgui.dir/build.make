@@ -176,7 +176,6 @@ cppgui: CMakeFiles/cppgui.dir/src/ICE/cpp/ATCDisplay.cpp.o
 cppgui: CMakeFiles/cppgui.dir/src/CppGUI/cppgui.cpp.o
 cppgui: CMakeFiles/cppgui.dir/build.make
 cppgui: /usr/lib/x86_64-linux-gnu/libIce.so
-cppgui: /usr/lib/x86_64-linux-gnu/libIceUtil.so
 cppgui: /usr/lib/x86_64-linux-gnu/libGL.so
 cppgui: /usr/lib/x86_64-linux-gnu/libGLU.so
 cppgui: /usr/lib/x86_64-linux-gnu/libglut.so

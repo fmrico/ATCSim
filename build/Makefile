@@ -148,6 +148,19 @@ ATCSim/fast:
 .PHONY : ATCSim/fast
 
 #=============================================================================
+# Target rules for targets named Flight_test
+
+# Build rule for target.
+Flight_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Flight_test
+.PHONY : Flight_test
+
+# fast build rule for target.
+Flight_test/fast:
+	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/build
+.PHONY : Flight_test/fast
+
+#=============================================================================
 # Target rules for targets named ATCSimLib
 
 # Build rule for target.
@@ -512,6 +525,33 @@ src/simulator/Storm.cpp.s:
 	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/src/simulator/Storm.cpp.s
 .PHONY : src/simulator/Storm.cpp.s
 
+test/Flight_test.o: test/Flight_test.cpp.o
+
+.PHONY : test/Flight_test.o
+
+# target to build an object file
+test/Flight_test.cpp.o:
+	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.o
+.PHONY : test/Flight_test.cpp.o
+
+test/Flight_test.i: test/Flight_test.cpp.i
+
+.PHONY : test/Flight_test.i
+
+# target to preprocess a source file
+test/Flight_test.cpp.i:
+	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.i
+.PHONY : test/Flight_test.cpp.i
+
+test/Flight_test.s: test/Flight_test.cpp.s
+
+.PHONY : test/Flight_test.s
+
+# target to generate assembly for a file
+test/Flight_test.cpp.s:
+	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.s
+.PHONY : test/Flight_test.cpp.s
+
 test/Position_test.o: test/Position_test.cpp.o
 
 .PHONY : test/Position_test.o
@@ -549,6 +589,7 @@ help:
 	@echo "... Position_test"
 	@echo "... ATCSim"
 	@echo "... edit_cache"
+	@echo "... Flight_test"
 	@echo "... ATCSimLib"
 	@echo "... cppgui"
 	@echo "... ATCSim_cpplint"
@@ -588,6 +629,9 @@ help:
 	@echo "... src/simulator/Storm.o"
 	@echo "... src/simulator/Storm.i"
 	@echo "... src/simulator/Storm.s"
+	@echo "... test/Flight_test.o"
+	@echo "... test/Flight_test.i"
+	@echo "... test/Flight_test.s"
 	@echo "... test/Position_test.o"
 	@echo "... test/Position_test.i"
 	@echo "... test/Position_test.s"

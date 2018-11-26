@@ -90,13 +90,11 @@ Position_test_EXTERNAL_OBJECTS =
 
 Position_test: CMakeFiles/Position_test.dir/test/Position_test.cpp.o
 Position_test: CMakeFiles/Position_test.dir/build.make
-Position_test: googletest-prefix/src/googletest-build/lib/libgtest.a
-Position_test: googletest-prefix/src/googletest-build/lib/libgtest_main.a
+Position_test: IMPORTED_LINK_INTERFACE_LIBRARIES
+Position_test: IMPORTED_LINK_INTERFACE_LIBRARIES
 Position_test: /usr/lib/x86_64-linux-gnu/libIce.so
-Position_test: /usr/lib/x86_64-linux-gnu/libIceUtil.so
 Position_test: libATCSimLib.so
 Position_test: /usr/lib/x86_64-linux-gnu/libIce.so
-Position_test: /usr/lib/x86_64-linux-gnu/libIceUtil.so
 Position_test: CMakeFiles/Position_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Position_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Position_test.dir/link.txt --verbose=$(VERBOSE)

@@ -10,6 +10,20 @@
 gtest/internal/gtest-death-test-internal.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-death-test-internal.h
 
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-matchers.h
+memory
+-
+ostream
+-
+string
+-
+gtest/internal/gtest-internal.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-internal.h
+gtest/internal/gtest-port.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-port.h
+gtest/gtest-printers.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-printers.h
+
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-message.h
 limits
 -
@@ -91,6 +105,8 @@ gtest/internal/gtest-string.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/internal/gtest-string.h
 gtest/gtest-death-test.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-death-test.h
+gtest/gtest-matchers.h
+/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-matchers.h
 gtest/gtest-message.h
 /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest/gtest-message.h
 gtest/gtest-param-test.h

@@ -3,6 +3,7 @@
 
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-actions.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-cardinalities.h
+googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-function-mocker.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-generated-actions.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-generated-function-mockers.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/gmock-generated-matchers.h
@@ -18,8 +19,10 @@ googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock-generated-internal-utils.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock-internal-utils.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock-port.h
+googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/include/gmock/internal/gmock-pp.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googlemock/src/gmock_main.cc
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-death-test.h
+googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-matchers.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-message.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-param-test.h
 googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/googletest-prefix/src/googletest/googletest/include/gtest/gtest-printers.h

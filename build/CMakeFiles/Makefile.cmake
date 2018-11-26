@@ -100,6 +100,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.10/Modules/ExternalProject.cmake"
   "/usr/share/cmake-3.10/Modules/FindGLUT.cmake"
   "/usr/share/cmake-3.10/Modules/FindGit.cmake"
+  "/usr/share/cmake-3.10/Modules/FindIce.cmake"
   "/usr/share/cmake-3.10/Modules/FindOpenGL.cmake"
   "/usr/share/cmake-3.10/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.10/Modules/FindPackageMessage.cmake"
@@ -140,6 +141,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Position_test.dir/DependInfo.cmake"
   "CMakeFiles/ATCSim.dir/DependInfo.cmake"
+  "CMakeFiles/Flight_test.dir/DependInfo.cmake"
   "CMakeFiles/ATCSimLib.dir/DependInfo.cmake"
   "CMakeFiles/cppgui.dir/DependInfo.cmake"
   "CMakeFiles/ATCSim_cpplint.dir/DependInfo.cmake"

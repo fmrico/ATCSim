@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f672f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f672f.dir/build.make CMakeFiles/cmTC_f672f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f7f6e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f7f6e.dir/build.make CMakeFiles/cmTC_f7f6e.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_f672f.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_f672f.dir/CheckSymbolExists.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_f672f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f672f.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_f672f.dir/CheckSymbolExists.c.o  -o cmTC_f672f 
-CMakeFiles/cmTC_f672f.dir/CheckSymbolExists.c.o: En la función `main':
+Building C object CMakeFiles/cmTC_f7f6e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_f7f6e.dir/CheckSymbolExists.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_f7f6e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7f6e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_f7f6e.dir/CheckSymbolExists.c.o  -o cmTC_f7f6e 
+CMakeFiles/cmTC_f7f6e.dir/CheckSymbolExists.c.o: En la función `main':
 CheckSymbolExists.c:(.text+0x1b): referencia a `pthread_create' sin definir
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_f672f.dir/build.make:97: recipe for target 'cmTC_f672f' failed
-make[1]: *** [cmTC_f672f] Error 1
+CMakeFiles/cmTC_f7f6e.dir/build.make:97: recipe for target 'cmTC_f7f6e' failed
+make[1]: *** [cmTC_f7f6e] Error 1
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_f672f/fast' failed
-make: *** [cmTC_f672f/fast] Error 2
+Makefile:126: recipe for target 'cmTC_f7f6e/fast' failed
+make: *** [cmTC_f7f6e/fast] Error 2
 
 File /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a6d19/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a6d19.dir/build.make CMakeFiles/cmTC_a6d19.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_e804a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e804a.dir/build.make CMakeFiles/cmTC_e804a.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a6d19.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a6d19.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_a6d19
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a6d19.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a6d19.dir/CheckFunctionExists.c.o  -o cmTC_a6d19 -lpthreads 
+Building C object CMakeFiles/cmTC_e804a.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_e804a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e804a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e804a.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_e804a.dir/CheckFunctionExists.c.o  -o cmTC_e804a -lpthreads 
 /usr/bin/ld: no se puede encontrar -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_a6d19.dir/build.make:97: recipe for target 'cmTC_a6d19' failed
-make[1]: *** [cmTC_a6d19] Error 1
+CMakeFiles/cmTC_e804a.dir/build.make:97: recipe for target 'cmTC_e804a' failed
+make[1]: *** [cmTC_e804a] Error 1
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_a6d19/fast' failed
-make: *** [cmTC_a6d19/fast] Error 2
+Makefile:126: recipe for target 'cmTC_e804a/fast' failed
+make: *** [cmTC_e804a/fast] Error 2
 
 

@@ -91,10 +91,8 @@ ATCSim_EXTERNAL_OBJECTS =
 ATCSim: CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o
 ATCSim: CMakeFiles/ATCSim.dir/build.make
 ATCSim: /usr/lib/x86_64-linux-gnu/libIce.so
-ATCSim: /usr/lib/x86_64-linux-gnu/libIceUtil.so
 ATCSim: libATCSimLib.so
 ATCSim: /usr/lib/x86_64-linux-gnu/libIce.so
-ATCSim: /usr/lib/x86_64-linux-gnu/libIceUtil.so
 ATCSim: CMakeFiles/ATCSim.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ATCSim"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ATCSim.dir/link.txt --verbose=$(VERBOSE)
