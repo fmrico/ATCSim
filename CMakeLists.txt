@@ -49,6 +49,7 @@ set(CPPGUI_SRCS
 add_library(ATCSimLib SHARED ${ATCSIM_SRCS})
 target_link_libraries(ATCSimLib
   ${Ice_LIBRARIES}
+  ${IceUtil_LIBRARIES}
 )
 
 # add the executable
@@ -60,12 +61,14 @@ add_executable(cppgui ${CPPGUI_SRCS})
 
 target_link_libraries(ATCSim
   ${Ice_LIBRARIES}
+  ${IceUtil_LIBRARIES}
    ${CMAKE_THREAD_LIBS_INIT}
    ATCSimLib
 )
 
 target_link_libraries(cppgui
   ${Ice_LIBRARIES}
+  ${IceUtil_LIBRARIES}
 	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES}
 	${GLUT_LIBRARY}
@@ -89,6 +92,7 @@ foreach(_test_file ${TEST_SRC_FILES})
     target_link_libraries(${_test_name} gtest gtest_main
       ${CMAKE_THREAD_LIBS_INIT}
       ${Ice_LIBRARIES}
+      ${IceUtil_LIBRARIES}
       ATCSimLib)
     add_test(${_test_name} ${_test_name})
     set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
