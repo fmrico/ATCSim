@@ -6,8 +6,12 @@ include(cmake/CppLint.cmake)
 SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
 
 find_package(OpenGL REQUIRED)
-set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+if(GNU_)
+	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+	set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+endif()
+set(Ice_LIBRARY_MACOS "/usr/lib/libIce.so")
+set(IceUtil_LIBRARY_MACOS "/usr/lib/libIceutil.so")
 
 find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
@@ -16,7 +20,8 @@ find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIR}
 	src/lib/
 	src/ICE/cpp
-  src/simulator
+  	src/simulator
+  	/usr/local/include
 )
 find_package(Threads REQUIRED)
 
