@@ -58,7 +58,11 @@ Airport::Airport() {
 
 	pthread_mutex_init(&mutex, NULL);
 
+<<<<<<< HEAD
 	acum = 0;
+=======
+  any_landing_ = false;
+>>>>>>> 197019c08be2e9e0649870e789fbc5af5c8e70e8
 }
 
 Airport::~Airport() {
@@ -399,6 +403,8 @@ Airport::checkLandings()
 			it = removeFlight((*it)->getId());
 
 			std::cerr<<"*";
+
+      any_landing_ = false;
 
 
 			return;
