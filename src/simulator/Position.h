@@ -29,6 +29,7 @@ class Position {
 public:
 	Position();
 	Position(float _x, float _y, float _z);
+	Position(const Position& other);
 	virtual ~Position();
 
 	float get_x() {return x;};
