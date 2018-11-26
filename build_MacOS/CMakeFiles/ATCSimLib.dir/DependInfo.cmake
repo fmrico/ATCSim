@@ -21,6 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src/lib"
   "../src/ICE/cpp"
   "../src/simulator"
+  "/usr/local/include"
   "googletest-prefix/src/googletest/googletest/include"
   )
 
