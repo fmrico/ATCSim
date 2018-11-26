@@ -91,6 +91,8 @@ private:
 
     pthread_mutex_t mutex;
 
+	float acum;
+
   bool any_landing_;
 
 };

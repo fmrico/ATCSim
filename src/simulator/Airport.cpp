@@ -58,11 +58,9 @@ Airport::Airport() {
 
 	pthread_mutex_init(&mutex, NULL);
 
-<<<<<<< HEAD
 	acum = 0;
-=======
+
   any_landing_ = false;
->>>>>>> 197019c08be2e9e0649870e789fbc5af5c8e70e8
 }
 
 Airport::~Airport() {
@@ -197,7 +195,7 @@ Airport::step()
 	ta = tv.tv_sec*1000000 + tv.tv_usec;
 	tb = last_ts.tv_sec*1000000 + last_ts.tv_usec;
 
-	delta_t = ((float)(ta-tb)) /1000000.0;
+	delta_t = SimTimeMod*((float)(ta-tb)) /1000000.0;
 	last_ts = tv;
 	acum = acum + delta_t;
 //En la siguiente funcion realizar un acumulador que se inicialice a 0 en cada cambio
@@ -214,7 +212,7 @@ Airport::step()
 	{
 		for(it = flights.begin(); it!=flights.end(); ++it)
 		{
-			(*it)->update(SimTimeMod * delta_t);
+			(*it)->update(delta_t);
 			//std::cerr<<"["<<(*it)->getId()<<"] on the way"<<std::endl;
 			//(*it)->draw();
 		}
