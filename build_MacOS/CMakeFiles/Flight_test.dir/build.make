@@ -81,9 +81,9 @@ Flight_test: CMakeFiles/Flight_test.dir/test/Flight_test.cpp.o
 Flight_test: CMakeFiles/Flight_test.dir/build.make
 Flight_test: IMPORTED_LINK_INTERFACE_LIBRARIES
 Flight_test: IMPORTED_LINK_INTERFACE_LIBRARIES
-Flight_test: /usr/local/lib/libIce.dylib
+Flight_test: /usr/lib/x86_64-linux-gnu/libIce.so
 Flight_test: libATCSimLib.dylib
-Flight_test: /usr/local/lib/libIce.dylib
+Flight_test: /usr/lib/x86_64-linux-gnu/libIce.so
 Flight_test: CMakeFiles/Flight_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Flight_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Flight_test.dir/link.txt --verbose=$(VERBOSE)

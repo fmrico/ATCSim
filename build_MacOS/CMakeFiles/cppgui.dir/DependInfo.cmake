@@ -9,7 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Pablo/git/ATCSim/src/CppGUI/cppgui.cpp" "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui.dir/src/CppGUI/cppgui.cpp.o"
   "/Users/Pablo/git/ATCSim/src/ICE/cpp/ATCDisplay.cpp" "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui.dir/src/ICE/cpp/ATCDisplay.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "Clang")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

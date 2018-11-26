@@ -12,7 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Pablo/git/ATCSim/src/simulator/Position.cpp" "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir/src/simulator/Position.cpp.o"
   "/Users/Pablo/git/ATCSim/src/simulator/Storm.cpp" "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir/src/simulator/Storm.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "Clang")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
