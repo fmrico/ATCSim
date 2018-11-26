@@ -57,6 +57,8 @@ Airport::Airport() {
 	storm = NULL;
 
 	pthread_mutex_init(&mutex, NULL);
+
+  any_landing_ = false;
 }
 
 Airport::~Airport() {
@@ -394,6 +396,8 @@ Airport::checkLandings()
 			it = removeFlight((*it)->getId());
 
 			std::cerr<<"*";
+
+      any_landing_ = false;
 
 
 			return;

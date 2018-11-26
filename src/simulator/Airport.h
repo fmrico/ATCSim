@@ -60,6 +60,8 @@ public:
 	virtual int getMaxFlights(const Ice::Current&);
 	virtual int getPoints(const Ice::Current&);
 
+  void book_landing() {any_landing_ = true;}
+  bool is_booked_landing() { return any_landing_;}
 
 private:
 
@@ -89,6 +91,7 @@ private:
 
     pthread_mutex_t mutex;
 
+  bool any_landing_;
 
 };
 
