@@ -3,7 +3,7 @@ project (ATCSim)
 
 include(cmake/makeice.cmake)
 include(cmake/CppLint.cmake)
-SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
+SET(CMAKE_CXX_FLAGS "--std=c++11 -stdlib=libc++")
 
 find_package(OpenGL REQUIRED)
 set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
