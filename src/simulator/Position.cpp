@@ -38,6 +38,13 @@ Position::Position(float _x, float _y, float _z)
 	z = _z;
 }
 
+Position::Position(const Position& other)
+{
+	x = other.x;
+	y = other.y;
+	z = other.z;
+}
+
 Position::~Position() {
 
 }
