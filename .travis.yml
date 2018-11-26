@@ -1,11 +1,9 @@
 dist: xenial
 sudo: required
 before_install:
-  - sudo apt-get install libice-dev
-  - sudo apt-get install libice6
   - sudo apt-get install freeglut3-dev
   - sudo apt-get install cmake
-  - sudo apt-get install libzeroc-ice-dev libzeroc-ice35v5 ice35-translators
+  - sudo apt-get install libzeroc-ice-dev libzeroc-ice35v5 ice35-translators slice2cpp ice35-slice
 
 # Enable C++ support
 language: cpp
@@ -20,4 +18,5 @@ install:
 script:
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake ..
+  - VERBOSE=1 make

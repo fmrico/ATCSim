@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8.3)
+cmake_minimum_required (VERSION 3.10)
 project (ATCSim)
 
 include(cmake/makeice.cmake)
@@ -7,6 +7,7 @@ SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
 
 find_package(OpenGL REQUIRED)
 set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
 find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
@@ -18,12 +19,11 @@ include_directories(${GLUT_INCLUDE_DIR}
 )
 find_package(Threads REQUIRED)
 
-
-#FIND_LIBRARY(iceutil_lib IceUtil)
-
 set(CMAKE_CXX_FLAGS "-g -Wno-deprecated-declarations")
 
 ## Building ATCSIM #################################################
+
+set(_link_flags "-lice -liceutils")
 
 set(ATCSIM_SRCS
   src/simulator/Flight.h src/simulator/Flight.cpp
