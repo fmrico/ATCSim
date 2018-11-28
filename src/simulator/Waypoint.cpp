@@ -12,13 +12,11 @@ Waypoint::Waypoint(std::string name, float lat, float lon){
 	lon_ = lon;
 }
 
-/*
 Waypoint::Waypoint(const Waypoint& other){
 	name_ = other.name_;
-	x_ = other.x_;
-	y_ = other.y_;
+	lat_ = other.lat_;
+	lon_ = other.lon_;
 }
-*/
 
 Waypoint::~Waypoint() {
 

@@ -26,6 +26,10 @@
 #define AIRCONTROLLER_H_
 
 #include "Singleton.h"
+#include "Waypoint.h"
+
+static void setWaypoints();
+static Waypoint getWaypoint();
 
 class AirController: public Singleton<AirController> {
 public:

@@ -385,8 +385,8 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
 					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
 				}else{
-					glVertex3f((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
-					glVertex3f((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
 				}
 			}
 			glEnd();
@@ -398,7 +398,7 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 				if((*it).wpt.name == "")
 					glTranslatef((*it).pos.x, (*it).pos.y,(*it).pos.z);
 				else
-					glTranslatef((*it).wpt.lat, (*it).wpt.lon,(*it).alt);
+					glTranslatef((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
 
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
@@ -414,12 +414,13 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
 				if((*it).wpt.name == ""){
-					snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).pos.x, (*it).pos.y, (*it).pos.z);
+					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %.2lf) m", (*it).pos.x, (*it).pos.y, (*it).pos.z);
 				}else{
 					std::string nameStr = (*it).wpt.name;
 					char* charStr = new char[nameStr.length()+1];
 					strcpy(charStr, nameStr.c_str());
-					snprintf(pos_str, 255, "WPT: %s (%lf, %lf, %lf) m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					//snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					snprintf(pos_str, 255, "Waypoint: %s @ %.2f m", charStr, (*it).alt);
 				}
 
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);

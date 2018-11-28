@@ -8,7 +8,7 @@ class Waypoint {
 public:
 	Waypoint();
 	Waypoint(std::string name, float lat, float lon);
-	//Waypoint(const Waypoint& other);
+	Waypoint(const Waypoint& other);
 	~Waypoint();
 
     std::string getName() {return name_;};

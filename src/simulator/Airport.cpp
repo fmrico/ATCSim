@@ -70,7 +70,7 @@ Airport::~Airport() {
 
 void Airport::loadWaypoints(){
 	//TODO: read from file
-	Waypoint *wpt1 = new Waypoint("TOBEK", 0, 0);
+	Waypoint *wpt1 = new Waypoint("TOBEK", -2000, 0);
 	Waypoint *wpt2 = new Waypoint("ASBIN", -5000, 2000);
 	waypoints.push_back(wpt1);
 	waypoints.push_back(wpt2);
@@ -485,6 +485,7 @@ Airport::getFlights(const Ice::Current&)
 				atcdwpt.name = r.wpt.getName();
 				atcdwpt.lat = r.wpt.getLat();
 				atcdwpt.lon = r.wpt.getLon();
+				atcdr.alt = r.alt;
 				atcdr.wpt = atcdwpt;
 			}
 
