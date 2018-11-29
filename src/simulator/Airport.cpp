@@ -23,6 +23,7 @@
  */
 
 #include "Airport.h"
+#include "AirControllerUtils.h"
 
 #include <sys/time.h>
 #include <stdio.h>
@@ -56,7 +57,10 @@ Airport::Airport() {
 	SimTimeMod = 1.0;
 	storm = NULL;
 
-	loadWaypoints();
+	atc_utils::createWaypoints();
+	atc_utils::setWaypoints();
+
+	waypoints = atc_utils::getWaypoints();
 
 	pthread_mutex_init(&mutex, NULL);
 }
@@ -66,14 +70,6 @@ Airport::~Airport() {
 	for(it = flights.begin(); it!=flights.end(); ++it)
 		delete(*it);
 	flights.clear();
-}
-
-void Airport::loadWaypoints(){
-	//TODO: read from file
-	Waypoint *wpt1 = new Waypoint("TOBEK", -2000, 0);
-	Waypoint *wpt2 = new Waypoint("ASBIN", -5000, 2000);
-	waypoints.push_back(wpt1);
-	waypoints.push_back(wpt2);
 }
 
 void

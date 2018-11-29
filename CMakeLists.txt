@@ -29,6 +29,7 @@ set(ATCSIM_SRCS
   src/simulator/Airport.h src/simulator/Airport.cpp
   src/simulator/Position.h src/simulator/Position.cpp
   src/simulator/Waypoint.h src/simulator/Waypoint.cpp
+  src/simulator/AirControllerUtils.h src/simulator/AirControllerUtils.cpp
   src/simulator/AirController.h src/simulator/AirController.cpp
   src/simulator/IceComms.h src/simulator/IceComms.cpp
   src/ICE/cpp/ATCDisplay.h src/ICE/cpp/ATCDisplay.cpp

@@ -23,49 +23,24 @@
  */
 
 #include "AirController.h"
+#include "AirControllerUtils.h"
 #include "Airport.h"
 #include "Flight.h"
 #include "Position.h"
 #include <list>
 #include <string>
-#include <unordered_map>
 #include <stdexcept>
 #include <exception>
 
-static std::unordered_map<std::string, Waypoint> wpt_map;
 
 AirController::AirController() {
-	setWaypoints();
+
 }
 
 AirController::~AirController() {
 	// TODO Auto-generated destructor stub
 }
 
-
-static void setWaypoints(){
-	// Get loaded Waypoints
-	std::list<Waypoint*> waypoints = Airport::getInstance()->getWaypoints();
-	std::list<Waypoint*>::iterator it_wpt;
-
-	// Save it into a map in order to retrieve it by ID
-	for(it_wpt = waypoints.begin(); it_wpt!=waypoints.end(); ++it_wpt){
-		wpt_map.insert( std::pair<std::string, Waypoint>( (*it_wpt)->getName(), *(*it_wpt) ) );
-	}
-}
-
-static Waypoint getWaypoint(std::string id){
-	std::unordered_map<std::string, Waypoint>::iterator wpt_map_it;
-	wpt_map_it = wpt_map.find(id);
-
-	if(wpt_map_it != wpt_map.end()){		// Check if iterator is valid
-		return wpt_map_it->second;
-	}else{
-		std::cerr << "ERROR: Waypoint not exists!" << std::endl;
-		return Waypoint();	// return empty Waypoint
-	}
-
-}
 
 
 void
@@ -94,10 +69,10 @@ AirController::doWork()
 
 			Route r3, r2, r1;
 
-			r2.wpt = getWaypoint("ASBIN");
+			r2.wpt = atc_utils::getWaypoint("ASBIN");
 			r2.speed = 200;
 			r2.alt = 500;
-			r3.wpt = getWaypoint("TOBEK");
+			r3.wpt = atc_utils::getWaypoint("TOBEK");
 			r3.speed = 250;
 			r3.alt = 200;
 			Position pos3(750.0, 0.0, 200.0);

@@ -66,7 +66,6 @@ public:
 
 private:
 
-	void loadWaypoints();
 	void checkLandings();
 	void checkCollisions();
 	void checkCrashes();
