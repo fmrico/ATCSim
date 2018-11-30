@@ -18,6 +18,6 @@ namespace atc_utils{
     void setWaypoints();
     Waypoint getWaypoint(std::string id);
 
-};
+}
 
 #endif // SIMULATOR_AIR_CONTROLLER_UTILS_H__

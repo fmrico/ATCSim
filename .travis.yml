@@ -1,11 +1,16 @@
+dist: bionic
 sudo: required
 before_install:
-  - sudo apt-get install libiceutil35v5
-  - sudo apt-get install libice-dev
-  - sudo apt-get install libice
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic main restricted"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic-updates main restricted"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic universe"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic-updates universe"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic multiverse"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic-updates multiverse"
+  - sudo apt-add-repository "deb http://es.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse"
+  - sudo apt-get update
   - sudo apt-get install freeglut3-dev
-  - sudo apt-get install cmake
-
+  - sudo apt-get install zeroc-ice-all-dev zeroc-ice-all-runtime
 # Enable C++ support
 language: cpp
 
@@ -19,4 +24,5 @@ install:
 script:
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake ..
+  - make

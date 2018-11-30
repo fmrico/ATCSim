@@ -63,6 +63,10 @@ Airport::Airport() {
 	waypoints = atc_utils::getWaypoints();
 
 	pthread_mutex_init(&mutex, NULL);
+
+	acum_ =  0;
+
+  any_landing_ = false;
 }
 
 Airport::~Airport() {
@@ -194,21 +198,24 @@ Airport::step()
 	ta = tv.tv_sec*1000000 + tv.tv_usec;
 	tb = last_ts.tv_sec*1000000 + last_ts.tv_usec;
 
-	delta_t = ((float)(ta-tb)) /1000000.0;
+	delta_t =((float)(ta-tb)) /1000000.0;
 	last_ts = tv;
-
-	if((ta-crono)>INC_DIFF)
+	acum_ = acum_ + (delta_t * SimTimeMod)*1000000.0;
+//En la siguiente funcion realizar un acumulador que se inicialice a 0 en cada cambio
+//de nivel el cual es tal que acum =0, y va cambiando segun acum = acum +(differencial del tiempo * factor de aceleracion)
+	if(acum_>INC_DIFF)
 	{
 		max_flights += INC_PEN;
 		//std::cerr<<"Increase flights in "<<INC_PEN<<" to "<<max_flights<<std::endl;
-		crono = ta;
+
+	 	acum_ = 0;
 	}
 
 	if(!flights.empty())
 	{
 		for(it = flights.begin(); it!=flights.end(); ++it)
 		{
-			(*it)->update(SimTimeMod * delta_t);
+			(*it)->update(SimTimeMod*delta_t);
 			//std::cerr<<"["<<(*it)->getId()<<"] on the way"<<std::endl;
 			//(*it)->draw();
 		}
@@ -397,6 +404,8 @@ Airport::checkLandings()
 			it = removeFlight((*it)->getId());
 
 			std::cerr<<"*";
+
+      any_landing_ = false;
 
 
 			return;
