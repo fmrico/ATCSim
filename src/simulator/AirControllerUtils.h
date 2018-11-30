@@ -9,8 +9,8 @@
 
 namespace atc_utils{
 
-    static std::list<Waypoint*> waypoints;
-    static std::unordered_map<std::string, Waypoint> wpt_map;
+    extern std::list<Waypoint*> waypoints;
+    extern std::unordered_map<std::string, Waypoint> wpt_map;
 
     void createWaypoints();
     std::list<Waypoint*> getWaypoints();

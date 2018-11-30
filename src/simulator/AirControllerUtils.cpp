@@ -2,6 +2,9 @@
 #include <iostream>
 #include "AirControllerUtils.h"
 
+std::list<Waypoint*> atc_utils::waypoints;
+std::unordered_map<std::string, Waypoint> atc_utils::wpt_map;
+
 void atc_utils::createWaypoints(){
     //TODO: read from file
     Waypoint *wpt1 = new Waypoint("TOBEK", -2000, 0);
@@ -33,7 +36,7 @@ Waypoint atc_utils::getWaypoint(std::string id){
 	if(wpt_map_it != wpt_map.end()){		// Check if iterator is valid
 		return wpt_map_it->second;
 	}else{
-		//std::cerr << "ERROR: Waypoint not exists!" << std::endl;
+		std::cerr << "ERROR: Waypoint not exists!" << std::endl;
 		return Waypoint();	// return empty Waypoint
 	}
 
