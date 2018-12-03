@@ -27,6 +27,8 @@
 #include "AirController.h"
 #include "IceComms.h"
 
+using namespace atcsim;
+
 int main(int argc, char **argv)
 {
 	IceComms::getInstance()->startServer();
@@ -39,4 +41,3 @@ int main(int argc, char **argv)
 	return 0;
 
 }
-

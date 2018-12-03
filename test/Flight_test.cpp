@@ -3,6 +3,7 @@
 #include "Flight.h"
 #include "Position.h"
 
+using namespace atcsim;
 
 TEST(FlightTest, id)
 {

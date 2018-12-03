@@ -2,6 +2,8 @@
 #include "gtest/gtest.h"
 #include "Position.h"
 
+using namespace atcsim;
+
 
 TEST(PositionTest, setters_getters)
 {
