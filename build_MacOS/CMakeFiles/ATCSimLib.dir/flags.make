@@ -6,5 +6,5 @@ CXX_FLAGS =  -g -Wno-deprecated-declarations -g -isysroot /Library/Developer/Com
 
 CXX_DEFINES = -DATCSimLib_EXPORTS
 
-CXX_INCLUDES = -F/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks -I/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework/Headers -I/Users/Pablo/git/ATCSim/src/lib -I/Users/Pablo/git/ATCSim/src/ICE/cpp -I/Users/Pablo/git/ATCSim/src/simulator -I/usr/local/include -I/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest/googletest/include 
+CXX_INCLUDES = -F/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks -I/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework/Headers -I/Users/Pablo/git/ATCSim/src/lib -I/Users/Pablo/git/ATCSim/src/ICE/cpp -I/Users/Pablo/git/ATCSim/src/simulator -I/usr/local/include 
 

@@ -15,7 +15,7 @@
 ########################
 
 //Dependencies for the target
-ATCSimLib_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libIce.so;
+ATCSimLib_LIB_DEPENDS:STATIC=general;/usr/local/lib/libIce.dylib;
 
 //Value Computed by CMake
 ATCSim_BINARY_DIR:STATIC=/Users/Pablo/git/ATCSim/build_MacOS
@@ -201,12 +201,6 @@ CMAKE_STRIP:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Freeze include directory
-Freeze_INCLUDE_DIR:PATH=Freeze_INCLUDE_DIR-NOTFOUND
-
-//Git command line client
-GIT_EXECUTABLE:FILEPATH=/usr/local/bin/git
-
 //Path to a file.
 GLUT_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework/Headers
 
@@ -216,149 +210,8 @@ GLUT_cocoa_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14
 //GLUT library for OSX
 GLUT_glut_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework
 
-//Ice db_archive executable
-Ice_DB_ARCHIVE_EXECUTABLE:FILEPATH=/usr/bin/db_archive
-
-//Ice db_checkpoint executable
-Ice_DB_CHECKPOINT_EXECUTABLE:FILEPATH=/usr/bin/db_checkpoint
-
-//Ice db_deadlock executable
-Ice_DB_DEADLOCK_EXECUTABLE:FILEPATH=/usr/bin/db_deadlock
-
-//Ice db_dump executable
-Ice_DB_DUMP_EXECUTABLE:FILEPATH=/usr/bin/db_dump
-
-//Ice db_hotbackup executable
-Ice_DB_HOTBACKUP_EXECUTABLE:FILEPATH=/usr/bin/db_hotbackup
-
-//Ice db_load executable
-Ice_DB_LOAD_EXECUTABLE:FILEPATH=/usr/bin/db_load
-
-//Ice db_log_verify executable
-Ice_DB_LOG_VERIFY_EXECUTABLE:FILEPATH=Ice_DB_LOG_VERIFY_EXECUTABLE-NOTFOUND
-
-//Ice db_printlog executable
-Ice_DB_PRINTLOG_EXECUTABLE:FILEPATH=/usr/bin/db_printlog
-
-//Ice db_recover executable
-Ice_DB_RECOVER_EXECUTABLE:FILEPATH=/usr/bin/db_recover
-
-//Ice db_stat executable
-Ice_DB_STAT_EXECUTABLE:FILEPATH=/usr/bin/db_stat
-
-//Ice db_tuner executable
-Ice_DB_TUNER_EXECUTABLE:FILEPATH=Ice_DB_TUNER_EXECUTABLE-NOTFOUND
-
-//Ice db_upgrade executable
-Ice_DB_UPGRADE_EXECUTABLE:FILEPATH=/usr/bin/db_upgrade
-
-//Ice db_verify executable
-Ice_DB_VERIFY_EXECUTABLE:FILEPATH=/usr/bin/db_verify
-
-//Ice dumpdb executable
-Ice_DUMPDB_EXECUTABLE:FILEPATH=Ice_DUMPDB_EXECUTABLE-NOTFOUND
-
-//Ice glacier2router executable
-Ice_GLACIER2ROUTER_EXECUTABLE:FILEPATH=/usr/local/bin/glacier2router
-
-//Ice icebox++11 executable
-Ice_ICEBOX++11_EXECUTABLE:FILEPATH=/usr/local/bin/icebox++11
-
-//Ice iceboxadmin executable
-Ice_ICEBOXADMIN_EXECUTABLE:FILEPATH=/usr/local/bin/iceboxadmin
-
-//Ice iceboxd executable
-Ice_ICEBOXD_EXECUTABLE:FILEPATH=Ice_ICEBOXD_EXECUTABLE-NOTFOUND
-
-//Ice iceboxnet executable
-Ice_ICEBOXNET_EXECUTABLE:FILEPATH=Ice_ICEBOXNET_EXECUTABLE-NOTFOUND
-
-//Ice icebox executable
-Ice_ICEBOX_EXECUTABLE:FILEPATH=/usr/local/bin/icebox
-
-//Ice icebridge executable
-Ice_ICEBRIDGE_EXECUTABLE:FILEPATH=/usr/local/bin/icebridge
-
-//Ice icegridadmin executable
-Ice_ICEGRIDADMIN_EXECUTABLE:FILEPATH=/usr/local/bin/icegridadmin
-
-//Ice icegriddb executable
-Ice_ICEGRIDDB_EXECUTABLE:FILEPATH=/usr/local/bin/icegriddb
-
-//Ice icegridnoded executable
-Ice_ICEGRIDNODED_EXECUTABLE:FILEPATH=Ice_ICEGRIDNODED_EXECUTABLE-NOTFOUND
-
-//Ice icegridnode executable
-Ice_ICEGRIDNODE_EXECUTABLE:FILEPATH=/usr/local/bin/icegridnode
-
-//Ice icegridregistryd executable
-Ice_ICEGRIDREGISTRYD_EXECUTABLE:FILEPATH=Ice_ICEGRIDREGISTRYD_EXECUTABLE-NOTFOUND
-
-//Ice icegridregistry executable
-Ice_ICEGRIDREGISTRY_EXECUTABLE:FILEPATH=/usr/local/bin/icegridregistry
-
-//Ice icepatch2calc executable
-Ice_ICEPATCH2CALC_EXECUTABLE:FILEPATH=/usr/local/bin/icepatch2calc
-
-//Ice icepatch2client executable
-Ice_ICEPATCH2CLIENT_EXECUTABLE:FILEPATH=/usr/local/bin/icepatch2client
-
-//Ice icepatch2server executable
-Ice_ICEPATCH2SERVER_EXECUTABLE:FILEPATH=/usr/local/bin/icepatch2server
-
-//Ice iceserviceinstall executable
-Ice_ICESERVICEINSTALL_EXECUTABLE:FILEPATH=Ice_ICESERVICEINSTALL_EXECUTABLE-NOTFOUND
-
-//Ice icestormadmin executable
-Ice_ICESTORMADMIN_EXECUTABLE:FILEPATH=/usr/local/bin/icestormadmin
-
-//Ice icestormdb executable
-Ice_ICESTORMDB_EXECUTABLE:FILEPATH=/usr/local/bin/icestormdb
-
-//Ice icestormmigrate executable
-Ice_ICESTORMMIGRATE_EXECUTABLE:FILEPATH=Ice_ICESTORMMIGRATE_EXECUTABLE-NOTFOUND
-
-//Ice include directory
-Ice_INCLUDE_DIR:PATH=/usr/local/include
-
-//Ice slice2cpp executable
-Ice_SLICE2CPP_EXECUTABLE:FILEPATH=/usr/local/bin/slice2cpp
-
-//Ice slice2cs executable
-Ice_SLICE2CS_EXECUTABLE:FILEPATH=/usr/local/bin/slice2cs
-
-//Ice slice2freezej executable
-Ice_SLICE2FREEZEJ_EXECUTABLE:FILEPATH=Ice_SLICE2FREEZEJ_EXECUTABLE-NOTFOUND
-
-//Ice slice2freeze executable
-Ice_SLICE2FREEZE_EXECUTABLE:FILEPATH=Ice_SLICE2FREEZE_EXECUTABLE-NOTFOUND
-
-//Ice slice2html executable
-Ice_SLICE2HTML_EXECUTABLE:FILEPATH=/usr/local/bin/slice2html
-
-//Ice slice2java executable
-Ice_SLICE2JAVA_EXECUTABLE:FILEPATH=/usr/local/bin/slice2java
-
-//Ice slice2js executable
-Ice_SLICE2JS_EXECUTABLE:FILEPATH=Ice_SLICE2JS_EXECUTABLE-NOTFOUND
-
-//Ice slice2objc executable
-Ice_SLICE2OBJC_EXECUTABLE:FILEPATH=/usr/local/bin/slice2objc
-
-//Ice slice2php executable
-Ice_SLICE2PHP_EXECUTABLE:FILEPATH=/usr/local/bin/slice2php
-
-//Ice slice2py executable
-Ice_SLICE2PY_EXECUTABLE:FILEPATH=Ice_SLICE2PY_EXECUTABLE-NOTFOUND
-
-//Ice slice2rb executable
-Ice_SLICE2RB_EXECUTABLE:FILEPATH=Ice_SLICE2RB_EXECUTABLE-NOTFOUND
-
-//Ice slice directory
-Ice_SLICE_DIR:PATH=/usr/local/share/ice/slice
-
-//Ice transformdb executable
-Ice_TRANSFORMDB_EXECUTABLE:FILEPATH=Ice_TRANSFORMDB_EXECUTABLE-NOTFOUND
+//Path to a library.
+Ice_lib:FILEPATH=/usr/local/lib/libIce.dylib
 
 //Include for OpenGL on OS X
 OPENGL_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework
@@ -514,16 +367,12 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding GLUT
 FIND_PACKAGE_MESSAGE_DETAILS_GLUT:INTERNAL=[/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework][/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework/Headers][v()]
-//Details about finding Ice
-FIND_PACKAGE_MESSAGE_DETAILS_Ice:INTERNAL=[/usr/local/bin/slice2cpp][/usr/local/include][/usr/local/share/ice/slice][/usr/lib/x86_64-linux-gnu/libIce.so][ON][v3.7.1()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework][/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework][c ][v()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.10()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//ADVANCED property for variable: GIT_EXECUTABLE
-GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLUT_INCLUDE_DIR
 GLUT_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLUT_glut_LIBRARY

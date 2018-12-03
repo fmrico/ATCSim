@@ -67,17 +67,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/Cellar/cmake/3.12.4/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -122,32 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Position_test
-
-# Build rule for target.
-Position_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Position_test
-.PHONY : Position_test
-
-# fast build rule for target.
-Position_test/fast:
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/build
-.PHONY : Position_test/fast
-
-#=============================================================================
-# Target rules for targets named Flight_test
-
-# Build rule for target.
-Flight_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Flight_test
-.PHONY : Flight_test
-
-# fast build rule for target.
-Flight_test/fast:
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/build
-.PHONY : Flight_test/fast
-
-#=============================================================================
 # Target rules for targets named cppgui_cpplint
 
 # Build rule for target.
@@ -159,19 +122,6 @@ cppgui_cpplint: cmake_check_build_system
 cppgui_cpplint/fast:
 	$(MAKE) -f CMakeFiles/cppgui_cpplint.dir/build.make CMakeFiles/cppgui_cpplint.dir/build
 .PHONY : cppgui_cpplint/fast
-
-#=============================================================================
-# Target rules for targets named googletest
-
-# Build rule for target.
-googletest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 googletest
-.PHONY : googletest
-
-# fast build rule for target.
-googletest/fast:
-	$(MAKE) -f CMakeFiles/googletest.dir/build.make CMakeFiles/googletest.dir/build
-.PHONY : googletest/fast
 
 #=============================================================================
 # Target rules for targets named ATCSim_cpplint
@@ -525,60 +475,6 @@ src/simulator/Storm.cpp.s:
 	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/src/simulator/Storm.cpp.s
 .PHONY : src/simulator/Storm.cpp.s
 
-test/Flight_test.o: test/Flight_test.cpp.o
-
-.PHONY : test/Flight_test.o
-
-# target to build an object file
-test/Flight_test.cpp.o:
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.o
-.PHONY : test/Flight_test.cpp.o
-
-test/Flight_test.i: test/Flight_test.cpp.i
-
-.PHONY : test/Flight_test.i
-
-# target to preprocess a source file
-test/Flight_test.cpp.i:
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.i
-.PHONY : test/Flight_test.cpp.i
-
-test/Flight_test.s: test/Flight_test.cpp.s
-
-.PHONY : test/Flight_test.s
-
-# target to generate assembly for a file
-test/Flight_test.cpp.s:
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/test/Flight_test.cpp.s
-.PHONY : test/Flight_test.cpp.s
-
-test/Position_test.o: test/Position_test.cpp.o
-
-.PHONY : test/Position_test.o
-
-# target to build an object file
-test/Position_test.cpp.o:
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/test/Position_test.cpp.o
-.PHONY : test/Position_test.cpp.o
-
-test/Position_test.i: test/Position_test.cpp.i
-
-.PHONY : test/Position_test.i
-
-# target to preprocess a source file
-test/Position_test.cpp.i:
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/test/Position_test.cpp.i
-.PHONY : test/Position_test.cpp.i
-
-test/Position_test.s: test/Position_test.cpp.s
-
-.PHONY : test/Position_test.s
-
-# target to generate assembly for a file
-test/Position_test.cpp.s:
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/test/Position_test.cpp.s
-.PHONY : test/Position_test.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -586,11 +482,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... Position_test"
-	@echo "... Flight_test"
 	@echo "... cppgui_cpplint"
-	@echo "... googletest"
 	@echo "... ATCSim_cpplint"
 	@echo "... ATCSim"
 	@echo "... rebuild_cache"
@@ -629,12 +521,6 @@ help:
 	@echo "... src/simulator/Storm.o"
 	@echo "... src/simulator/Storm.i"
 	@echo "... src/simulator/Storm.s"
-	@echo "... test/Flight_test.o"
-	@echo "... test/Flight_test.i"
-	@echo "... test/Flight_test.s"
-	@echo "... test/Position_test.o"
-	@echo "... test/Position_test.i"
-	@echo "... test/Position_test.s"
 .PHONY : help
 
 

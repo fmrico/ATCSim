@@ -131,7 +131,6 @@ cppgui: CMakeFiles/cppgui.dir/src/CppGUI/TextDisplay.cpp.o
 cppgui: CMakeFiles/cppgui.dir/src/ICE/cpp/ATCDisplay.cpp.o
 cppgui: CMakeFiles/cppgui.dir/src/CppGUI/cppgui.cpp.o
 cppgui: CMakeFiles/cppgui.dir/build.make
-cppgui: /usr/lib/x86_64-linux-gnu/libIce.so
 cppgui: CMakeFiles/cppgui.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable cppgui"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cppgui.dir/link.txt --verbose=$(VERBOSE)

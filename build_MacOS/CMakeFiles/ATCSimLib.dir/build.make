@@ -176,7 +176,7 @@ libATCSimLib.dylib: CMakeFiles/ATCSimLib.dir/src/simulator/AirController.cpp.o
 libATCSimLib.dylib: CMakeFiles/ATCSimLib.dir/src/simulator/IceComms.cpp.o
 libATCSimLib.dylib: CMakeFiles/ATCSimLib.dir/src/ICE/cpp/ATCDisplay.cpp.o
 libATCSimLib.dylib: CMakeFiles/ATCSimLib.dir/build.make
-libATCSimLib.dylib: /usr/lib/x86_64-linux-gnu/libIce.so
+libATCSimLib.dylib: /usr/local/lib/libIce.dylib
 libATCSimLib.dylib: CMakeFiles/ATCSimLib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library libATCSimLib.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ATCSimLib.dir/link.txt --verbose=$(VERBOSE)
