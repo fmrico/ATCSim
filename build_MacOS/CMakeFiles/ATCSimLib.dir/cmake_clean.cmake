@@ -9,7 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ATCSimLib.dir/src/simulator/IceComms.cpp.o"
   "CMakeFiles/ATCSimLib.dir/src/ICE/cpp/ATCDisplay.cpp.o"
   "libATCSimLib.pdb"
-  "libATCSimLib.dylib"
+  "libATCSimLib.so"
 )
 
 # Per-language clean rules from dependency scanning.

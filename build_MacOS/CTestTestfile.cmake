@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /Users/Pablo/git/ATCSim
-# Build directory: /Users/Pablo/git/ATCSim/build_MacOS
+# Source directory: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim
+# Build directory: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

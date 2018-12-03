@@ -4,21 +4,21 @@ endif()
 
 set(run 0)
 
-if("/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitinfo.txt" IS_NEWER_THAN "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt")
+if("/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitinfo.txt" IS_NEWER_THAN "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt")
   set(run 1)
 endif()
 
 if(NOT run)
-  message(STATUS "Avoiding repeated git clone, stamp file is up to date: '/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt'")
+  message(STATUS "Avoiding repeated git clone, stamp file is up to date: '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt'")
   return()
 endif()
 
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E remove_directory "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
+  COMMAND ${CMAKE_COMMAND} -E remove_directory "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
   RESULT_VARIABLE error_code
   )
 if(error_code)
-  message(FATAL_ERROR "Failed to remove directory: '/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
+  message(FATAL_ERROR "Failed to remove directory: '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
 endif()
 
 set(git_options)
@@ -47,13 +47,13 @@ foreach(config IN LISTS git_config)
   list(APPEND git_clone_options --config ${config})
 endforeach()
 
-# try the clone 3 times in case there is an odd git clone issue
+# try the clone 3 times incase there is an odd git clone issue
 set(error_code 1)
 set(number_of_tries 0)
 while(error_code AND number_of_tries LESS 3)
   execute_process(
-    COMMAND "/usr/local/bin/git" ${git_options} clone ${git_clone_options} --origin "origin" "https://github.com/google/googletest.git" "googletest"
-    WORKING_DIRECTORY "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src"
+    COMMAND "/usr/bin/git" ${git_options} clone ${git_clone_options} --origin "origin" "https://github.com/google/googletest.git" "googletest"
+    WORKING_DIRECTORY "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src"
     RESULT_VARIABLE error_code
     )
   math(EXPR number_of_tries "${number_of_tries} + 1")
@@ -67,8 +67,8 @@ if(error_code)
 endif()
 
 execute_process(
-  COMMAND "/usr/local/bin/git" ${git_options} checkout master --
-  WORKING_DIRECTORY "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
+  COMMAND "/usr/bin/git" ${git_options} checkout master --
+  WORKING_DIRECTORY "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
   RESULT_VARIABLE error_code
   )
 if(error_code)
@@ -76,33 +76,33 @@ if(error_code)
 endif()
 
 execute_process(
-  COMMAND "/usr/local/bin/git" ${git_options} submodule init 
-  WORKING_DIRECTORY "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
+  COMMAND "/usr/bin/git" ${git_options} submodule init 
+  WORKING_DIRECTORY "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
   RESULT_VARIABLE error_code
   )
 if(error_code)
-  message(FATAL_ERROR "Failed to init submodules in: '/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
+  message(FATAL_ERROR "Failed to init submodules in: '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
 endif()
 
 execute_process(
-  COMMAND "/usr/local/bin/git" ${git_options} submodule update --recursive --init 
-  WORKING_DIRECTORY "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
+  COMMAND "/usr/bin/git" ${git_options} submodule update --recursive --init 
+  WORKING_DIRECTORY "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
   RESULT_VARIABLE error_code
   )
 if(error_code)
-  message(FATAL_ERROR "Failed to update submodules in: '/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
+  message(FATAL_ERROR "Failed to update submodules in: '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest'")
 endif()
 
 # Complete success, update the script-last-run stamp file:
 #
 execute_process(
   COMMAND ${CMAKE_COMMAND} -E copy
-    "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitinfo.txt"
-    "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt"
-  WORKING_DIRECTORY "/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
+    "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitinfo.txt"
+    "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt"
+  WORKING_DIRECTORY "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest"
   RESULT_VARIABLE error_code
   )
 if(error_code)
-  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/Users/Pablo/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt'")
+  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/googletest-prefix/src/googletest-stamp/googletest-gitclone-lastrun.txt'")
 endif()
 

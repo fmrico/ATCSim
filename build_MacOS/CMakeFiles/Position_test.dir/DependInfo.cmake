@@ -4,14 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Pablo/git/ATCSim/test/Position_test.cpp" "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/Position_test.dir/test/Position_test.cpp.o"
+  "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/test/Position_test.cpp" "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/CMakeFiles/Position_test.dir/test/Position_test.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework"
-  "/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/GLUT.framework/Headers"
   "../src/lib"
   "../src/ICE/cpp"
   "../src/simulator"
@@ -21,7 +19,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir/DependInfo.cmake"
+  "/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

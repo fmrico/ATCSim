@@ -1,1 +1,1 @@
-cmd='/usr/local/Cellar/cmake/3.12.4/bin/cmake;-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'
+cmd='/usr/bin/cmake;-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'
