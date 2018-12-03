@@ -1,13 +1,26 @@
-cmake_minimum_required (VERSION 3.10)
+cmake_minimum_required (VERSION 3.5)
 project (ATCSim)
+
+set(CMAKE_BUILD_TYPE Debug)
 
 include(cmake/makeice.cmake)
 include(cmake/CppLint.cmake)
-SET(CMAKE_CXX_FLAGS “-std=c++11 -stdlib=libc++”)
+
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 11)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 find_package(OpenGL REQUIRED)
-set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+if(GNU_)
+	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+	set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+endif()
+set(Ice_LIBRARY_MACOS "/usr/lib/libIce.so")
+set(IceUtil_LIBRARY_MACOS "/usr/lib/libIceutil.so")
 
 find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
@@ -16,11 +29,12 @@ find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIR}
 	src/lib/
 	src/ICE/cpp
-  src/simulator
+  	src/simulator
+  	/usr/local/include
 )
 find_package(Threads REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-g -Wno-deprecated-declarations")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wno-deprecated-declarations")
 
 if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Wextra ")
