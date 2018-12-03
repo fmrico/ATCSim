@@ -309,19 +309,70 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 	glRotatef(toDegrees(flight.bearing), 0.0f, 0.0f, 1.0f);
 	glRotatef(toDegrees(-flight.inclination), 0.0f, 1.0f, 0.0f);
 	glBegin(GL_POLYGON);
-	glColor3f(1.0f,0.0f,0.0f);
+	glColor3f(0.0f,1.0f,0.0f);
 
-	glVertex3f( 30.0f, 0.0f, 0.0f);
-	glVertex3f( -30.0f, 32.0f, 0.0f);
-	glVertex3f( -30.0f, -32.0f, 0.0f);
+	//glVertex3f( 30.0f, 0.0f, 0.0f);
+	//glVertex3f( -30.0f, 32.0f, 0.0f);
+	//glVertex3f( -30.0f, -32.0f, 0.0f);
+	glVertex3f( 45.0f, 0.0f, -2.0f);
+	glVertex3f( 35.0f, -5.0f, -2.0f);
+	glVertex3f( -22.64f, -5.0f, -2.0f);
+	glVertex3f( -32.64f, 0.0f, -2.0f);
+	glVertex3f( -22.64f, 5.0f, -2.0f);
+	glVertex3f( 35.0f, 5.0f, -2.0f);
 	glEnd();
+
+
+
+	glBegin(GL_POLYGON);
+	glColor3f(1.0f,0.0f,1.0f);
+
+	glVertex3f( 3.0f, -5.0f, -2.0f);
+	glVertex3f( -12.0f, -40.0f, -2.0f);
+	glVertex3f( -18.0f, -40.0f, -2.0f);
+	glVertex3f( -15.0f, -30.0f, -2.0f);
+	glVertex3f( -13.0f, -5.0f, -2.0f);
+	glVertex3f( -13.0f, 5.0f, -2.0f);
+	glVertex3f( -15.0f, 30.0f, -2.0f);
+	glVertex3f( -18.0f, 40.0f, -2.0f);
+	glVertex3f( -12.0f, 40.0f, -2.0f);
+	glVertex3f( 3.0f, 5.0f, -2.0f);
+
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(1.0f,1.0f,1.0f);
+
+	glVertex3f( -38.0f, 0.0f, 12.0f);
+	glVertex3f( -46.0f, -12.0f, 12.0f);
+	glVertex3f( -53.0f, -12.0f, 12.0f);
+	glVertex3f( -48.0f, 0.0f, 12.0f);
+	glVertex3f( -53.0f, 12.0f, 12.0f);
+	glVertex3f( -46.0f, 12.0f, 12.0f);
+
+	glEnd();
+
 
 	glBegin(GL_POLYGON);
 	glColor3f(0.0f,0.0f,1.0f);
 
-	glVertex3f( -10.0f, 0.0f, 0.0f);
-	glVertex3f( -30.0f, 0.0f, 0.0f);
-	glVertex3f( -30.0f, 0.0f, 21.0f);
+	glVertex3f( 35.0f, 0.0f, 5.0f);
+	glVertex3f( 45.0f, 0.0f, -2.0f);
+	glVertex3f( 35.0f, 0.0f, -5.0f);
+	glVertex3f( -23.0f, 0.0f, -5.0f);
+	glVertex3f( -45.0f, 0.0f, 2.0f);
+	glVertex3f( -33.0f, 0.0f, 5.0f);
+
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f,1.0f,1.0f);
+
+	glVertex3f( -45.0f, 0.0f, 2.0f);
+	glVertex3f( -48.0f, 0.0f, 12.0f);
+	glVertex3f( -38.0f, 0.0f, 12.0f);
+	glVertex3f( -33.0f, 0.0f, 5.0f);
+
 	glEnd();
 
 
@@ -470,5 +521,3 @@ GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-20, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 
 }
-
-
