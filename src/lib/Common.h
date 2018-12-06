@@ -23,13 +23,13 @@
  */
 
 
-
-#ifndef __Math_Common_h__
-#define __Math_Common_h__
+#ifndef ATCSIM_LIB_COMMON_H_
+#define ATCSIM_LIB_COMMON_H_
 
 #include <cmath>
 #include <cstdlib>
 #include <string>
+
 #include <stdlib.h>
 
 #define COLLISION_DISTANCE 1000.0f
@@ -84,27 +84,6 @@
 
 #define INC_SIMTIME			0.1
 
-/**
-* defines the sign of a (-1, 0 or 1)
-*/
-#ifndef sgn
-#define sgn(a)   ( (a) < 0 ? -1 : ((a)==0) ? 0 : 1 )
-#endif
-
-/**
-* defines the sign of a (-1 or 1)
-*/
-#ifndef sign
-#define sign(a)   ( (a) < 0 ? -1 : 1 )
-#endif
-
-/**
-* defines the square of a value
-*/
-#ifndef sqr
-#define sqr(a) ( (a) * (a) )
-#endif
-
 inline double sec(const double a){return 1/cos(a);}
 
 inline double cosec(const double a){return 1/sin(a);}
@@ -112,19 +91,19 @@ inline double cosec(const double a){return 1/sin(a);}
 /** @name constants for some often used angles */
 ///@{
 /** constant for a half circle*/
-const double pi = 3.1415926535897932384626433832795;
+const double pi = M_PI;
 /** constant for a full circle*/
-const double pi2 = 2.0*3.1415926535897932384626433832795;
+const double pi2 = 2.0 * pi;
 /** constant for three quater circle*/
-const double pi3_2 = 1.5*3.1415926535897932384626433832795;
+const double pi3_2 = 1.5 * pi;
 /** constant for a quarter circle*/
-const double pi_2 = 0.5*3.1415926535897932384626433832795;
+const double pi_2 = 0.5 * pi;
 /** constant for a 1 degree*/
-const double pi_180 = 3.1415926535897932384626433832795/180;
+const double pi_180 = pi / 180;
 /** constant for a 1/8 circle*/
-const double pi_4 = 3.1415926535897932384626433832795*0.25;
+const double pi_4 = pi * 0.25;
 /** constant for a 3/8 circle*/
-const double pi3_4 = 3.1415926535897932384626433832795*0.75;
+const double pi3_4 = pi * 0.75;
 /** constant for an expression used by the gaussian function*/
 const double sqrt2pi = sqrt(2.0*pi);
 ///@}
@@ -135,37 +114,29 @@ const double sqrt2pi = sqrt(2.0*pi);
  * \param angle code in rad
  * \return angle coded in degrees
  */
-inline double toDegrees(double angle){return angle * 180.0 / pi;}
+inline double toDegrees(double angle){return angle*(180.0/pi);}
 
 /** Converts angle from degrees to rad.
  * \param degrees angle coded in degrees
  * \return angle coded in rad
  */
-inline double fromDegrees(double degrees){return degrees * pi_180;}
 
-/** Converts angle from degrees to rad.
- * \param degrees angle coded in degrees
- * \return angle coded in rad
- */
-inline double toRadians(double degrees){return degrees * pi_180;}
+inline double toRadians(double degrees){return degrees*pi_180;}
 
 /**
 * reduce angle to [-pi..+pi[
 * \param data angle coded in rad
 * \return normalized angle coded in rad
 */
+
 inline double normalizePi(double data)
 {
   if (data < pi && data >= -pi) return data;
   double ndata = data - ((int )(data / pi2))*pi2;
-  while (ndata >= pi)
-  {
-    ndata -= pi2;
-  }
-  while (ndata < -pi)
-  {
-    ndata += pi2;
-  }
+  while (ndata >= pi) { ndata -= pi2; };
+
+  while (ndata < -pi) { ndata += pi2; };
+
   return ndata;
 }
 
@@ -192,7 +163,7 @@ const double RAND_MAX_DOUBLE = static_cast<double>(RAND_MAX);
 */
 inline int randomFast(int n)
 {
-  return static_cast<int>((rand()*n) / RAND_MAX_DOUBLE);
+  return static_cast<int>((rand() * n) / RAND_MAX_DOUBLE);
 }
 
 /**
@@ -200,42 +171,37 @@ inline int randomFast(int n)
 * @param d A number
 * @return The number as integer
 */
-inline int roundNumberToInt(double d)
-{
-  return static_cast<int>(floor(d+0.5));
-}
+inline int roundNumberToInt(double d) { return static_cast<int> (round(d)); }
 
 /**
 * Round to the next integer but keep type
 * @param d A number
 * @return The number
 */
-inline double roundNumber(double d)
-{
-  return floor(d+0.5);
-}
+inline double roundNumber(double d) { return round(d); }
 
 inline float normalAng(float x, float mu, float st)
 {
 	float diff = normalizePi(x-mu);
-	float d1 = st*sqrt(2.0*M_PI);
+	float d1 = st*sqrt(2.0*pi);
 	float d2 = 2*st*st;
 
-	if(d1==0.0) d1 = 0.00001;
-	if(d2==0.0) d2 = 0.00001;
+	if (d1==0.0) d1 = 0.00001;
+	if (d2==0.0) d2 = 0.00001;
 
-	return (1.0/d1)*exp(-(diff*diff)/d2);
+	return (1.0/d1) * exp(-(diff * diff)/d2);
 }
+
 inline float normalDist(float x, float mu, float st)
 {
 	float diff = x-mu;
-	float d1 = st*sqrt(2.0*M_PI);
+	float d1 = st*sqrt(2.0*pi);
 	float d2 = 2*st*st;
 
-	if(d1==0.0) d1 = 0.00001;
-	if(d2==0.0) d2 = 0.00001;
+	if (d1==0.0) d1 = 0.00001;
+	if (d2==0.0) d2 = 0.00001;
 
 	return (1.0/d1)*exp(-(diff*diff)/d2);
 }
 
-#endif // __Math_Common_h__
+#endif // ATCSIM_LIB_COMMON_H_
