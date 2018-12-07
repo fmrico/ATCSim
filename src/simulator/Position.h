@@ -25,6 +25,9 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
+namespace atcsim
+{
+
 class Position {
 public:
 	Position();
@@ -46,5 +49,7 @@ private:
 		float x, y, z;
 
 };
+
+};//namespace atcsim
 
 #endif /* POSITION_H_ */

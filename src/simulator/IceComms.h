@@ -29,6 +29,9 @@
 #include "Singleton.h"
 #include "Airport.h"
 
+namespace atcsim
+{
+
 class IceComms: public Singleton<IceComms>
 {
 public:
@@ -46,5 +49,7 @@ private:
 	static Ice::CommunicatorPtr ic;
 	static Ice::ObjectAdapterPtr adapter;
 };
+
+};//namespace atcsim
 
 #endif

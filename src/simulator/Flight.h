@@ -30,6 +30,9 @@
 #include "Common.h"
 #include <list>
 
+namespace atcsim
+{
+
 typedef struct {
 	Position pos;
 	float speed;
@@ -73,5 +76,7 @@ private:
 
 	float checkSpeedLimits(float tgt_speed);
 };
+
+};//namespace atcsim
 
 #endif /* FLIGHT_H_ */

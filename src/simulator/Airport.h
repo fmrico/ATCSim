@@ -33,6 +33,8 @@
 
 #include <list>
 
+namespace atcsim
+{
 
 
 class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface
@@ -91,10 +93,12 @@ private:
 
     pthread_mutex_t mutex;
 
-	float acum_; 
+	float acum_;
 
   bool any_landing_;
 
 };
+
+};//namespace atcsim 
 
 #endif  // SIMULATOR_AIRPORT_H__

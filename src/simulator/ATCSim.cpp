@@ -27,16 +27,16 @@
 #include "AirController.h"
 #include "IceComms.h"
 
+
 int main(int argc, char **argv)
 {
-	IceComms::getInstance()->startServer();
+	atcsim::IceComms::getInstance()->startServer();
 
 	while(true)
 	{
-		Airport::getInstance()->step();
-		AirController::getInstance()->doWork();
+		atcsim::Airport::getInstance()->step();
+		atcsim::AirController::getInstance()->doWork();
 	}
 	return 0;
 
 }
-
