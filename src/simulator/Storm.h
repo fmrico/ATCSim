@@ -29,6 +29,8 @@
 #include "Position.h"
 #include "Common.h"
 
+namespace atcsim{
+
 class Storm {
 public:
 	Storm(Position _pos, float _bearing, float _speed, float _radious, float _height);
@@ -50,5 +52,7 @@ private:
 	float radious, height;
 	float speed;
 };
+
+};  // namespace atcsim 
 
 #endif  //  TORMENTA_H__
