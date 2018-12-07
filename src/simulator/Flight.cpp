@@ -38,8 +38,7 @@
 #include <string>
 #include <math.h>
 
-namespace atcsim
-{
+namespace atcsim{
 
 Flight::~Flight() {
 	// TODO Auto-generated destructor stub
@@ -132,7 +131,7 @@ float Flight::checkSpeedLimits(float tgt_speed){
 	return (tgt_speed > CRASH_SPEED_MAX ? CRASH_SPEED_MAX : tgt_speed);
 }
 
-};//namespace atcsim 
+};//namespace atcsim
 
 //
 //void

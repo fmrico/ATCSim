@@ -25,8 +25,7 @@
 
 #include "IceComms.h"
 
-namespace atcsim
-{
+namespace atcsim{
 
 #define ICE_PORT 10000
 
@@ -102,4 +101,4 @@ IceComms::startServer()
 	pthread_create(&tIceServer, NULL, iceServerThread, NULL);
 }
 
-};//namespace atcsim 
+};  // namespace atcsim 

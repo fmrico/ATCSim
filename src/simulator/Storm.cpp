@@ -38,8 +38,7 @@
 #include <string>
 #include <math.h>
 
-namespace atcsim
-{
+namespace atcsim{
 
 Storm::~Storm() {
 	// TODO Auto-generated destructor stub
@@ -68,7 +67,7 @@ Storm::update(float delta_t)
 
 }
 
-};//namespace atcsim 
+};  // namespace atcsim 
 //
 //void
 //Storm::draw()

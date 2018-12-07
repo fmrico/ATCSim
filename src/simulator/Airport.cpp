@@ -38,8 +38,7 @@
 
 #include <cstdlib>
 
-namespace atcsim
-{
+namespace atcsim{
 
 Airport::Airport() {
 
@@ -558,7 +557,7 @@ Airport::getPoints(const Ice::Current&)
 	return points;
 }
 
-};//namespace atcsim
+};  // namespace atcsim
 
 
 //void

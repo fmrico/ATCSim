@@ -25,8 +25,7 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
-namespace atcsim
-{
+namespace atcsim{
 
 class Position {
 public:
@@ -50,6 +49,6 @@ private:
 
 };
 
-};//namespace atcsim
+};  // namespace atcsim
 
 #endif /* POSITION_H_ */

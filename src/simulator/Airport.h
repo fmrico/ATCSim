@@ -33,9 +33,7 @@
 
 #include <list>
 
-namespace atcsim
-{
-
+namespace atcsim{
 
 class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface
 {
@@ -99,6 +97,6 @@ private:
 
 };
 
-};//namespace atcsim 
+};  // namespace atcsim
 
 #endif  // SIMULATOR_AIRPORT_H__

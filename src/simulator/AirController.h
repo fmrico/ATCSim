@@ -27,8 +27,7 @@
 
 #include "Singleton.h"
 
-namespace atcsim
-{
+namespace atcsim{
 
 class AirController: public Singleton<AirController> {
 public:
@@ -38,6 +37,6 @@ public:
 	void doWork();
 };
 
-};//namespace atcsim
+};  // namespace atcsim
 
 #endif /* AIRCONTROLLER_H_ */

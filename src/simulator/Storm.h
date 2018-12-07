@@ -29,8 +29,7 @@
 #include "Position.h"
 #include "Common.h"
 
-namespace atcsim
-{
+namespace atcsim{
 
 class Storm {
 public:
@@ -54,6 +53,6 @@ private:
 	float speed;
 };
 
-};//namespace atcsim 
+};  // namespace atcsim 
 
 #endif  //  TORMENTA_H__
