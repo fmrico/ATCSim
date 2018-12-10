@@ -146,7 +146,7 @@ inline double normalizePi(double data) {
 * The function returns a random number in the range of [0..1].
 * @return The random number.
 */
-inline double randomDouble() {return static_cast<double>(rand_r())/RAND_MAX;}
+inline double randomDouble() {return static_cast<double>(rand())/RAND_MAX;}
 
 /**
 * The function returns a random integer number in the range of [0..n-1].
@@ -164,7 +164,7 @@ const double RAND_MAX_DOUBLE = static_cast<double>(RAND_MAX);
 * @return The random number.
 */
 inline int randomFast(int n) {
-  return static_cast<int>((rand_r() * n) / RAND_MAX_DOUBLE);
+  return static_cast<int>((rand() * n) / RAND_MAX_DOUBLE);
 }
 
 /**
