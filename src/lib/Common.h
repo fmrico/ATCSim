@@ -238,4 +238,10 @@ inline float normalDist(float x, float mu, float st)
 	return (1.0/d1)*exp(-(diff*diff)/d2);
 }
 
+// you can write i.e.  3.5_km is equal to 3500 m
+constexpr long double operator"" _km ( long double km )
+{
+    return km*1000;
+}
+
 #endif // __Math_Common_h__
