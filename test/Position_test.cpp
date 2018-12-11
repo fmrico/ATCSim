@@ -5,7 +5,7 @@
 
 TEST(PositionTest, setters_getters)
 {
-  Position pos;
+  atcsim::Position pos;
   pos.set_x(1.0);
   pos.set_y(2.0);
   pos.set_z(3.0);
@@ -16,8 +16,8 @@ TEST(PositionTest, setters_getters)
 
 TEST(PositionTest, distance)
 {
-  Position pos1(1, 0, 0);
-  Position pos2(2, 0, 0);
+  atcsim::Position pos1(1, 0, 0);
+  atcsim::Position pos2(2, 0, 0);
   ASSERT_EQ(pos1.distance(pos2), 1.0);
 }
 

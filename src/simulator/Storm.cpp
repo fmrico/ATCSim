@@ -38,6 +38,8 @@
 #include <string>
 #include <math.h>
 
+namespace atcsim{
+
 Storm::~Storm() {
 	// TODO Auto-generated destructor stub
 }
@@ -64,6 +66,8 @@ Storm::update(float delta_t)
 	pos.set_z(pos.get_z() + ( trans * sin(0.0)));
 
 }
+
+};  // namespace atcsim 
 //
 //void
 //Storm::draw()

@@ -38,6 +38,8 @@
 
 #include <cstdlib>
 
+namespace atcsim{
+
 Airport::Airport() {
 
 	flights.clear();
@@ -554,6 +556,8 @@ Airport::getPoints(const Ice::Current&)
 {
 	return points;
 }
+
+};  // namespace atcsim
 
 
 //void

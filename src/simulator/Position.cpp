@@ -25,6 +25,8 @@
 #include "Position.h"
 #include <math.h>
 
+namespace atcsim{
+
 Position::Position() {
 
 	x = y = z = 0.0;
@@ -60,3 +62,5 @@ Position::angles(Position pos, float &bearing, float &inclination)
 	bearing = atan2f(y-pos.get_y(), x-pos.get_x());
 	inclination = atan2f(pos.get_z()-z, distxy);
 }
+
+};  // namespace atcsim 
