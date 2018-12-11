@@ -67,6 +67,7 @@ const int GUI::win_height = 768;
 const float GUI::field_of_view_angle = 60;
 const float GUI::x_near = 1.0f;
 const float GUI::x_far = 40000.0f;
+const int GUI::wpt_size = 400;		// Waypoint size (world units)
 
 ATCDisplay::AirportInterfacePrx GUI::airportsim;
 ATCDisplay::ATCDAirport GUI::airportinfo;
@@ -111,6 +112,7 @@ GUI::render()
 	ATCDisplay::ATCDFlights::iterator it;
 
 	DrawAirport();
+	DrawWaypoints();
 
 	for(it=flights.begin(); it!=flights.end(); ++it)
 		DrawFlight(*it);
@@ -143,6 +145,13 @@ GUI::getFlightFocused()
 				return (*it);
 }
 
+/*
+ATCDisplay::ATCDWaypoints GUI::getWaypoints()
+{
+	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
+	return wpts;
+}
+*/
 
 void
 GUI::keyboard(unsigned char key, int mousePositionX, int mousePositionY )
@@ -392,10 +401,10 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 
 	if(flight.focused)
 	{
-		ATCDisplay::ATCDRoute route = flight.flightRoute;
+		ATCDisplay::ATCDLegs legs = flight.flightRoute;
 
-		std::vector<ATCDisplay::ATCDPosition>::iterator it;
-		it = route.begin();
+		std::vector<ATCDisplay::ATCDRoute>::iterator it;
+		it = legs.begin();
 		TextDisplay *textDisplay = TextDisplay::getInstance();
 		char pos_str[255];
 
@@ -413,24 +422,35 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 		textDisplay->displayText(pos_str, 15, 175, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 
 
-		if(!route.empty())
+		if(!legs.empty())
 		{
 
 			glColor4f(0.0f,0.0f,1.0f, 1.0f);
 			glBegin(GL_LINES);
 
+			// Draw track path lines
 			glVertex3f(flight.pos.x, flight.pos.y, flight.pos.z);
-			for(it = route.begin(); it!=route.end(); ++it)
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				glVertex3f((*it).x, (*it).y, (*it).z);
-				glVertex3f((*it).x, (*it).y, (*it).z);
+				if((*it).wpt.name == ""){
+					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+					glVertex3f((*it).pos.x, (*it).pos.y, (*it).pos.z);
+				}else{
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					glVertex3f((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+				}
 			}
 			glEnd();
 
-			for(it = route.begin(); it!=route.end(); ++it)
+			// Draw points of route
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
 				glPushMatrix();
-				glTranslatef((*it).x, (*it).y,(*it).z);
+				if((*it).wpt.name == "")
+					glTranslatef((*it).pos.x, (*it).pos.y,(*it).pos.z);
+				else
+					glTranslatef((*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
 				gluQuadricTexture(quadratic, GL_TRUE);
@@ -442,9 +462,18 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			textDisplay->displayText((char *)"Route", 15, 230, GUI::win_width, GUI::win_height, BLUE, GLUT_BITMAP_HELVETICA_12);
 
 			int c = 0;
-			for(it = route.begin(); it!=route.end(); ++it)
+			for(it = legs.begin(); it!=legs.end(); ++it)
 			{
-				snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).x, (*it).y, (*it).z);
+				if((*it).wpt.name == ""){
+					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %.2lf) m", (*it).pos.x, (*it).pos.y, (*it).pos.z);
+				}else{
+					std::string nameStr = (*it).wpt.name;
+					char* charStr = new char[nameStr.length()+1];
+					strcpy(charStr, nameStr.c_str());
+					//snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					snprintf(pos_str, 255, "Waypoint: %s @ %.2f m", charStr, (*it).alt);
+				}
+
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 				c++;
 			}
@@ -519,5 +548,35 @@ GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-40, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 	strcpy(help_txt, "<esc>Finish");
 	textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-20, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+
+}
+
+
+void GUI::DrawWaypoints(){
+
+	ATCDisplay::ATCDWaypoints wpts = airportsim->getWaypoints();
+	std::vector<ATCDisplay::ATCDWaypoint>::iterator it;
+
+
+	std::string wpt_name;
+	for(it=wpts.begin(); it!=wpts.end(); ++it){
+
+		ATCDisplay::ATCDWaypoint wpt = *it;
+
+		glBegin(GL_POLYGON);
+		glColor3f(0.6f, 0.6f, 0.6f);
+		glVertex3f(-0.5*wpt_size + wpt.lat, wpt.lon, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.lat, -0.5*wpt_size + wpt.lon, 1.0f);
+		glVertex3f( 0.5*wpt_size + wpt.lat,  0.5*wpt_size + wpt.lon, 1.0f);
+		glEnd();
+
+		wpt_name = wpt.name;
+		glRasterPos2i(wpt.lat + 1.5*wpt_size, wpt.lon - 0.5*wpt_name.length()*0.5*wpt_size);	//TODO: center text
+		for(std::string::iterator i = wpt_name.begin(); i != wpt_name.end(); i++){
+			char c = *i;
+			glColor3d(1.0, 1.0, 1.0);
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+		}
+	}//for
 
 }

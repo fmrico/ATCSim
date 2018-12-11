@@ -23,6 +23,7 @@
  */
 
 #include "Airport.h"
+#include "AirControllerUtils.h"
 
 #include <sys/time.h>
 #include <stdio.h>
@@ -58,6 +59,11 @@ Airport::Airport() {
 	SimTimeMod = 1.0;
 	storm = NULL;
 
+	atc_utils::createWaypoints();
+	atc_utils::setWaypoints();
+
+	waypoints = atc_utils::getWaypoints();
+
 	pthread_mutex_init(&mutex, NULL);
 
 	acum_ =  0;
@@ -71,7 +77,6 @@ Airport::~Airport() {
 		delete(*it);
 	flights.clear();
 }
-
 
 void
 Airport::checkFinishStorm()
@@ -123,8 +128,6 @@ Airport::generate_storm()
 void
 Airport::generate_flight()
 {
-
-
 	std::cerr<<"Generate new flight";
 	float angle, x, y, z;
 	float bear, inc;
@@ -468,20 +471,33 @@ Airport::getFlights(const Ice::Current&)
 		//std::cerr<<"A";
 
 		std::list<Route>::iterator itr;
-		ATCDisplay::ATCDRoute atcdr;
-		atcdr.clear();
+		ATCDisplay::ATCDLegs atcdlegs;
+		atcdlegs.clear();
 
 		for(itr= (*it)->getRoute()->begin(); itr!=(*it)->getRoute()->end(); ++itr)
 		{
 			//std::cerr<<"B";
 			Route r= (*itr);
 
-			ATCDisplay::ATCDPosition p;
-			p.x = r.pos.get_x();
-			p.y = r.pos.get_y();
-			p.z = r.pos.get_z();
+			ATCDisplay::ATCDRoute atcdr;
 
-			atcdr.push_back(p);
+			if(r.wpt.getName() == ""){
+				ATCDisplay::ATCDPosition atcdp;
+				atcdp.x = r.pos.get_x();
+				atcdp.y = r.pos.get_y();
+				atcdp.z = r.pos.get_z();
+				atcdr.pos = atcdp;
+			}else{
+				ATCDisplay::ATCDWaypoint atcdwpt;
+				atcdwpt.name = r.wpt.getName();
+				atcdwpt.lat = r.wpt.getLat();
+				atcdwpt.lon = r.wpt.getLon();
+				atcdr.alt = r.alt;
+				atcdr.wpt = atcdwpt;
+			}
+
+			atcdlegs.push_back(atcdr);
+
 		}
 
 		//std::cerr<<"C";
@@ -498,7 +514,8 @@ Airport::getFlights(const Ice::Current&)
 		f.id =  (*it)->getId();
 		f.bearing = (*it)->getBearing();
 		f.collisionRadious = COLLISION_DISTANCE;
-		f.flightRoute = atcdr;
+		//f.flightRoute = atcdr;
+		f.flightRoute = atcdlegs;
 		f.inclination = (*it)->getInclination();
 		f.pos = fp;
 		//std::cerr<<"E";
@@ -509,6 +526,35 @@ Airport::getFlights(const Ice::Current&)
 	pthread_mutex_unlock (&mutex);
 	return ret;
 }
+
+ATCDisplay::ATCDWaypoints Airport::getWaypoints(const Ice::Current&)
+{
+	pthread_mutex_lock (&mutex);
+
+	//std::cerr<<"["<<flights.size()<<": ";
+	ATCDisplay::ATCDWaypoints ret;
+
+	ret.clear();
+
+	std::list<Waypoint*>::iterator it;
+
+	for(it= waypoints.begin(); it!=waypoints.end(); ++it)
+	{
+		//std::cerr<<"D";
+		ATCDisplay::ATCDWaypoint wpt;
+		wpt.name = (*it)->getName();
+		wpt.lat = (*it)->getLat();
+		wpt.lon = (*it)->getLon();
+
+		//std::cerr<<"E";
+		ret.push_back(wpt);
+	}
+
+	//std::cerr<<"]"<<std::endl;
+	pthread_mutex_unlock (&mutex);
+	return ret;
+}
+
 
 ATCDisplay::ATCDAirport
 Airport::getAirportInfo(const Ice::Current&)

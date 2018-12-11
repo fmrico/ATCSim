@@ -27,6 +27,7 @@
 
 #include "Singleton.h"
 #include "Flight.h"
+#include "Waypoint.h"
 #include "Storm.h"
 #include "ATCDisplay.h"
 #include <math.h>
@@ -47,11 +48,13 @@ public:
     void NextFocus();
 
 	std::list<Flight*> getFlights() {return flights;};
+	std::list<Waypoint*> getWaypoints() {return waypoints;};
 	Storm* getStorm() {return storm;};
     Flight* getFocused(){return (*focus);};
     void UpdateSimTime(float inc);
 
 	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
+	virtual ATCDisplay::ATCDWaypoints getWaypoints(const Ice::Current&);
 	virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
 	virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
 	virtual void UpdateSimT(float inc, const Ice::Current&);
@@ -77,6 +80,8 @@ private:
 
 	std::list<Flight*> flights;
 	std::list<Flight*>::iterator focus;
+
+	std::list<Waypoint*> waypoints;
 
 	Storm *storm;
 

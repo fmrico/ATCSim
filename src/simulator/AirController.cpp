@@ -23,15 +23,19 @@
  */
 
 #include "AirController.h"
+#include "AirControllerUtils.h"
 #include "Airport.h"
 #include "Flight.h"
 #include "Position.h"
 #include <list>
+#include <string>
+#include <stdexcept>
+#include <exception>
+
 
 namespace atcsim{
 
 AirController::AirController() {
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -39,12 +43,15 @@ AirController::~AirController() {
 	// TODO Auto-generated destructor stub
 }
 
+
+
 void
 AirController::doWork()
 {
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
+/*
 			Position pos0(3500.0, 0.0, 100.0);
 			Position pos1(1500.0, 0.0, 50.0);
 			Position pos2(200.0, 0.0, 25.0);
@@ -60,15 +67,32 @@ AirController::doWork()
 			r2.speed = 19.0;
 			r3.pos = pos3;
 			r3.speed = 15.0;
+			*/
+
+			Route r3, r2, r1;
+
+			r2.wpt = atc_utils::getWaypoint("ASBIN");
+			r2.speed = 200;
+			r2.alt = 500;
+			r3.wpt = atc_utils::getWaypoint("TOBEK");
+			r3.speed = 250;
+			r3.alt = 200;
+			Position pos3(750.0, 0.0, 200.0);
+			r3.pos = pos3;
+			r3.speed = 100.0;
+
+			Position pos1(0.0, 0.0, 25.0);
+			r1.pos = pos1;
+			r1.speed = 15.0;
 
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
 				if((*it)->getRoute()->empty())
 				{
+					(*it)->getRoute()->push_back(r2);
 					(*it)->getRoute()->push_back(r3);
-					(*it)->getRoute()->push_front(r2);
-					(*it)->getRoute()->push_front(r1);
-					(*it)->getRoute()->push_front(r0);
+					(*it)->getRoute()->push_back(r1);
+					//(*it)->getRoute()->push_front(r0);
 				}
 			}
 

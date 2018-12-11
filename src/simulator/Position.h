@@ -46,7 +46,6 @@ public:
 
 private:
 		float x, y, z;
-
 };
 
 };  // namespace atcsim
