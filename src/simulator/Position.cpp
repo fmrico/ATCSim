@@ -29,12 +29,22 @@ namespace atcsim{
 
 Position::Position() {
 
+	name = "";
 	x = y = z = 0.0;
 
 }
 
 Position::Position(float _x, float _y, float _z)
 {
+	name = "";
+	x = _x;
+	y = _y;
+	z = _z;
+}
+
+Position::Position(std::string _name, float _x, float _y, float _z)
+{
+	name = _name;
 	x = _x;
 	y = _y;
 	z = _z;
@@ -63,4 +73,4 @@ Position::angles(Position pos, float &bearing, float &inclination)
 	inclination = atan2f(pos.get_z()-z, distxy);
 }
 
-};  // namespace atcsim 
+};  // namespace atcsim
