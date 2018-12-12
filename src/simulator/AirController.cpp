@@ -46,7 +46,7 @@ AirController::doWork()
 			std::list<Flight*>::iterator it;
 
 			Position pos0(3500.0, 0.0, 100.0);
-			Position pos1(1500.0, 0.0, 50.0);
+			Position pos1(1500.0, 0.0, -1.0);
 			Position pos2(200.0, 0.0, 25.0);
 			Position pos3(-750.0, 0.0, 25.0);
 
@@ -55,7 +55,7 @@ AirController::doWork()
 			Route r0, r1, r2, r3, rTest;
 
 			r0.pos = pos0;
-			r0.speed = 500.0;
+			r0.speed = 150.0;
 			r1.pos = pos1;
 			r1.speed = 100.0;
 			r2.pos = pos2;
@@ -64,7 +64,7 @@ AirController::doWork()
 			r3.speed = 15.0;
 
 			rTest.pos = posTest;
-			rTest.speed = 80;
+			rTest.speed = 200;
 
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
