@@ -41,7 +41,7 @@ public:
 	float get_y() {return y;};
 	float get_z() {return z;};
 
-	void set_name(std::string _name) {name = _name;};
+	void set_name(std::string _name) {name = check_name(_name);};
 	void set_x(float _x) {x = _x;};
 	void set_y(float _y) {y = _y;};
 	void set_z(float _z) {z = _z;};
@@ -53,8 +53,10 @@ private:
 		std::string name;
 		float x, y, z;
 
+		std::string check_name(std::string name);
+
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif /* POSITION_H_ */
