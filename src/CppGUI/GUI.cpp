@@ -37,6 +37,8 @@
 #include <math.h>
 #include "colours.h"
 #include "Common.h"
+#include "ATCDisplay.h"
+
 //#include "Airport.h"
 //#include "AirController.h"
 
@@ -468,15 +470,24 @@ GUI::DrawAirport()
 	glVertex3f( -airportinfo.radious,-airportinfo.radious, 0.0f);
 	glEnd();
 
-	ATCDisplay::ATCDLandStrip lstrip= (*airportinfo.airportLandstrips.begin());
 
-	glBegin(GL_QUADS);
-	glColor3f(1.0f,1.0f,0.0f);
-	glVertex3f(  0.0f, -(lstrip.width/2.0), 0.01f);
-	glVertex3f(  0.0f,  lstrip.width, 0.01f);
-	glVertex3f( -lstrip.length, lstrip.width, 0.01f);
-	glVertex3f( -lstrip.length, -lstrip.width, 0.01f);
-	glEnd();
+//	ATCDisplay::ATCDLandStrips::iterator it;
+	ATCDisplay::ATCDLandStrips lstrip = airportinfo.airportLandstrips;
+
+//	ATCDisplay::ATCDFlights flights = airportsim->getFlights();
+	std::vector<ATCDisplay::ATCDLandStrip>::iterator it;
+
+	for (it = lstrip.begin(); it != lstrip.end(); ++it)
+	{
+
+		glBegin(GL_QUADS);
+		glColor3f(1.0f,1.0f,0.0f);
+		glVertex3f(  (*it).pos.x, ((*it).pos.y-(*it).width/2.0), 0.01f);
+		glVertex3f(  (*it).pos.x,  ((*it).pos.y+(*it).width/2.0), 0.01f);
+		glVertex3f( ((*it).pos.x-(*it).length), ((*it).pos.y+(*it).width/2.0), 0.01f);
+		glVertex3f( ((*it).pos.x-(*it).length), ((*it).pos.y-(*it).width/2.0), 0.01f);
+		glEnd();
+	}
 
 	glPushMatrix();
 	glTranslatef(1.0f, 0.0f, 25.0f);

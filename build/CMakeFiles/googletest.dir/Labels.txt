@@ -1,0 +1,13 @@
+# Target labels
+ googletest
+# Source files and their labels
+/home/alicia/Escritorio/ATCSim/build/CMakeFiles/googletest
+/home/alicia/Escritorio/ATCSim/build/CMakeFiles/googletest.rule
+/home/alicia/Escritorio/ATCSim/build/CMakeFiles/googletest-complete.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-install.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-download.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-update.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-patch.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-configure.rule
+/home/alicia/Escritorio/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-build.rule
