@@ -50,7 +50,9 @@ AirController::doWork()
 			Position pos2(200.0, 0.0, 25.0);
 			Position pos3(-750.0, 0.0, 25.0);
 
-			Route r0, r1, r2, r3;
+			Position posTest("WPT01", 5000, 0, 150);
+
+			Route r0, r1, r2, r3, rTest;
 
 			r0.pos = pos0;
 			r0.speed = 500.0;
@@ -61,6 +63,9 @@ AirController::doWork()
 			r3.pos = pos3;
 			r3.speed = 15.0;
 
+			rTest.pos = posTest;
+			rTest.speed = 80;
+
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
 				if((*it)->getRoute()->empty())
@@ -69,6 +74,7 @@ AirController::doWork()
 					(*it)->getRoute()->push_front(r2);
 					(*it)->getRoute()->push_front(r1);
 					(*it)->getRoute()->push_front(r0);
+					(*it)->getRoute()->push_front(rTest);
 				}
 			}
 
