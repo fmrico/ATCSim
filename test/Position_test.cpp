@@ -12,6 +12,13 @@ TEST(PositionTest, setters_getters)
   ASSERT_EQ(pos.get_x(), 1.0);
   ASSERT_EQ(pos.get_y(), 2.0);
   ASSERT_EQ(pos.get_z(), 3.0);
+
+  pos.set_name("WPT01");
+  ASSERT_STREQ(pos.get_name().c_str(), "WPT01");
+  pos.set_name("WPT");
+  ASSERT_STREQ(pos.get_name().c_str(), "WPT00");
+  pos.set_name("WAYPOINT");
+  ASSERT_STREQ(pos.get_name().c_str(), "WAYPO");
 }
 
 TEST(PositionTest, distance)
