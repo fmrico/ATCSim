@@ -466,7 +466,16 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			int c = 0;
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
-				snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).x, (*it).y, (*it).z);
+				if((*it).name == ""){
+					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %.2lf) m", (*it).x, (*it).y, (*it).z);
+				}else{
+					std::string nameStr = (*it).name;
+					char* charStr = new char[nameStr.length()+1];
+					strcpy(charStr, nameStr.c_str());
+					//snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					snprintf(pos_str, 255, "Waypoint: %s @ %.2f m", charStr, (*it).z);
+				}
+
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 				c++;
 			}
