@@ -30,7 +30,8 @@ namespace atcsim{
 Position::Position() {
 
 	name = "";
-	x = y = z = 0.0;
+	x = y = 0.0;
+	z = -1.0;
 
 }
 
