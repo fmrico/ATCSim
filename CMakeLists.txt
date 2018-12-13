@@ -88,7 +88,7 @@ if(APPLE)
 	   ${CMAKE_THREAD_LIBS_INIT}
 	   ATCSimLib
 	)
-elseif()
+elseif(UNIX)
 	target_link_libraries(ATCSim
 	  ${Ice_LIBRARY}
 	  #${Ice_LIBRARY_MACOS}
@@ -96,7 +96,7 @@ elseif()
 	   ${CMAKE_THREAD_LIBS_INIT}
 	   ATCSimLib
 	)
-endif()
+endif(UNIX)
 
 if(APPLE)
 	target_link_libraries(cppgui
@@ -108,7 +108,7 @@ if(APPLE)
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}
 	)
-elseif()
+elseif(UNIX)
 	target_link_libraries(cppgui
 	  ${Ice_LIBRARY}
 	  #${Ice_LIBRARY_MACOS}
@@ -118,9 +118,7 @@ elseif()
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}
 	)
-endif()
-
-
+endif(UNIX)
 
 
 ## CppLint #################################################
@@ -132,7 +130,7 @@ add_style_check_target(cppgui_cpplint "${CPPGUI_SRCS}")
 
 if(APPLE)
 
-elseif()
+elseif(UNIX)
 
 	#include(cmake/gtest.cmake)
 	#enable_testing()
@@ -152,4 +150,4 @@ elseif()
 	#    set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
 	#endforeach()
 
-endif()
+endif(UNIX)
