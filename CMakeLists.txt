@@ -21,7 +21,6 @@ set(Ice_LIBRARY_MACOS "/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib")
 
 find_library(Ice_lib Ice)
 
-#find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 find_package(GLUT REQUIRED)
@@ -29,7 +28,7 @@ include_directories(${GLUT_INCLUDE_DIR}
   src/lib/
   src/ICE/cpp
   src/simulator
-  /usr/local/include
+  /usr/local/include # needed by APPLE
 )
 find_package(Threads REQUIRED)
 
