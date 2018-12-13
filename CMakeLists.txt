@@ -19,7 +19,11 @@ find_package(OpenGL REQUIRED)
 	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
 	#set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
 #endif()
-#set(Ice_LIBRARY_MACOS "usr/local/lib/libIce.dylib")
+set(Ice_LIBRARY_MACOS "/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib")
+#/Library/Developer/Ice-3.5.1/lib/c++11/libIce.dylib
+#/Library/Developer/Ice-3.5.1/lib/libIce.dylib
+#/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib
+#/usr/local/lib/libIce.dylib
 #set(IceUtil_LIBRARY_MACOS "usr/local/lib/libIceUtil.dylib")
 
 find_library(Ice_lib Ice)
