@@ -17,7 +17,7 @@ endif()
 find_package(OpenGL REQUIRED)
 
 set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
 
 find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
@@ -77,14 +77,14 @@ add_executable(cppgui ${CPPGUI_SRCS})
 
 target_link_libraries(ATCSim
   ${Ice_LIBRARIES}
-  ${IceUtil_LIBRARIES}
+  ${IceUtil_LIBRARY}
    ${CMAKE_THREAD_LIBS_INIT}
    ATCSimLib
 )
 
 target_link_libraries(cppgui
   ${Ice_LIBRARIES}
-  ${IceUtil_LIBRARIES}
+  ${IceUtil_LIBRARY}
 	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES}
 	${GLUT_LIBRARY}
