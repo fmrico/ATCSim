@@ -85,7 +85,7 @@ add_executable(ATCSim
 add_executable(cppgui ${CPPGUI_SRCS})
 
 target_link_libraries(ATCSim
-  ${Ice_LIBRARIES}
+  ${Ice_LIBRARY}
   ${IceUtil_LIBRARIES}
    ${CMAKE_THREAD_LIBS_INIT}
    ATCSimLib
@@ -116,7 +116,7 @@ add_style_check_target(cppgui_cpplint "${CPPGUI_SRCS}")
 #    add_dependencies(${_test_name} googletest)
 #    target_link_libraries(${_test_name} gtest gtest_main
 #      ${CMAKE_THREAD_LIBS_INIT}
-#      ${Ice_LIBRARIES}
+#      ${Ice_LIBRARY}
 #      ${IceUtil_LIBRARIES}
 #      ATCSimLib)
 #    add_test(${_test_name} ${_test_name})
