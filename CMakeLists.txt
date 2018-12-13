@@ -15,16 +15,10 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(OpenGL REQUIRED)
-#if(GNU_)
-	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-	#set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
-#endif()
+
+set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
 set(Ice_LIBRARY_MACOS "/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib")
-#/Library/Developer/Ice-3.5.1/lib/c++11/libIce.dylib
-#/Library/Developer/Ice-3.5.1/lib/libIce.dylib
-#/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib
-#/usr/local/lib/libIce.dylib
-#set(IceUtil_LIBRARY_MACOS "usr/local/lib/libIceUtil.dylib")
+
 
 find_library(Ice_lib Ice)
 #find_library(IceUtil_lib IceUtil)
@@ -78,7 +72,6 @@ set(CPPGUI_SRCS
 add_library(ATCSimLib SHARED ${ATCSIM_SRCS})
 target_link_libraries(ATCSimLib
   ${Ice_lib}
-#  ${IceUtil_lib}
 )
 
 # add the executable
@@ -88,23 +81,48 @@ add_executable(ATCSim
 
 add_executable(cppgui ${CPPGUI_SRCS})
 
-target_link_libraries(ATCSim
-  #${Ice_LIBRARY}
-  ${Ice_LIBRARY_MACOS}
-  #${IceUtil_LIBRARY}
-   ${CMAKE_THREAD_LIBS_INIT}
-   ATCSimLib
-)
+if(APPLE)
+	target_link_libraries(ATCSim
+	  #${Ice_LIBRARY}
+	  ${Ice_LIBRARY_MACOS}
+	  #${IceUtil_LIBRARY}
+	   ${CMAKE_THREAD_LIBS_INIT}
+	   ATCSimLib
+	)
+elseif()
+	target_link_libraries(ATCSim
+	  ${Ice_LIBRARY}
+	  #${Ice_LIBRARY_MACOS}
+	  #${IceUtil_LIBRARY}
+	   ${CMAKE_THREAD_LIBS_INIT}
+	   ATCSimLib
+	)
+endif()
 
-target_link_libraries(cppgui
-  #${Ice_LIBRARY}
-  ${Ice_LIBRARY_MACOS}
-  #${IceUtil_LIBRARY}
-  ${IceUtil_LIBRARY_MACOS}
-	${CMAKE_THREAD_LIBS_INIT}
-	${OPENGL_LIBRARIES}
-	${GLUT_LIBRARY}
-)
+if(APPLE)
+	target_link_libraries(cppgui
+	  #${Ice_LIBRARY}
+	  ${Ice_LIBRARY_MACOS}
+	  #${IceUtil_LIBRARY}
+	  #${IceUtil_LIBRARY_MACOS}
+		${CMAKE_THREAD_LIBS_INIT}
+		${OPENGL_LIBRARIES}
+		${GLUT_LIBRARY}
+	)
+elseif()
+	target_link_libraries(cppgui
+	  ${Ice_LIBRARY}
+	  #${Ice_LIBRARY_MACOS}
+	  #${IceUtil_LIBRARY}
+	  #${IceUtil_LIBRARY_MACOS}
+		${CMAKE_THREAD_LIBS_INIT}
+		${OPENGL_LIBRARIES}
+		${GLUT_LIBRARY}
+	)
+endif()
+
+
+
 
 ## CppLint #################################################
 
@@ -113,20 +131,26 @@ add_style_check_target(cppgui_cpplint "${CPPGUI_SRCS}")
 
 ## Testing #################################################
 
-#include(cmake/gtest.cmake)
-#enable_testing()
-#include_directories(${GTEST_INCLUDE_DIRS})
-#file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
-#foreach(_test_file ${TEST_SRC_FILES})
-#    get_filename_component(_test_name ${_test_file} NAME_WE)
-#    add_executable(${_test_name} ${_test_file})
-#    add_dependencies(${_test_name} googletest)
-#    target_link_libraries(${_test_name} gtest gtest_main
-#      ${CMAKE_THREAD_LIBS_INIT}
-#      ${Ice_LIBRARY}
-#	   ${Ice_LIBRARY_MACOS}
-#      ${IceUtil_LIBRARIES}
-#      ATCSimLib)
-#    add_test(${_test_name} ${_test_name})
-#    set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
-#endforeach()
+if(APPLE)
+
+elseif()
+
+	#include(cmake/gtest.cmake)
+	#enable_testing()
+	#include_directories(${GTEST_INCLUDE_DIRS})
+	#file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
+	#foreach(_test_file ${TEST_SRC_FILES})
+	#    get_filename_component(_test_name ${_test_file} NAME_WE)
+	#    add_executable(${_test_name} ${_test_file})
+	#    add_dependencies(${_test_name} googletest)
+	#    target_link_libraries(${_test_name} gtest gtest_main
+	#      ${CMAKE_THREAD_LIBS_INIT}
+	#      ${Ice_LIBRARY}
+	#	   ${Ice_LIBRARY_MACOS}
+	#      ${IceUtil_LIBRARIES}
+	#      ATCSimLib)
+	#    add_test(${_test_name} ${_test_name})
+	#    set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
+	#endforeach()
+
+endif()
