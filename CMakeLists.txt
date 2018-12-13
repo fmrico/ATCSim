@@ -132,22 +132,20 @@ if(APPLE)
 
 elseif(UNIX)
 
-	#include(cmake/gtest.cmake)
-	#enable_testing()
-	#include_directories(${GTEST_INCLUDE_DIRS})
-	#file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
-	#foreach(_test_file ${TEST_SRC_FILES})
-	#    get_filename_component(_test_name ${_test_file} NAME_WE)
-	#    add_executable(${_test_name} ${_test_file})
-	#    add_dependencies(${_test_name} googletest)
-	#    target_link_libraries(${_test_name} gtest gtest_main
-	#      ${CMAKE_THREAD_LIBS_INIT}
-	#      ${Ice_LIBRARY}
-	#	   ${Ice_LIBRARY_MACOS}
-	#      ${IceUtil_LIBRARIES}
-	#      ATCSimLib)
-	#    add_test(${_test_name} ${_test_name})
-	#    set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
-	#endforeach()
+  include(cmake/gtest.cmake)
+  enable_testing()
+  include_directories(${GTEST_INCLUDE_DIRS})
+  file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
+  foreach(_test_file ${TEST_SRC_FILES})
+      get_filename_component(_test_name ${_test_file} NAME_WE)
+      add_executable(${_test_name} ${_test_file})
+      add_dependencies(${_test_name} googletest)
+      target_link_libraries(${_test_name} gtest gtest_main
+        ${CMAKE_THREAD_LIBS_INIT}
+        ${Ice_LIBRARIES}
+        ATCSimLib)
+      add_test(${_test_name} ${_test_name})
+      set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
+  endforeach()
 
 endif(APPLE)
