@@ -45,15 +45,15 @@ AirController::doWork()
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
-			Position pos0(3500.0, 3000.0, 100.0);
-			Position pos1(1500.0, 3000.0, 50.0);
-			Position pos2(200.0, 3000.0, 25.0);
-			Position pos3(-750.0, 3000.0, 25.0);
+			Position pos0(3500.0, 10000.0, 100.0);
+			Position pos1(1500.0, 10000.0, 50.0);
+			Position pos2(200.0, 10000.0, 25.0);
+			Position pos3(-750.0, 10000.0, 25.0);
 
-			Position pos00(3500.0, -3000.0, 100.0);
-			Position pos01(1500.0, -3000.0, 50.0);
-			Position pos02(200.0, -3000.0, 25.0);
-			Position pos03(-750.0, -3000.0, 25.0);
+			Position pos00(3500.0, -10000.0, 100.0);
+			Position pos01(1500.0, -10000.0, 50.0);
+			Position pos02(200.0, -10000.0, 25.0);
+			Position pos03(-750.0, -10000.0, 25.0);
 
 			Route r0, r1, r2, r3;
 			Route r00, r01, r02, r03;

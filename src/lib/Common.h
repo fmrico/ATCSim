@@ -61,11 +61,11 @@
 // Conditions for landing
 
 #define LANDING_POS_X 0.0f
-#define LANDING_POS_Y 3000.0f
+#define LANDING_POS_Y 10000.0f
 #define LANDING_POS_Z 25.0f
 
 #define LANDING_POS_XX		0.0f
-#define LANDING_POS_YY		-3000.0f
+#define LANDING_POS_YY		-10000.0f
 #define LANDING_POS_ZZ		25.0f
 
 #define LANDING_SPEED 20.0f
