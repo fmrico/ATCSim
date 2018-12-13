@@ -96,7 +96,7 @@ elseif(UNIX)
 	   ${CMAKE_THREAD_LIBS_INIT}
 	   ATCSimLib
 	)
-endif(UNIX)
+endif(APPLE)
 
 if(APPLE)
 	target_link_libraries(cppgui
@@ -118,7 +118,7 @@ elseif(UNIX)
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}
 	)
-endif(UNIX)
+endif(APPLE)
 
 
 ## CppLint #################################################
@@ -150,4 +150,4 @@ elseif(UNIX)
 	#    set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
 	#endforeach()
 
-endif(UNIX)
+endif(APPLE)
