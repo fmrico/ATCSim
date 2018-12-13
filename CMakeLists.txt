@@ -16,8 +16,10 @@ endif()
 
 find_package(OpenGL REQUIRED)
 #if(GNU_)
-	#set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-	#set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+
+set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+
 #endif()
 #set(Ice_LIBRARY_MACOS "/usr/lib/libIce.so")
 #set(IceUtil_LIBRARY_MACOS "/usr/lib/libIceutil.so")
@@ -74,7 +76,7 @@ set(CPPGUI_SRCS
 add_library(ATCSimLib SHARED ${ATCSIM_SRCS})
 target_link_libraries(ATCSimLib
   ${Ice_lib}
-  ${IceUtil_lib}
+#  ${IceUtil_lib}
 )
 
 # add the executable
