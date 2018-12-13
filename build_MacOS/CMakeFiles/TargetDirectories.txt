@@ -1,0 +1,7 @@
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/edit_cache.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui_cpplint.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSim_cpplint.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSim.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/rebuild_cache.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/cppgui.dir
+/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles/ATCSimLib.dir
