@@ -108,7 +108,6 @@ foreach(_test_file ${TEST_SRC_FILES})
     target_link_libraries(${_test_name} gtest gtest_main
       ${CMAKE_THREAD_LIBS_INIT}
       ${Ice_LIBRARIES}
-      #${IceUtil_LIBRARIES}
       ATCSimLib)
     add_test(${_test_name} ${_test_name})
     set_tests_properties(${_test_name} PROPERTIES TIMEOUT 5)
