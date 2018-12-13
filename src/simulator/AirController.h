@@ -37,6 +37,6 @@ public:
 	void doWork();
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif /* AIRCONTROLLER_H_ */

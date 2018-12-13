@@ -63,4 +63,4 @@ Position::angles(Position pos, float &bearing, float &inclination)
 	inclination = atan2f(pos.get_z()-z, distxy);
 }
 
-};  // namespace atcsim 
+}  // namespace atcsim 

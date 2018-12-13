@@ -49,6 +49,6 @@ private:
 	static Ice::ObjectAdapterPtr adapter;
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif

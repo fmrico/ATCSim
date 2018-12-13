@@ -557,7 +557,7 @@ Airport::getPoints(const Ice::Current&)
 	return points;
 }
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 
 //void

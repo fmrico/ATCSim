@@ -74,4 +74,4 @@ AirController::doWork()
 
 }
 
-};  // namespace atcsim
+}  // namespace atcsim

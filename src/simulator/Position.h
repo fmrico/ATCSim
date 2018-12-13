@@ -49,6 +49,6 @@ private:
 
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif /* POSITION_H_ */

@@ -97,6 +97,6 @@ private:
 
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif  // SIMULATOR_AIRPORT_H__
