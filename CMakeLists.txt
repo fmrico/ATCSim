@@ -17,13 +17,12 @@ endif()
 find_package(OpenGL REQUIRED)
 #if(GNU_)
 	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-	set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
+	#set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
 #endif()
-#set(Ice_LIBRARY_MACOS "/usr/lib/libIce.so")
-#set(IceUtil_LIBRARY_MACOS "/usr/lib/libIceutil.so")
+#set(Ice_LIBRARY_MACOS "usr/local/lib/libIce.dylib")
+#set(IceUtil_LIBRARY_MACOS "usr/local/lib/libIceUtil.dylib")
 
 find_library(Ice_lib Ice)
-#find_library(IceUtil_lib IceUtil)
 
 message(STATUS  ${Ice_lib})
 
@@ -32,10 +31,10 @@ include_directories(${OPENGL_INCLUDE_DIR})
 
 find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIR}
-	src/lib/
-	src/ICE/cpp
-  	src/simulator
-  	/usr/local/include
+  src/lib/
+  src/ICE/cpp
+  src/simulator
+  /usr/local/include
 )
 find_package(Threads REQUIRED)
 
@@ -74,7 +73,6 @@ set(CPPGUI_SRCS
 add_library(ATCSimLib SHARED ${ATCSIM_SRCS})
 target_link_libraries(ATCSimLib
   ${Ice_lib}
-  ${IceUtil_lib}
 )
 
 # add the executable
@@ -86,14 +84,20 @@ add_executable(cppgui ${CPPGUI_SRCS})
 
 target_link_libraries(ATCSim
   ${Ice_LIBRARY}
-  ${IceUtil_LIBRARIES}
+  #${IceUtil_LIBRARY}
+  #${Ice_LIBRARY_MACOS}
+  #${IceUtil_LIBRARY_MACOS}
    ${CMAKE_THREAD_LIBS_INIT}
    ATCSimLib
 )
 
 target_link_libraries(cppgui
   ${Ice_LIBRARY}
-  ${IceUtil_LIBRARY}
+  #${IceUtil_LIBRARY}
+
+  #${Ice_LIBRARY_MACOS}
+  #${IceUtil_LIBRARY_MACOS}
+
 	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES}
 	${GLUT_LIBRARY}
@@ -117,6 +121,7 @@ add_style_check_target(cppgui_cpplint "${CPPGUI_SRCS}")
 #    target_link_libraries(${_test_name} gtest gtest_main
 #      ${CMAKE_THREAD_LIBS_INIT}
 #      ${Ice_LIBRARY}
+#	     ${Ice_LIBRARY_MACOS}
 #      ${IceUtil_LIBRARIES}
 #      ATCSimLib)
 #    add_test(${_test_name} ${_test_name})
