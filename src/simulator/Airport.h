@@ -63,6 +63,7 @@ public:
   void book_landing() {any_landing_ = true;}
   bool is_booked_landing() { return any_landing_;}
 
+
 private:
 
 	void checkLandings();
