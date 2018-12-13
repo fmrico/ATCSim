@@ -60,44 +60,6 @@ CMAKE_SOURCE_DIR = /home/alumnos/pasensio/Escritorio/universidad/programacion/cp
 CMAKE_BINARY_DIR = /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/Position_test.dir
-
-# All Build rule for target.
-CMakeFiles/Position_test.dir/all: CMakeFiles/ATCSimLib.dir/all
-CMakeFiles/Position_test.dir/all: CMakeFiles/googletest.dir/all
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/depend
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=15,16 "Built target Position_test"
-.PHONY : CMakeFiles/Position_test.dir/all
-
-# Include target in all.
-all: CMakeFiles/Position_test.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Position_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 19
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Position_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 0
-.PHONY : CMakeFiles/Position_test.dir/rule
-
-# Convenience name for target.
-Position_test: CMakeFiles/Position_test.dir/rule
-
-.PHONY : Position_test
-
-# clean rule for target.
-CMakeFiles/Position_test.dir/clean:
-	$(MAKE) -f CMakeFiles/Position_test.dir/build.make CMakeFiles/Position_test.dir/clean
-.PHONY : CMakeFiles/Position_test.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Position_test.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/ATCSim.dir
 
 # All Build rule for target.
@@ -135,88 +97,13 @@ clean: CMakeFiles/ATCSim.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Flight_test.dir
-
-# All Build rule for target.
-CMakeFiles/Flight_test.dir/all: CMakeFiles/ATCSimLib.dir/all
-CMakeFiles/Flight_test.dir/all: CMakeFiles/googletest.dir/all
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/depend
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=13,14 "Built target Flight_test"
-.PHONY : CMakeFiles/Flight_test.dir/all
-
-# Include target in all.
-all: CMakeFiles/Flight_test.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Flight_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 19
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Flight_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 0
-.PHONY : CMakeFiles/Flight_test.dir/rule
-
-# Convenience name for target.
-Flight_test: CMakeFiles/Flight_test.dir/rule
-
-.PHONY : Flight_test
-
-# clean rule for target.
-CMakeFiles/Flight_test.dir/clean:
-	$(MAKE) -f CMakeFiles/Flight_test.dir/build.make CMakeFiles/Flight_test.dir/clean
-.PHONY : CMakeFiles/Flight_test.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/Flight_test.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/ATCSimLib.dir
-
-# All Build rule for target.
-CMakeFiles/ATCSimLib.dir/all:
-	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/depend
-	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target ATCSimLib"
-.PHONY : CMakeFiles/ATCSimLib.dir/all
-
-# Include target in all.
-all: CMakeFiles/ATCSimLib.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/ATCSimLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 9
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ATCSimLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 0
-.PHONY : CMakeFiles/ATCSimLib.dir/rule
-
-# Convenience name for target.
-ATCSimLib: CMakeFiles/ATCSimLib.dir/rule
-
-.PHONY : ATCSimLib
-
-# clean rule for target.
-CMakeFiles/ATCSimLib.dir/clean:
-	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/clean
-.PHONY : CMakeFiles/ATCSimLib.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/ATCSimLib.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/cppgui.dir
 
 # All Build rule for target.
 CMakeFiles/cppgui.dir/all:
 	$(MAKE) -f CMakeFiles/cppgui.dir/build.make CMakeFiles/cppgui.dir/depend
 	$(MAKE) -f CMakeFiles/cppgui.dir/build.make CMakeFiles/cppgui.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=17,18,19,20,21,22 "Built target cppgui"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=13,14,15,16,17,18 "Built target cppgui"
 .PHONY : CMakeFiles/cppgui.dir/all
 
 # Include target in all.
@@ -285,7 +172,7 @@ clean: CMakeFiles/ATCSim_cpplint.dir/clean
 CMakeFiles/cppgui_cpplint.dir/all:
 	$(MAKE) -f CMakeFiles/cppgui_cpplint.dir/build.make CMakeFiles/cppgui_cpplint.dir/depend
 	$(MAKE) -f CMakeFiles/cppgui_cpplint.dir/build.make CMakeFiles/cppgui_cpplint.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=23 "Built target cppgui_cpplint"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=19 "Built target cppgui_cpplint"
 .PHONY : CMakeFiles/cppgui_cpplint.dir/all
 
 # Build rule for subdir invocation for target.
@@ -311,39 +198,39 @@ clean: CMakeFiles/cppgui_cpplint.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/googletest.dir
+# Target rules for target CMakeFiles/ATCSimLib.dir
 
 # All Build rule for target.
-CMakeFiles/googletest.dir/all:
-	$(MAKE) -f CMakeFiles/googletest.dir/build.make CMakeFiles/googletest.dir/depend
-	$(MAKE) -f CMakeFiles/googletest.dir/build.make CMakeFiles/googletest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31 "Built target googletest"
-.PHONY : CMakeFiles/googletest.dir/all
+CMakeFiles/ATCSimLib.dir/all:
+	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/depend
+	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target ATCSimLib"
+.PHONY : CMakeFiles/ATCSimLib.dir/all
 
 # Include target in all.
-all: CMakeFiles/googletest.dir/all
+all: CMakeFiles/ATCSimLib.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/googletest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/googletest.dir/all
+CMakeFiles/ATCSimLib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ATCSimLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles 0
-.PHONY : CMakeFiles/googletest.dir/rule
+.PHONY : CMakeFiles/ATCSimLib.dir/rule
 
 # Convenience name for target.
-googletest: CMakeFiles/googletest.dir/rule
+ATCSimLib: CMakeFiles/ATCSimLib.dir/rule
 
-.PHONY : googletest
-
-# clean rule for target.
-CMakeFiles/googletest.dir/clean:
-	$(MAKE) -f CMakeFiles/googletest.dir/build.make CMakeFiles/googletest.dir/clean
-.PHONY : CMakeFiles/googletest.dir/clean
+.PHONY : ATCSimLib
 
 # clean rule for target.
-clean: CMakeFiles/googletest.dir/clean
+CMakeFiles/ATCSimLib.dir/clean:
+	$(MAKE) -f CMakeFiles/ATCSimLib.dir/build.make CMakeFiles/ATCSimLib.dir/clean
+.PHONY : CMakeFiles/ATCSimLib.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/ATCSimLib.dir/clean
 
 .PHONY : clean
 

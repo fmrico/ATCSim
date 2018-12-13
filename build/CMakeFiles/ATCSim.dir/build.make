@@ -90,7 +90,6 @@ ATCSim_EXTERNAL_OBJECTS =
 
 ATCSim: CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o
 ATCSim: CMakeFiles/ATCSim.dir/build.make
-ATCSim: /usr/lib/x86_64-linux-gnu/libIce.so
 ATCSim: libATCSimLib.so
 ATCSim: /usr/lib/x86_64-linux-gnu/libIce.so
 ATCSim: CMakeFiles/ATCSim.dir/link.txt
