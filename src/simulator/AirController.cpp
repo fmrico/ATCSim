@@ -46,6 +46,7 @@ AirController::doWork()
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
+
 			std::ifstream fin("CWY.txt");
 	  	std::list<Route>  CWY1;
 	  	std::list<Route>::iterator it_route;
@@ -132,7 +133,6 @@ AirController::doWork()
 								}
 							}
 						}
-
 
 		}
 	}
