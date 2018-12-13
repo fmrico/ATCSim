@@ -1,4 +1,4 @@
-The system is: Linux - 4.15.0-39-generic - x86_64
+The system is: Linux - 4.15.0-42-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -28,28 +28,34 @@ The CXX compiler identification is GNU, found in "/home/alumnos/pasensio/Escrito
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9b9a7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9b9a7.dir/build.make CMakeFiles/cmTC_9b9a7.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_78d0a/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_78d0a.dir/build.make CMakeFiles/cmTC_78d0a.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9b9a7.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_9b9a7.dir/testCCompiler.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_9b9a7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b9a7.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_9b9a7.dir/testCCompiler.c.o  -o cmTC_9b9a7 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_78d0a.dir/flags.make' tiene una hora de modificación 0,095 s en el futuro
+Building C object CMakeFiles/cmTC_78d0a.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_78d0a.dir/testCCompiler.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_78d0a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78d0a.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_78d0a.dir/testCCompiler.c.o  -o cmTC_78d0a 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cb72f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cb72f.dir/build.make CMakeFiles/cmTC_cb72f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a50b1/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_a50b1.dir/build.make CMakeFiles/cmTC_a50b1.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_cb72f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb72f.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o  -o cmTC_cb72f 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_a50b1.dir/flags.make' tiene una hora de modificación 0,094 s en el futuro
+Building C object CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_a50b1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a50b1.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o  -o cmTC_a50b1 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -61,24 +67,28 @@ Thread model: posix
 gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb72f' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmE25x8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_cb72f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb72f' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a50b1' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQGHNoE.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a50b1 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a50b1' '-mtune=generic' '-march=x86-64'
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_cb72f/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_cb72f.dir/build.make CMakeFiles/cmTC_cb72f.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_a50b1/fast"]
+  ignore line: [make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_a50b1.dir/build.make CMakeFiles/cmTC_a50b1.dir/build]
   ignore line: [make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_cb72f]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb72f.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o  -o cmTC_cb72f ]
+  ignore line: [make[1]: Atención: El archivo 'CMakeFiles/cmTC_a50b1.dir/flags.make' tiene una hora de modificación 0,094 s en el futuro]
+  ignore line: [Building C object CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_a50b1]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a50b1.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o  -o cmTC_a50b1 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -90,13 +100,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cb72f' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccmE25x8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_cb72f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a50b1' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQGHNoE.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_a50b1 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccmE25x8.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccQGHNoE.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -115,7 +125,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_cb72f] ==> ignore
+    arg [cmTC_a50b1] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -127,7 +137,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_cb72f.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_a50b1.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -159,15 +169,19 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_dd87d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_dd87d.dir/build.make CMakeFiles/cmTC_dd87d.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_b4da6/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,085 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_b4da6.dir/build.make CMakeFiles/cmTC_b4da6.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_dd87d.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_dd87d.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_dd87d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd87d.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_dd87d.dir/feature_tests.c.o  -o cmTC_dd87d 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_b4da6.dir/flags.make' tiene una hora de modificación 0,068 s en el futuro
+Building C object CMakeFiles/cmTC_b4da6.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_b4da6.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_b4da6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4da6.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_b4da6.dir/feature_tests.c.o  -o cmTC_b4da6 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -179,15 +193,19 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_516e5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_516e5.dir/build.make CMakeFiles/cmTC_516e5.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_3c57a/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_3c57a.dir/build.make CMakeFiles/cmTC_3c57a.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_516e5.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_516e5.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_516e5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_516e5.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_516e5.dir/feature_tests.c.o  -o cmTC_516e5 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_3c57a.dir/flags.make' tiene una hora de modificación 0,092 s en el futuro
+Building C object CMakeFiles/cmTC_3c57a.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_3c57a.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_3c57a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c57a.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_3c57a.dir/feature_tests.c.o  -o cmTC_3c57a 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -199,15 +217,19 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_31dd3/fast"
-/usr/bin/make -f CMakeFiles/cmTC_31dd3.dir/build.make CMakeFiles/cmTC_31dd3.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2171f/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_2171f.dir/build.make CMakeFiles/cmTC_2171f.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_31dd3.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_31dd3.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_31dd3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_31dd3.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_31dd3.dir/feature_tests.c.o  -o cmTC_31dd3 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_2171f.dir/flags.make' tiene una hora de modificación 0,09 s en el futuro
+Building C object CMakeFiles/cmTC_2171f.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_2171f.dir/feature_tests.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_2171f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2171f.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_2171f.dir/feature_tests.c.o  -o cmTC_2171f 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -217,28 +239,34 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ca181/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ca181.dir/build.make CMakeFiles/cmTC_ca181.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d13da/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_d13da.dir/build.make CMakeFiles/cmTC_d13da.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ca181.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_ca181.dir/testCXXCompiler.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_ca181
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca181.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_ca181.dir/testCXXCompiler.cxx.o  -o cmTC_ca181 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_d13da.dir/flags.make' tiene una hora de modificación 0,096 s en el futuro
+Building CXX object CMakeFiles/cmTC_d13da.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_d13da.dir/testCXXCompiler.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_d13da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d13da.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_d13da.dir/testCXXCompiler.cxx.o  -o cmTC_d13da 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3894c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3894c.dir/build.make CMakeFiles/cmTC_3894c.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_b9baf/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_b9baf.dir/build.make CMakeFiles/cmTC_b9baf.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_3894c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3894c.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_3894c 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_b9baf.dir/flags.make' tiene una hora de modificación 0,095 s en el futuro
+Building CXX object CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_b9baf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9baf.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b9baf 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -250,24 +278,28 @@ Thread model: posix
 gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3894c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccUzW8bV.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3894c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3894c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9baf' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc1BCnHv.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b9baf /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9baf' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_3894c/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_3894c.dir/build.make CMakeFiles/cmTC_3894c.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_b9baf/fast"]
+  ignore line: [make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_b9baf.dir/build.make CMakeFiles/cmTC_b9baf.dir/build]
   ignore line: [make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_3894c]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3894c.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_3894c ]
+  ignore line: [make[1]: Atención: El archivo 'CMakeFiles/cmTC_b9baf.dir/flags.make' tiene una hora de modificación 0,095 s en el futuro]
+  ignore line: [Building CXX object CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_b9baf]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9baf.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b9baf ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -279,13 +311,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3894c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccUzW8bV.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_3894c /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9baf' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc1BCnHv.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b9baf /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccUzW8bV.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc1BCnHv.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -304,7 +336,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_3894c] ==> ignore
+    arg [cmTC_b9baf] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -316,7 +348,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_3894c.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_b9baf.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -344,15 +376,19 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a73f4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a73f4.dir/build.make CMakeFiles/cmTC_a73f4.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d8253/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_d8253.dir/build.make CMakeFiles/cmTC_d8253.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_a73f4.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_a73f4.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a73f4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a73f4.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_a73f4.dir/feature_tests.cxx.o  -o cmTC_a73f4 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_d8253.dir/flags.make' tiene una hora de modificación 0,095 s en el futuro
+Building CXX object CMakeFiles/cmTC_d8253.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_d8253.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_d8253
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8253.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_d8253.dir/feature_tests.cxx.o  -o cmTC_d8253 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -417,15 +453,19 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_09e8f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_09e8f.dir/build.make CMakeFiles/cmTC_09e8f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_4c728/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_4c728.dir/build.make CMakeFiles/cmTC_4c728.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_09e8f.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_09e8f.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_09e8f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09e8f.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_09e8f.dir/feature_tests.cxx.o  -o cmTC_09e8f 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_4c728.dir/flags.make' tiene una hora de modificación 0,093 s en el futuro
+Building CXX object CMakeFiles/cmTC_4c728.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_4c728.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4c728
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c728.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_4c728.dir/feature_tests.cxx.o  -o cmTC_4c728 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -490,15 +530,19 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_95fa9/fast"
-/usr/bin/make -f CMakeFiles/cmTC_95fa9.dir/build.make CMakeFiles/cmTC_95fa9.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_e2f64/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_e2f64.dir/build.make CMakeFiles/cmTC_e2f64.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_95fa9.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_95fa9.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_95fa9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95fa9.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_95fa9.dir/feature_tests.cxx.o  -o cmTC_95fa9 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_e2f64.dir/flags.make' tiene una hora de modificación 0,093 s en el futuro
+Building CXX object CMakeFiles/cmTC_e2f64.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_e2f64.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e2f64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2f64.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_e2f64.dir/feature_tests.cxx.o  -o cmTC_e2f64 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -563,15 +607,19 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_78204/fast"
-/usr/bin/make -f CMakeFiles/cmTC_78204.dir/build.make CMakeFiles/cmTC_78204.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9449e/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_9449e.dir/build.make CMakeFiles/cmTC_9449e.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_78204.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_78204.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_78204
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_78204.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_78204.dir/feature_tests.cxx.o  -o cmTC_78204 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_9449e.dir/flags.make' tiene una hora de modificación 0,099 s en el futuro
+Building CXX object CMakeFiles/cmTC_9449e.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_9449e.dir/feature_tests.cxx.o -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9449e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9449e.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_9449e.dir/feature_tests.cxx.o  -o cmTC_9449e 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -634,28 +682,36 @@ make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/p
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e20b6/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e20b6.dir/build.make CMakeFiles/cmTC_e20b6.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d1937/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_d1937.dir/build.make CMakeFiles/cmTC_d1937.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e20b6.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_e20b6.dir/CheckIncludeFile.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_e20b6
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e20b6.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_e20b6.dir/CheckIncludeFile.c.o  -o cmTC_e20b6 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_d1937.dir/flags.make' tiene una hora de modificación 0,091 s en el futuro
+Building C object CMakeFiles/cmTC_d1937.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_d1937.dir/CheckIncludeFile.c.o   -c /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d1937
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1937.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_d1937.dir/CheckIncludeFile.c.o  -o cmTC_d1937 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d728a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d728a.dir/build.make CMakeFiles/cmTC_d728a.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_66b66/fast"
+make: Atención: El archivo 'Makefile' tiene una hora de modificación 0,11 s en el futuro
+/usr/bin/make -f CMakeFiles/cmTC_66b66.dir/build.make CMakeFiles/cmTC_66b66.dir/build
 make[1]: se entra en el directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d728a.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d728a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d728a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d728a.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_d728a.dir/CheckFunctionExists.c.o  -o cmTC_d728a -lpthread 
+make[1]: Atención: El archivo 'CMakeFiles/cmTC_66b66.dir/flags.make' tiene una hora de modificación 0,096 s en el futuro
+Building C object CMakeFiles/cmTC_66b66.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_66b66.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_66b66
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66b66.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_66b66.dir/CheckFunctionExists.c.o  -o cmTC_66b66 -lpthread 
+make[1]: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 make[1]: se sale del directorio '/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build/CMakeFiles/CMakeTmp'
+make: atención: Se ha detectado una desviación en el reloj. La construcción podría estar incompleta.
 
 

@@ -16,8 +16,8 @@ endif()
 
 find_package(OpenGL REQUIRED)
 #if(GNU_)
-	#set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
-	#set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+	set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+	set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceUtil.so")
 #endif()
 #set(Ice_LIBRARY_MACOS "/usr/lib/libIce.so")
 #set(IceUtil_LIBRARY_MACOS "/usr/lib/libIceutil.so")
@@ -92,8 +92,8 @@ target_link_libraries(ATCSim
 )
 
 target_link_libraries(cppgui
-  ${Ice_LIBRARIES}
-  ${IceUtil_LIBRARIES}
+  ${Ice_LIBRARY}
+  ${IceUtil_LIBRARY}
 	${CMAKE_THREAD_LIBS_INIT}
 	${OPENGL_LIBRARIES}
 	${GLUT_LIBRARY}

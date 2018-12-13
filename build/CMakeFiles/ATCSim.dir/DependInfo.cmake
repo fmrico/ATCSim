@@ -13,7 +13,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src/lib"
   "../src/ICE/cpp"
   "../src/simulator"
-  "googletest-prefix/src/googletest/googletest/include"
+  "/usr/local/include"
   )
 
 # Targets to which this target links.
