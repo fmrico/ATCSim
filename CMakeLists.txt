@@ -14,14 +14,12 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-find_package(OpenGL REQUIRED)
-
 set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
 set(Ice_LIBRARY_MACOS "/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib")
 
 find_library(Ice_lib Ice)
 
-#find_package(Ice REQUIRED)
+find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 find_package(GLUT REQUIRED)
@@ -78,17 +76,13 @@ add_executable(cppgui ${CPPGUI_SRCS})
 
 if(APPLE)
 	target_link_libraries(ATCSim
-	  #${Ice_LIBRARY}
 	  ${Ice_LIBRARY_MACOS}
-	  #${IceUtil_LIBRARY}
 	   ${CMAKE_THREAD_LIBS_INIT}
 	   ATCSimLib
 	)
 elseif(UNIX)
 	target_link_libraries(ATCSim
 	  ${Ice_LIBRARY}
-	  #${Ice_LIBRARY_MACOS}
-	  #${IceUtil_LIBRARY}
 	   ${CMAKE_THREAD_LIBS_INIT}
 	   ATCSimLib
 	)
@@ -96,10 +90,7 @@ endif(APPLE)
 
 if(APPLE)
 	target_link_libraries(cppgui
-	  #${Ice_LIBRARY}
 	  ${Ice_LIBRARY_MACOS}
-	  #${IceUtil_LIBRARY}
-	  #${IceUtil_LIBRARY_MACOS}
 		${CMAKE_THREAD_LIBS_INIT}
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}
