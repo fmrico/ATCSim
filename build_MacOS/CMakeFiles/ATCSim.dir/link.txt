@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 /Library/Developer/CommandLineTools/usr/bin/c++   -g -Wno-deprecated-declarations -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o  -o ATCSim -Wl,-rpath,/Users/Pablo/git/ATCSim/build_MacOS libATCSimLib.dylib /usr/local/lib/libIce.dylib 
-=======
-/usr/bin/c++   -g -Wno-deprecated-declarations -Wall -Wpedantic -Wextra  -g   CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o  -o ATCSim -Wl,-rpath,/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build_MacOS /usr/lib/x86_64-linux-gnu/libIce.so -lpthread libATCSimLib.so /usr/lib/x86_64-linux-gnu/libIce.so 
->>>>>>> 8d47f49138861e3cccebdaa69e2ef3f3d68ab70c
