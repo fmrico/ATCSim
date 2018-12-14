@@ -33,6 +33,7 @@
 #include <GL/gl.h>
 #endif
 
+#include <iomanip>
 #include <iostream>
 #include <math.h>
 #include "colours.h"
@@ -464,16 +465,31 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			textDisplay->displayText((char *)"Route", 15, 230, GUI::win_width, GUI::win_height, BLUE, GLUT_BITMAP_HELVETICA_12);
 
 			int c = 0;
+			std::string z_str;
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
+				char* charAux = new char[4];		// Two decimal places
+
+				if((*it).z < 0)
+					z_str = "=.==";
+				else
+				{
+					//z_str = std::to_string((*it).z);
+					std::stringstream ss;
+					ss << std::fixed << std::setprecision(2) << (*it).z;
+					z_str = ss.str();
+				}
+
+				strcpy(charAux, z_str.c_str());
+
 				if((*it).name == ""){
-					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %.2lf) m", (*it).x, (*it).y, (*it).z);
+					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %s) m", (*it).x, (*it).y, charAux);
 				}else{
 					std::string nameStr = (*it).name;
 					char* charStr = new char[nameStr.length()+1];
 					strcpy(charStr, nameStr.c_str());
 					//snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
-					snprintf(pos_str, 255, "Waypoint: %s @ %.2f m", charStr, (*it).z);
+					snprintf(pos_str, 255, "Waypoint: %s @ %s m", charStr, charAux);
 				}
 
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
