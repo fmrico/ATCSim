@@ -45,21 +45,17 @@ AirController::doWork()
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
-			Position pos0(3500.0, 10000.0, 100.0);
-			Position pos1(1500.0, 10000.0, 50.0);
-			Position pos2(200.0, 10000.0, 25.0);
-			Position pos3(-750.0, 10000.0, 25.0);
+			Position pos0(3500.0, 0.0, 100.0);
+			Position pos1(1500.0, 0.0, -1.0);
+			Position pos2(200.0, 0.0, 25.0);
+			Position pos3(-750.0, 0.0, 25.0);
 
-			Position pos00(3500.0, -10000.0, 100.0);
-			Position pos01(1500.0, -10000.0, 50.0);
-			Position pos02(200.0, -10000.0, 25.0);
-			Position pos03(-750.0, -10000.0, 25.0);
+			Position posTest("WPT01", 5000, 0, 150);
 
-			Route r0, r1, r2, r3;
-			Route r00, r01, r02, r03;
+			Route r0, r1, r2, r3, rTest;
 
 			r0.pos = pos0;
-			r0.speed = 500.0;
+			r0.speed = 150.0;
 			r1.pos = pos1;
 			r1.speed = 100.0;
 			r2.pos = pos2;
@@ -67,14 +63,8 @@ AirController::doWork()
 			r3.pos = pos3;
 			r3.speed = 15.0;
 
-			r00.pos = pos00;
-			r00.speed = 500.0;
-			r01.pos = pos01;
-			r01.speed = 100.0;
-			r02.pos = pos02;
-			r02.speed = 19.0;
-			r03.pos = pos03;
-			r03.speed = 15.0;
+			rTest.pos = posTest;
+			rTest.speed = 200;
 
 			for(it = flights.begin(); it!=flights.end(); ++it)
 			{
@@ -86,12 +76,7 @@ AirController::doWork()
 					(*it)->getRoute()->push_front(r2);
 					(*it)->getRoute()->push_front(r1);
 					(*it)->getRoute()->push_front(r0);
-				}else{
-					(*it)->getRoute()->push_back(r03);
-					(*it)->getRoute()->push_front(r02);
-					(*it)->getRoute()->push_front(r01);
-					(*it)->getRoute()->push_front(r00);
-				}
+					(*it)->getRoute()->push_front(rTest);
 				}
 			}
 
