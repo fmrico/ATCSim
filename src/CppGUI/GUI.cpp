@@ -421,19 +421,29 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			glColor4f(0.0f,0.0f,1.0f, 1.0f);
 			glBegin(GL_LINES);
 
+			float aux_alt;
 			glVertex3f(flight.pos.x, flight.pos.y, flight.pos.z);
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
-				glVertex3f((*it).x, (*it).y, (*it).z);
-				glVertex3f((*it).x, (*it).y, (*it).z);
+				// If point of route has no altitude, draw last altitude
+				if((*it).z > MAINTAIN_ALT)
+					aux_alt = (*it).z;
+
+				glVertex3f((*it).x, (*it).y, aux_alt);
+				glVertex3f((*it).x, (*it).y, aux_alt);
 			}
 			glEnd();
 
+
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
+				// If point of route has no altitude, draw last altitude
+				if((*it).z > MAINTAIN_ALT)
+					aux_alt = (*it).z;
+
 				glColor4f(0.0f,0.0f,1.0f, 1.0f);
 				glPushMatrix();
-				glTranslatef((*it).x, (*it).y,(*it).z);
+				glTranslatef((*it).x, (*it).y, aux_alt);
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
 				gluQuadricTexture(quadratic, GL_TRUE);

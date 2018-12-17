@@ -46,7 +46,7 @@ AirController::doWork()
 			std::list<Flight*>::iterator it;
 
 			Position pos0(3500.0, 0.0, 100.0);
-			Position pos1(1500.0, 0.0, -1.0);
+			Position pos1(1500.0, 0.0, MAINTAIN_ALT);
 			Position pos2(200.0, 0.0, 25.0);
 			Position pos3(-750.0, 0.0, 25.0);
 
