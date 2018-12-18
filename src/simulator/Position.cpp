@@ -31,8 +31,15 @@ Position::Position() {
 
 	name = "";
 	x = y = 0.0;
-	z = -1.0;
+	z = MAINTAIN_ALT;
+}
 
+Position::Position(float _x, float _y)
+{
+	name = "";
+	x = _x;
+	y = _y;
+	z = MAINTAIN_ALT;
 }
 
 Position::Position(float _x, float _y, float _z)
@@ -41,6 +48,14 @@ Position::Position(float _x, float _y, float _z)
 	x = _x;
 	y = _y;
 	z = _z;
+}
+
+Position::Position(std::string _name, float _x, float _y)
+{
+	name = check_name(_name);
+	x = _x;
+	y = _y;
+	z = MAINTAIN_ALT;
 }
 
 Position::Position(std::string _name, float _x, float _y, float _z)

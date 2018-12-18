@@ -49,6 +49,7 @@ Flight::Flight(std::string _id, Position _pos, float _bearing, float _inclinatio
 	id = _id;
 	pos = _pos;
 	bearing = _bearing;
+	init_bearing = _bearing;
 	inclination = _inclination;
 	//speed = _speed;
 	setSpeed(_speed);	// Through set in order to limit speeds
@@ -74,8 +75,11 @@ Flight::update(float delta_t)
 
 		CPpos = route.front().pos;
 
-		if(CPpos.get_z() < 0) // Maintain altitude
-			route.front().pos.set_z((this->getPosition()).get_z());
+		if(CPpos.get_z() <= MAINTAIN_ALT){ // Maintain altitude
+			float current_alt = (this->getPosition()).get_z();
+			CPpos.set_z(current_alt);
+			route.front().pos.set_z(current_alt);
+		}
 
 		pos.angles(CPpos, goal_bearing, inclination);
 
