@@ -25,6 +25,7 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
+#include "Common.h"
 #include <string>
 
 namespace atcsim{
@@ -32,7 +33,9 @@ namespace atcsim{
 class Position {
 public:
 	Position();
+	Position(float _x, float _y);
 	Position(float _x, float _y, float _z);
+	Position(std::string _name, float _x, float _y);
 	Position(std::string _name, float _x, float _y, float _z);
 	virtual ~Position();
 
