@@ -64,13 +64,18 @@
 #define LANDING_POS_Y 0.0f
 #define LANDING_POS_Z 25.0f
 
+// Lowest airport in the word is at -1240 ft
+// and lowest land zone in Earth is -3904 ft
+#define MIN_AIRPORT_ALT -4000.0f
+#define MAINTAIN_ALT MIN_AIRPORT_ALT
+
 
 #define LANDING_SPEED 20.0f
 #define LANDING_BEAR -180.0f
 #define LANDING_BEAR_MAX_ERROR 20.0f
 #define LANDING_DIST 50.0f
 
-#define INIT_FLIGHT_POINTS 200
+#define INIT_FLIGHT_POINTS 2000
 #define INIT_POINTS 0
 #define LANDING_POINTS (10)
 #define COLLISION_POINTS (-50)
@@ -203,4 +208,20 @@ inline float normalDist(float x, float mu, float st) {
 	return (1.0/d1)*exp(-(diff*diff)/d2);
 }
 
-#endif  // SRC_LIB_COMMON_H_
+
+// you can write i.e.  3.5km is equal to 3500 m
+constexpr long double operator"" km ( long double km )
+{
+    return km*1000;
+}
+
+// you can write i.e.  3.5mi is equal to 56327 m
+constexpr long double operator"" mi ( long double mi )
+{
+    return mi*1609.34;
+}
+
+
+#endif // __Math_Common_h__
+
+//#endif  // SRC_LIB_COMMON_H_

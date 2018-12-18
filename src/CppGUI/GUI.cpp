@@ -33,6 +33,7 @@
 #include <GL/gl.h>
 #endif
 
+#include <iomanip>
 #include <iostream>
 #include <math.h>
 #include "colours.h"
@@ -64,6 +65,7 @@ float GUI::cam_y = INIT_CAM_Y;
 float GUI::cam_z = INIT_CAM_Z;
 const int GUI::win_width  = 1024;
 const int GUI::win_height = 768;
+const int GUI::wpt_size = 400; // Waypoint size (world units)
 const float GUI::field_of_view_angle = 60;
 const float GUI::x_near = 1.0f;
 const float GUI::x_far = 40000.0f;
@@ -419,32 +421,87 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight)
 			glColor4f(0.0f,0.0f,1.0f, 1.0f);
 			glBegin(GL_LINES);
 
+			float aux_alt;
 			glVertex3f(flight.pos.x, flight.pos.y, flight.pos.z);
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
-				glVertex3f((*it).x, (*it).y, (*it).z);
-				glVertex3f((*it).x, (*it).y, (*it).z);
+				// If point of route has no altitude, draw last altitude
+				if((*it).z > MAINTAIN_ALT)
+					aux_alt = (*it).z;
+
+				glVertex3f((*it).x, (*it).y, aux_alt);
+				glVertex3f((*it).x, (*it).y, aux_alt);
 			}
 			glEnd();
 
+
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
+				// If point of route has no altitude, draw last altitude
+				if((*it).z > MAINTAIN_ALT)
+					aux_alt = (*it).z;
+
+				glColor4f(0.0f,0.0f,1.0f, 1.0f);
 				glPushMatrix();
-				glTranslatef((*it).x, (*it).y,(*it).z);
+				glTranslatef((*it).x, (*it).y, aux_alt);
 				GLUquadric *quadratic = gluNewQuadric();
 				gluQuadricNormals(quadratic, GLU_SMOOTH);
 				gluQuadricTexture(quadratic, GL_TRUE);
 				gluSphere( quadratic, 50.0f, 32, 32);
 				glPopMatrix();
-			}
+
+				if(it->name != "")
+				{
+					glBegin(GL_POLYGON);
+					glColor3f(0.6f, 0.6f, 0.6f);
+					glVertex3f(-0.5*wpt_size + (*it).x, (*it).y, 1.0f);
+					glVertex3f( 0.5*wpt_size + (*it).x, -0.5*wpt_size + (*it).y, 1.0f);
+					glVertex3f( 0.5*wpt_size + (*it).x,  0.5*wpt_size + (*it).y, 1.0f);
+					glEnd();
+
+					std::string wpt_name = (*it).name;
+					glRasterPos2i((*it).x + 1.5*wpt_size, (*it).y - 0.5*wpt_name.length()*0.5*wpt_size);	//TODO: center text
+					for(std::string::iterator i = wpt_name.begin(); i != wpt_name.end(); i++){
+						char c = *i;
+						glColor3d(1.0, 1.0, 1.0);
+						glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+					}//for
+
+				}//if
+
+			}//for
 
 
 			textDisplay->displayText((char *)"Route", 15, 230, GUI::win_width, GUI::win_height, BLUE, GLUT_BITMAP_HELVETICA_12);
 
 			int c = 0;
+			std::string z_str;
 			for(it = route.begin(); it!=route.end(); ++it)
 			{
-				snprintf(pos_str, 255, "Position: (%lf, %lf, %lf) m", (*it).x, (*it).y, (*it).z);
+				char* charAux = new char[4];		// Two decimal places
+
+				if((*it).z < 0)
+					z_str = "=.==";
+				else
+				{
+					//z_str = std::to_string((*it).z);
+					std::stringstream ss;
+					ss << std::fixed << std::setprecision(2) << (*it).z;
+					z_str = ss.str();
+				}
+
+				strcpy(charAux, z_str.c_str());
+
+				if((*it).name == ""){
+					snprintf(pos_str, 255, "Position: (%.2lf, %.2lf, %s) m", (*it).x, (*it).y, charAux);
+				}else{
+					std::string nameStr = (*it).name;
+					char* charStr = new char[nameStr.length()+1];
+					strcpy(charStr, nameStr.c_str());
+					//snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
+					snprintf(pos_str, 255, "Waypoint: %s @ %s m", charStr, charAux);
+				}
+
 				textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 				c++;
 			}
