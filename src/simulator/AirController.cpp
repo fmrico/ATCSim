@@ -70,8 +70,8 @@ AirController::doWork()
       (*it)->getRoute()->push_front(r2);
       (*it)->getRoute()->push_front(r1);
       (*it)->getRoute()->push_front(r0);
-    }
-  }
-}
 		}
 	}
+}
+
+}  // namespace atcsim
