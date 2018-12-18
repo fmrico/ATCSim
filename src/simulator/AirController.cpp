@@ -42,42 +42,35 @@ AirController::~AirController() {
 void
 AirController::doWork()
 {
-			std::list<Flight*> flights = Airport::getInstance()->getFlights();
-			std::list<Flight*>::iterator it;
+  std::list<Flight*> flights = Airport::getInstance()->getFlights();
+  std::list<Flight*>::iterator it;
 
-			Position pos0(3500.0, 0.0, 100.0);
-			Position pos1(1500.0, 0.0, MAINTAIN_ALT);
-			Position pos2(200.0, 0.0, 25.0);
-			Position pos3(-750.0, 0.0, 25.0);
+  Position pos0(3500.0, 0.0, 100.0);
+  Position pos1(1500.0, 0.0, 50.0);
+  Position pos2(200.0, 0.0, 25.0);
+  Position pos3(-750.0, 0.0, 25.0);
 
-			Position posTest("WPT01", 5000, 0, 150);
+  Route r0, r1, r2, r3;
 
-			Route r0, r1, r2, r3, rTest;
+  r0.pos = pos0;
+  r0.speed = 500.0;
+  r1.pos = pos1;
+  r1.speed = 100.0;
+  r2.pos = pos2;
+  r2.speed = 19.0;
+  r3.pos = pos3;
+  r3.speed = 15.0;
 
-			r0.pos = pos0;
-			r0.speed = 150.0;
-			r1.pos = pos1;
-			r1.speed = 100.0;
-			r2.pos = pos2;
-			r2.speed = 19.0;
-			r3.pos = pos3;
-			r3.speed = 15.0;
-
-			rTest.pos = posTest;
-			rTest.speed = 200;
-
-			for(it = flights.begin(); it!=flights.end(); ++it)
-			{
-				if((*it)->getRoute()->empty())
-				{
-					(*it)->getRoute()->push_back(r3);
-					(*it)->getRoute()->push_front(r2);
-					(*it)->getRoute()->push_front(r1);
-					(*it)->getRoute()->push_front(r0);
-					(*it)->getRoute()->push_front(rTest);
-				}
-			}
-
+  for(it = flights.begin(); it!=flights.end(); ++it)
+  {
+    if((*it)->getRoute()->empty())
+    {
+      (*it)->getRoute()->push_back(r3);
+      (*it)->getRoute()->push_front(r2);
+      (*it)->getRoute()->push_front(r1);
+      (*it)->getRoute()->push_front(r0);
+    }
+  }
 }
 
 };  // namespace atcsim
