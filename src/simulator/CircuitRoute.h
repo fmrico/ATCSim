@@ -24,7 +24,8 @@ private:
 
 void loadNavPoints();
 
-// std::unordered_map<std::string, Position> getRoutePoints();
+Position getRoutePoint(std::string id);
+std::unordered_map<std::string, Position> getRoutePoints();
 
 
 }  // namespace atcsim
