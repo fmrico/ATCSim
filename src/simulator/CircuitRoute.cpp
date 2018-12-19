@@ -38,10 +38,21 @@ void loadNavPoints(){
 
 }
 
-/*
-static std::unordered_map<std::string, Position> getRoutePoints(){
+
+Position getRoutePoint(std::string id){
+
+	Position pos;
+	std::unordered_map<std::string, Position>::const_iterator it = routePoints.find(id);
+
+	if ( it != routePoints.end() )	// if element exists
+    	pos = it->second;
+
+	return pos;
+}
+
+std::unordered_map<std::string, Position> getRoutePoints(){
 	return routePoints;
 }
-*/
+
 
 }  // namespace atcsim
