@@ -27,7 +27,7 @@ int loadNavPoints(){
 		infile.close();
 		return EXIT_SUCCESS;
 	}else{
-		std::cerr << "Error opening file '" << pointsFileName << "'!" << std::endl;
+		std::cerr << "No file '" << pointsFileName << "', malformed data or corrupted!" << std::endl;
 		return EXIT_FAILURE;
 	}
 
@@ -49,7 +49,7 @@ int loadNavCircuits(){
 			std::vector<Position> points;
 
 			// Trim white-spaces
-			for(int i=0; i<lineRead.length(); i++){
+			for(uint i=0; i<lineRead.length(); i++){
 				if(lineRead[i] != ' '){
 					line += lineRead[i];
 				}
@@ -59,28 +59,29 @@ int loadNavCircuits(){
 			name = line.substr(0, line.find(':'));
 			line = line.substr(line.find(':')+1, line.length()-1);
 
-			std::cout << "\t·" << name << ": ";
+			//std::cout << "\t·" << name << ": ";
 
 			// Get points of route
 			std::istringstream iss(line);
 			while(std::getline(iss, token, ','))
 			{
-				std::cout << token << ",";
+				//std::cout << token << ",";
 				points.push_back(getRoutePoint(token));
 			}
 
+			//std::cout << std::endl;
 			line.clear();
-			std::cout << std::endl;
 
 			routeCircuits.insert({name, points});
 			count++;
 		}//while
+
 		std::cout << "Loaded " << count << " route(s) from file '"
 					<< circuitsFileName << "'" << std::endl;
 		infile.close();
 		return EXIT_SUCCESS;
 	}else{
-		std::cerr << "Error opening file '" << circuitsFileName << "'!" << std::endl;
+		std::cerr << "No file '" << circuitsFileName << "', malformed data or corrupted!" << std::endl;
 		return EXIT_FAILURE;
 	}
 

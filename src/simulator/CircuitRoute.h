@@ -15,7 +15,6 @@ static std::string circuitsFileName = "../navdata/circuits.nav";
 static std::unordered_map<std::string, Position> routePoints;
 static std::unordered_map<std::string, std::vector<Position> > routeCircuits;
 
-
 int loadNavPoints();
 int loadNavCircuits();
 
