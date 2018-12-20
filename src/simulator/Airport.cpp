@@ -38,15 +38,11 @@
 
 #include <cstdlib>
 
-#include "CircuitRoute.h"
-
 namespace atcsim{
 
 Airport::Airport() {
 
 	flights.clear();
-
-	loadNavPoints();
 
 	gettimeofday(&last_ts, NULL);
 	crono = last_ts.tv_sec*1000000 + last_ts.tv_usec;
