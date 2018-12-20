@@ -107,7 +107,10 @@ AirController::doWork()
     {
         if((*it)->getRoute()->empty())
         {
-            setRoute((*it), "NorthWest");
+            if( ((*it)->getPosition().get_y() < 0) )
+                setRoute((*it), "SouthWest");
+            else
+                setRoute((*it), "SouthEast");
 
             setFinalApproach((*it));
     	}
