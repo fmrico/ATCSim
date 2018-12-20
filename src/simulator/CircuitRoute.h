@@ -16,8 +16,8 @@ static std::unordered_map<std::string, Position> routePoints;
 static std::unordered_map<std::string, std::vector<Position> > routeCircuits;
 
 
-void loadNavPoints();
-void loadNavCircuits();
+int loadNavPoints();
+int loadNavCircuits();
 
 Position getRoutePoint(std::string id);
 std::vector<Position> getRouteCircuit(std::string id);

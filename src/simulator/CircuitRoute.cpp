@@ -6,7 +6,7 @@
 
 namespace atcsim{
 
-void loadNavPoints(){
+int loadNavPoints(){
 
 	//std::cout << "Loading external files of points of route..." << std::endl;
 
@@ -25,13 +25,15 @@ void loadNavPoints(){
 		std::cout << "Loaded " << count << " point(s) of route from file '"
 					<< pointsFileName << "'" << std::endl;
 		infile.close();
+		return EXIT_SUCCESS;
 	}else{
 		std::cerr << "Error opening file '" << pointsFileName << "'!" << std::endl;
+		return EXIT_FAILURE;
 	}
 
 }
 
-void loadNavCircuits(){
+int loadNavCircuits(){
 
 	//std::cout << "Loading external files of routes..." << std::endl;
 
@@ -76,8 +78,10 @@ void loadNavCircuits(){
 		std::cout << "Loaded " << count << " route(s) from file '"
 					<< circuitsFileName << "'" << std::endl;
 		infile.close();
+		return EXIT_SUCCESS;
 	}else{
 		std::cerr << "Error opening file '" << circuitsFileName << "'!" << std::endl;
+		return EXIT_FAILURE;
 	}
 
 }
