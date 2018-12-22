@@ -373,6 +373,27 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     gluSphere(quadratic, COLLISION_DISTANCE/2.0f, 32, 32);
     glPopMatrix();
 
+    // Draw information label
+    float lineSpace = 320;
+    float lineVertPos = flight.pos.x;
+
+
+    std::string textArray[3];
+    textArray[0] = flight.id;
+    textArray[1] = std::to_string((int)flight.pos.z);
+    textArray[2] = std::to_string((int)flight.speed);
+
+    for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
+        glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
+        for (std::string::iterator it = textArray[i].begin(); it != textArray[i].end(); it++) {
+            char c = *it;
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+        }
+        lineVertPos += lineSpace;
+    }
+
+
+
     if (flight.focused) {
         ATCDisplay::ATCDRoute route = flight.flightRoute;
 
