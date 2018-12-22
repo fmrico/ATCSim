@@ -384,6 +384,14 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     if(flight.pos.z * m2ft < 10000.0)  // Fill with left zeroes
         textArray[1] = "0";
     textArray[1] += std::to_string((int)(flight.pos.z * m2ft * 0.01));
+    // Simulate Vertical Speed
+    if(toDegrees(flight.inclination) < -1.0)
+        textArray[1] += "-";    // descending
+    else if(toDegrees(flight.inclination) > 1.0)
+        textArray[1] += "+";    // ascending
+    else
+        textArray[1] += "=";    // level flight
+
     // Show speed in knots
     textArray[2] = std::to_string((int)(flight.speed * ms2kt));
 
