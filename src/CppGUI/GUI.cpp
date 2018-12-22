@@ -377,14 +377,20 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     float lineSpace = 320;
     float lineVertPos = flight.pos.x;
 
+    ATCDisplay::ATCDRoute route = flight.flightRoute;
+    ATCDisplay::ATCDPosition nextPos = *route.begin();
+
     std::string textArray[3];
     // Show flight ID
     textArray[0] = flight.id;
+
     // Show altitude in hundred of feet
-    if(flight.pos.z * m2ft < 10000.0)  // Fill with left zeroes
-        textArray[1] = "0";
-    textArray[1] += std::to_string((int)(flight.pos.z * m2ft * 0.01));
-    // Simulate Vertical Speed
+    std::string flightAltShow = std::to_string((int)(flight.pos.z * m2ft * 0.01));
+    for(int i=flightAltShow.length(); i<3; i++) // Fill with left zeroes
+        textArray[1] += "0";
+    textArray[1] += flightAltShow;
+
+    // Show Vertical Speed trend
     if(toDegrees(flight.inclination) < -1.0)
         textArray[1] += "-";    // descending
     else if(toDegrees(flight.inclination) > 1.0)
@@ -392,8 +398,27 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     else
         textArray[1] += "=";    // level flight
 
+    // Show next authorized altitude
+    textArray[1] += " ";
+    std::string flightAuthAltShow = std::to_string((int)(nextPos.z * m2ft * 0.01));
+    for(int i=flightAuthAltShow.length(); i<3; i++) // Fill with left zeroes
+        textArray[1] += "0";
+    textArray[1] += flightAuthAltShow;
+
     // Show speed in knots
-    textArray[2] = std::to_string((int)(flight.speed * ms2kt));
+    std::string flightSpeedShow = std::to_string((int)(flight.speed * ms2kt));
+    for(int i=flightSpeedShow.length(); i<3; i++) // Fill with left zeroes
+        textArray[2] += "0";
+    textArray[2] += flightSpeedShow;
+
+    // Show next authorized waypoint or heading
+    textArray[2] += " ";
+    if(nextPos.name != ""){
+        textArray[2] += nextPos.name;
+    }else{
+        std::string bearing = std::to_string((int)toDegrees(flight.bearing));  //TODO: converto to 0-359 degrees
+        textArray[2] += bearing;
+    }
 
     for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
         glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
@@ -407,7 +432,7 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
 
 
     if (flight.focused) {
-        ATCDisplay::ATCDRoute route = flight.flightRoute;
+        //ATCDisplay::ATCDRoute route = flight.flightRoute;
 
         std::vector<ATCDisplay::ATCDPosition>::iterator it;
         it = route.begin();
