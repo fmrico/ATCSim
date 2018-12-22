@@ -40,7 +40,7 @@
 
 #define MAX_FLIFGT_W 0.2f  // 12 grados/sec
 #define DIST_POINT 200.0  // 15 grados/sec
-#define MAX_ACELERATION 50.0  // 50 m/sec2
+#define MAX_ACELERATION 3.0  // 3 m/sec2
 
 
 #define AIRPORT_DISTANCE_MAX 20000.0f
@@ -70,7 +70,7 @@
 #define MAINTAIN_ALT MIN_AIRPORT_ALT
 
 
-#define LANDING_SPEED 20.0f
+#define LANDING_SPEED 70.0f
 #define LANDING_BEAR -180.0f
 #define LANDING_BEAR_MAX_ERROR 20.0f
 #define LANDING_DIST 50.0f

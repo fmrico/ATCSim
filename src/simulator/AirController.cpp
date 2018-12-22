@@ -54,13 +54,13 @@ AirController::doWork()
   Route r0, r1, r2, r3;
 
   r0.pos = pos0;
-  r0.speed = 500.0;
+  r0.speed = 150.0;
   r1.pos = pos1;
   r1.speed = 100.0;
   r2.pos = pos2;
-  r2.speed = 19.0;
+  r2.speed = 70.0;
   r3.pos = pos3;
-  r3.speed = 15.0;
+  r3.speed = 10.0;
 
   for(it = flights.begin(); it!=flights.end(); ++it)
   {
