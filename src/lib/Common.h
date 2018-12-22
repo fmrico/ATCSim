@@ -118,6 +118,10 @@ const double kt2ms = 1 / ms2kt;     // 0.51444
 const double m2ft = 3.28084;
 /** constant to convert from feet to meters*/
 const double ft2m = 1 / m2ft;       // 0.3048
+/** constant to convert from meters to nautical miles*/
+const double m2nm = 0.000539957;
+/** constant to convert from nautical miles to meters*/
+const double nm2m = 1852;
 ///@}
 
 
