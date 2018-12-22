@@ -77,6 +77,17 @@ bool isUnitsSI = false;
 ATCDisplay::AirportInterfacePrx GUI::airportsim;
 ATCDisplay::ATCDAirport GUI::airportinfo;
 
+float CheckBearing(float bearing){
+    if(!isUnitsSI){
+        bearing = (180 - bearing);
+        if(bearing < 0)
+            bearing += 360;
+        else if(bearing > 360)
+            bearing -= 360;
+    }
+    return bearing;
+}
+
 GUI::GUI(int argc, char *argv[]) {
     glutInit(&argc, argv);
 
@@ -387,7 +398,7 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
 
         // Draw information label
         float lineSpace = 320;
-        float lineVertPos = flight.pos.x;
+        float lineVertPos = flight.pos.x - lineSpace;
 
         ATCDisplay::ATCDPosition nextPos = *route.begin();
 
@@ -427,7 +438,9 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
         if(nextPos.name != ""){
             textArray[2] += nextPos.name;
         }else{
-            std::string bearing = std::to_string((int)toDegrees(flight.bearing));  //TODO: converto to 0-359 degrees
+            std::string bearing = std::to_string((int)CheckBearing(toDegrees(flight.bearing)));
+            for(int i=bearing.length(); i<3; i++) // Fill with left zeroes
+                textArray[2] += "0";
             textArray[2] += bearing;
         }
 
@@ -460,7 +473,7 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
             flight.pos.z * (isUnitsSI ? 1.0 : m2ft),
             (isUnitsSI ? "m" : "nm / ft"));
         textDisplay->displayText(pos_str, 15, 115, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
-        snprintf(pos_str, sizeof(pos_str), "Bearing: %.2lf deg", toDegrees(flight.bearing));
+        snprintf(pos_str, sizeof(pos_str), "Bearing: %.2lf deg", CheckBearing(toDegrees(flight.bearing)));
         textDisplay->displayText(pos_str, 15, 135, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
         snprintf(pos_str, sizeof(pos_str), "Inclination: %.2lf deg", toDegrees(flight.inclination));
         textDisplay->displayText(pos_str, 15, 155, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
