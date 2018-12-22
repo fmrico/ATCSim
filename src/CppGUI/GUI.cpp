@@ -377,11 +377,15 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     float lineSpace = 320;
     float lineVertPos = flight.pos.x;
 
-
     std::string textArray[3];
+    // Show flight ID
     textArray[0] = flight.id;
-    textArray[1] = std::to_string((int)flight.pos.z);
-    textArray[2] = std::to_string((int)flight.speed);
+    // Show altitude in hundred of feet
+    if(flight.pos.z * m2ft < 10000.0)  // Fill with left zeroes
+        textArray[1] = "0";
+    textArray[1] += std::to_string((int)(flight.pos.z * m2ft * 0.01));
+    // Show speed in knots
+    textArray[2] = std::to_string((int)(flight.speed * ms2kt));
 
     for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
         glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
