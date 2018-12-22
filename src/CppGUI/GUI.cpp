@@ -373,62 +373,67 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     gluSphere(quadratic, COLLISION_DISTANCE/2.0f, 32, 32);
     glPopMatrix();
 
-    // Draw information label
-    float lineSpace = 320;
-    float lineVertPos = flight.pos.x;
-
     ATCDisplay::ATCDRoute route = flight.flightRoute;
-    ATCDisplay::ATCDPosition nextPos = *route.begin();
 
-    std::string textArray[3];
-    // Show flight ID
-    textArray[0] = flight.id;
+    // Only show labels if zenital camera
+    if( (cam_alpha > M_PI-0.1 && cam_alpha < M_PI+0.1) &&
+        (cam_beta > -M_PI-0.1 && cam_beta < -M_PI+0.1) ){
+        // Draw information label
+        float lineSpace = 320;
+        float lineVertPos = flight.pos.x;
 
-    // Show altitude in hundred of feet
-    std::string flightAltShow = std::to_string((int)(flight.pos.z * m2ft * 0.01));
-    for(int i=flightAltShow.length(); i<3; i++) // Fill with left zeroes
-        textArray[1] += "0";
-    textArray[1] += flightAltShow;
 
-    // Show Vertical Speed trend
-    if(toDegrees(flight.inclination) < -1.0)
-        textArray[1] += "-";    // descending
-    else if(toDegrees(flight.inclination) > 1.0)
-        textArray[1] += "+";    // ascending
-    else
-        textArray[1] += "=";    // level flight
+        ATCDisplay::ATCDPosition nextPos = *route.begin();
 
-    // Show next authorized altitude
-    textArray[1] += " ";
-    std::string flightAuthAltShow = std::to_string((int)(nextPos.z * m2ft * 0.01));
-    for(int i=flightAuthAltShow.length(); i<3; i++) // Fill with left zeroes
-        textArray[1] += "0";
-    textArray[1] += flightAuthAltShow;
+        std::string textArray[3];
+        // Show flight ID
+        textArray[0] = flight.id;
 
-    // Show speed in knots
-    std::string flightSpeedShow = std::to_string((int)(flight.speed * ms2kt));
-    for(int i=flightSpeedShow.length(); i<3; i++) // Fill with left zeroes
-        textArray[2] += "0";
-    textArray[2] += flightSpeedShow;
+        // Show altitude in hundred of feet
+        std::string flightAltShow = std::to_string((int)(flight.pos.z * m2ft * 0.01));
+        for(int i=flightAltShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[1] += "0";
+        textArray[1] += flightAltShow;
 
-    // Show next authorized waypoint or heading
-    textArray[2] += " ";
-    if(nextPos.name != ""){
-        textArray[2] += nextPos.name;
-    }else{
-        std::string bearing = std::to_string((int)toDegrees(flight.bearing));  //TODO: converto to 0-359 degrees
-        textArray[2] += bearing;
-    }
+        // Show Vertical Speed trend
+        if(toDegrees(flight.inclination) < -1.0)
+            textArray[1] += "-";    // descending
+        else if(toDegrees(flight.inclination) > 1.0)
+            textArray[1] += "+";    // ascending
+        else
+            textArray[1] += "=";    // level flight
 
-    for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
-        glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
-        for (std::string::iterator it = textArray[i].begin(); it != textArray[i].end(); it++) {
-            char c = *it;
-            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+        // Show next authorized altitude
+        textArray[1] += " ";
+        std::string flightAuthAltShow = std::to_string((int)(nextPos.z * m2ft * 0.01));
+        for(int i=flightAuthAltShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[1] += "0";
+        textArray[1] += flightAuthAltShow;
+
+        // Show speed in knots
+        std::string flightSpeedShow = std::to_string((int)(flight.speed * ms2kt));
+        for(int i=flightSpeedShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[2] += "0";
+        textArray[2] += flightSpeedShow;
+
+        // Show next authorized waypoint or heading
+        textArray[2] += " ";
+        if(nextPos.name != ""){
+            textArray[2] += nextPos.name;
+        }else{
+            std::string bearing = std::to_string((int)toDegrees(flight.bearing));  //TODO: converto to 0-359 degrees
+            textArray[2] += bearing;
         }
-        lineVertPos += lineSpace;
-    }
 
+        for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
+            glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
+            for (std::string::iterator it = textArray[i].begin(); it != textArray[i].end(); it++) {
+                char c = *it;
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+            }
+            lineVertPos += lineSpace;
+        }
+    }//if camera
 
 
     if (flight.focused) {
