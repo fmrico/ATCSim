@@ -577,7 +577,7 @@ GUI::DrawAirport() {
     snprintf(points_txt, sizeof(points_txt), "Time speed: x%3.1f", airportsim->getSimT());
     textDisplay->displayText(points_txt, 10, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     char help_txt[255];
-    snprintf(help_txt, sizeof(help_txt), "Press Mouse3 and move mouse to change orientation");
+    snprintf(help_txt, sizeof(help_txt), "Press Mouse2 and move mouse to change orientation");
     textDisplay->displayText(help_txt, GUI::win_width-310, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     snprintf(help_txt, sizeof(help_txt), "<Tab> Change flight info");
     textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-200, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
