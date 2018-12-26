@@ -98,9 +98,6 @@ if(APPLE)
 elseif(UNIX)
 	target_link_libraries(cppgui
 	  ${Ice_LIBRARY}
-	  #${Ice_LIBRARY_MACOS}
-	  #${IceUtil_LIBRARY}
-	  #${IceUtil_LIBRARY_MACOS}
 		${CMAKE_THREAD_LIBS_INIT}
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}

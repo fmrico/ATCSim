@@ -50,7 +50,7 @@ main(int argc, char* argv[])
         Ice::ObjectPrx base = ic->stringToProxy("AirportInterface:default -p 10000");
 
         if (!base)
-                  throw "Invalid base";
+            throw "Invalid base";
 
         ATCDisplay::AirportInterfacePrx airportsim = ATCDisplay::AirportInterfacePrx::checkedCast(base);
 
@@ -67,8 +67,6 @@ main(int argc, char* argv[])
 
         gui.init(airportsim);
         gui.run();
-
-
 
 
     } catch (const Ice::Exception& ex) {
