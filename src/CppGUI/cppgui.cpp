@@ -34,14 +34,11 @@
 #include <Ice/Ice.h>
 #include "ATCDisplay.h"
 #include <time.h>
+#include <string>
 
-using namespace std;
-
-int
-main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     int status = 0;
-    int count=0;
+    int count = 0;
     Ice::CommunicatorPtr ic;
     GUI gui(argc, argv);
 
@@ -57,25 +54,21 @@ main(int argc, char* argv[])
         if (!airportsim)
             throw "Invalid proxy";
 
-        int milisec = 100; // length of time to sleep, in miliseconds
+        int milisec = 100;  // length of time to sleep, in miliseconds
         struct timespec req;
         req.tv_sec = 0;
         req.tv_nsec = milisec * 1000000L;
 
-        //while(1)
-        //std::cout<<airportsim->getPoints()<<std::endl;
+        // while(1)
+        // std::cout<<airportsim->getPoints()<<std::endl;
 
         gui.init(airportsim);
         gui.run();
-
-
-
-
     } catch (const Ice::Exception& ex) {
-        cerr << ex << endl;
+        std::cerr << ex << std::endl;
         status = 1;
     } catch (const char* msg) {
-        cerr << msg << endl;
+        std::cerr << msg << std::endl;
         status = 1;
     }
     if (ic)
