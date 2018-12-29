@@ -27,7 +27,7 @@ include_directories(${GLUT_INCLUDE_DIR}
   src/lib/
   src/ICE/cpp
   src/simulator
-  /usr/local/include
+  /usr/local/include # needed by APPLE
 )
 find_package(Threads REQUIRED)
 
@@ -98,9 +98,6 @@ if(APPLE)
 elseif(UNIX)
 	target_link_libraries(cppgui
 	  ${Ice_LIBRARY}
-	  #${Ice_LIBRARY_MACOS}
-	  #${IceUtil_LIBRARY}
-	  #${IceUtil_LIBRARY_MACOS}
 		${CMAKE_THREAD_LIBS_INIT}
 		${OPENGL_LIBRARIES}
 		${GLUT_LIBRARY}

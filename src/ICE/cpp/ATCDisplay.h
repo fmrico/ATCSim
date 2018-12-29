@@ -66,6 +66,7 @@ namespace ATCDisplay
 
 struct ATCDPosition
 {
+    ::std::string name;
     float x;
     float y;
     float z;
@@ -75,9 +76,9 @@ struct ATCDPosition
      * @return The data members in a tuple.
      */
 
-    std::tuple<const float&, const float&, const float&> ice_tuple() const
+    std::tuple<const ::std::string&, const float&, const float&, const float&> ice_tuple() const
     {
-        return std::tie(x, y, z);
+        return std::tie(name, x, y, z);
     }
 };
 
@@ -491,8 +492,8 @@ template<>
 struct StreamableTraits<::ATCDisplay::ATCDPosition>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 12;
-    static const bool fixedLength = true;
+    static const int minWireSize = 13;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
@@ -500,7 +501,7 @@ struct StreamReader<::ATCDisplay::ATCDPosition, S>
 {
     static void read(S* istr, ::ATCDisplay::ATCDPosition& v)
     {
-        istr->readAll(v.x, v.y, v.z);
+        istr->readAll(v.name, v.x, v.y, v.z);
     }
 };
 
@@ -508,8 +509,8 @@ template<>
 struct StreamableTraits<::ATCDisplay::ATCDStorm>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 29;
-    static const bool fixedLength = true;
+    static const int minWireSize = 30;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
@@ -525,7 +526,7 @@ template<>
 struct StreamableTraits<::ATCDisplay::ATCDFlight>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 35;
+    static const int minWireSize = 36;
     static const bool fixedLength = false;
 };
 
@@ -542,8 +543,8 @@ template<>
 struct StreamableTraits<::ATCDisplay::ATCDLandStrip>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 24;
-    static const bool fixedLength = true;
+    static const int minWireSize = 25;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
@@ -624,6 +625,7 @@ namespace ATCDisplay
 
 struct ATCDPosition
 {
+    ::std::string name;
     ::Ice::Float x;
     ::Ice::Float y;
     ::Ice::Float z;
@@ -1188,8 +1190,8 @@ template<>
 struct StreamableTraits< ::ATCDisplay::ATCDPosition>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 12;
-    static const bool fixedLength = true;
+    static const int minWireSize = 13;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
@@ -1197,6 +1199,7 @@ struct StreamWriter< ::ATCDisplay::ATCDPosition, S>
 {
     static void write(S* ostr, const ::ATCDisplay::ATCDPosition& v)
     {
+        ostr->write(v.name);
         ostr->write(v.x);
         ostr->write(v.y);
         ostr->write(v.z);
@@ -1208,6 +1211,7 @@ struct StreamReader< ::ATCDisplay::ATCDPosition, S>
 {
     static void read(S* istr, ::ATCDisplay::ATCDPosition& v)
     {
+        istr->read(v.name);
         istr->read(v.x);
         istr->read(v.y);
         istr->read(v.z);
@@ -1218,8 +1222,8 @@ template<>
 struct StreamableTraits< ::ATCDisplay::ATCDStorm>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 29;
-    static const bool fixedLength = true;
+    static const int minWireSize = 30;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
@@ -1254,7 +1258,7 @@ template<>
 struct StreamableTraits< ::ATCDisplay::ATCDFlight>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 35;
+    static const int minWireSize = 36;
     static const bool fixedLength = false;
 };
 
@@ -1296,8 +1300,8 @@ template<>
 struct StreamableTraits< ::ATCDisplay::ATCDLandStrip>
 {
     static const StreamHelperCategory helper = StreamHelperCategoryStruct;
-    static const int minWireSize = 24;
-    static const bool fixedLength = true;
+    static const int minWireSize = 25;
+    static const bool fixedLength = false;
 };
 
 template<typename S>
