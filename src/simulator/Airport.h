@@ -22,17 +22,18 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef AIRPORT_H_
-#define AIRPORT_H_
+#ifndef SIMULATOR_AIRPORT_H__
+#define SIMULATOR_AIRPORT_H__
 
 #include "Singleton.h"
 #include "Flight.h"
+#include "Storm.h"
 #include "ATCDisplay.h"
 #include <math.h>
 
 #include <list>
 
-
+namespace atcsim{
 
 class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface
 {
@@ -44,12 +45,14 @@ public:
 	//void draw();
 
     void NextFocus();
-    
+
 	std::list<Flight*> getFlights() {return flights;};
+	Storm* getStorm() {return storm;};
     Flight* getFocused(){return (*focus);};
     void UpdateSimTime(float inc);
 
 	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
+	virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
 	virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
 	virtual void UpdateSimT(float inc, const Ice::Current&);
 	virtual void NextFocus(const Ice::Current&);
@@ -57,18 +60,27 @@ public:
 	virtual int getMaxFlights(const Ice::Current&);
 	virtual int getPoints(const Ice::Current&);
 
+  void book_landing() {any_landing_ = true;}
+  bool is_booked_landing() { return any_landing_;}
+
 
 private:
-    
+
 	void checkLandings();
 	void checkCollisions();
 	void checkCrashes();
+	void checkFinishStorm();
 	void generate_flight();
+	void generate_storm();
+	void checkFlightsInStorm();
 
 	std::list<Flight*>::iterator removeFlight(std::string id);
 
 	std::list<Flight*> flights;
 	std::list<Flight*>::iterator focus;
+
+	Storm *storm;
+
 
 	struct timeval last_ts;
 	Position final_pos;
@@ -80,7 +92,12 @@ private:
 
     pthread_mutex_t mutex;
 
+	float acum_;
+
+  bool any_landing_;
 
 };
 
-#endif /* AIRPORT_H_ */
+};  // namespace atcsim
+
+#endif  // SIMULATOR_AIRPORT_H__

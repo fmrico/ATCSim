@@ -43,11 +43,13 @@ public:
 	void run();
 
 	static void DrawFlight(ATCDisplay::ATCDFlight flight);
+	static void DrawStorm(ATCDisplay::ATCDStorm storm);
 	static void DrawAirport();
 
 	static ATCDisplay::ATCDFlight getFlightFocused();
 	static const int win_width;
 	static const int win_height;
+	static const int wpt_size;
 
 private:
 

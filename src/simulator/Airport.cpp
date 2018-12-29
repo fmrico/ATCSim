@@ -38,6 +38,8 @@
 
 #include <cstdlib>
 
+namespace atcsim{
+
 Airport::Airport() {
 
 	flights.clear();
@@ -54,8 +56,13 @@ Airport::Airport() {
 	points = INIT_POINTS;
 	max_flights = INIT_MAX_FLIGHTS;
 	SimTimeMod = 1.0;
+	storm = NULL;
 
-	 pthread_mutex_init(&mutex, NULL);
+	pthread_mutex_init(&mutex, NULL);
+
+	acum_ =  0;
+
+  any_landing_ = false;
 }
 
 Airport::~Airport() {
@@ -63,6 +70,54 @@ Airport::~Airport() {
 	for(it = flights.begin(); it!=flights.end(); ++it)
 		delete(*it);
 	flights.clear();
+}
+
+
+void
+Airport::checkFinishStorm()
+{
+	float x, y, z, dist;
+
+	x = storm->getPosition().get_x();
+	y = storm->getPosition().get_y();
+
+	dist = sqrt(x*x+y*y);
+
+	if(sqrt(x*x+y*y)>(AIRPORT_DISTANCE_MAX*1.5))
+	{
+		delete storm;
+		storm=NULL;
+		std::cerr<<"Storm gone"<<std::endl;
+	}
+
+}
+
+void
+Airport::generate_storm()
+{
+
+	float angle, x, y, z, rad, height, bearing, speed;
+
+	//Storm Pos
+	angle = toRadians((float)(rand() % 360 - 180));
+	x = fabs(AIRPORT_DISTANCE_MAX*1.5 * cos(angle)); //Only positive, for GyV3D!!!!!!!!!!!
+	y = AIRPORT_DISTANCE_MAX*1.5 * sin(angle);
+	z = ((float)rand() / RAND_MAX)*(STORM_MIN_ELEVATION-STORM_MIN_ELEVATION)+STORM_MIN_ELEVATION;
+
+	//Storm height
+	height = ((float)rand() / RAND_MAX)*(STORM_MAX_HEIGHT-STORM_MIN_HEIGHT)+STORM_MIN_HEIGHT;
+
+	//Radius
+	rad =  ((float)rand() / RAND_MAX)*(STORM_MAX_RAD-STORM_MIN_RAD)+STORM_MIN_RAD;
+
+	//Bearing
+	bearing = toRadians((float)(rand() % 360 - 180));
+
+	//Speed
+	speed = ((float)rand() / RAND_MAX)*(STORM_MAX_SPEED-STORM_MIN_SPEED)+STORM_MIN_SPEED;
+	Position ipos(x, y, z);
+	storm = new Storm(ipos, bearing, speed, rad, height);
+
 }
 
 void
@@ -142,31 +197,48 @@ Airport::step()
 	ta = tv.tv_sec*1000000 + tv.tv_usec;
 	tb = last_ts.tv_sec*1000000 + last_ts.tv_usec;
 
-	delta_t = ((float)(ta-tb)) /1000000.0;
+	delta_t =((float)(ta-tb)) /1000000.0;
 	last_ts = tv;
-
-	if((ta-crono)>INC_DIFF)
+	acum_ = acum_ + (delta_t * SimTimeMod)*1000000.0;
+//En la siguiente funcion realizar un acumulador que se inicialice a 0 en cada cambio
+//de nivel el cual es tal que acum =0, y va cambiando segun acum = acum +(differencial del tiempo * factor de aceleracion)
+	if(acum_>INC_DIFF)
 	{
 		max_flights += INC_PEN;
 		//std::cerr<<"Increase flights in "<<INC_PEN<<" to "<<max_flights<<std::endl;
-		crono = ta;
+
+	 	acum_ = 0;
 	}
 
 	if(!flights.empty())
 	{
 		for(it = flights.begin(); it!=flights.end(); ++it)
 		{
-			(*it)->update(SimTimeMod * delta_t);
+			(*it)->update(SimTimeMod*delta_t);
 			//std::cerr<<"["<<(*it)->getId()<<"] on the way"<<std::endl;
 			//(*it)->draw();
 		}
 
-	pthread_mutex_lock (&mutex);
-	checkLandings();
-	checkCollisions();
-	checkCrashes();
-	pthread_mutex_unlock (&mutex);
+		pthread_mutex_lock (&mutex);
+		checkLandings();
+		checkCollisions();
+		checkCrashes();
+		pthread_mutex_unlock (&mutex);
 	}
+
+	pthread_mutex_lock (&mutex);
+
+	if(storm==NULL)
+	{
+		generate_storm();
+	}
+	else
+	{
+		storm->update(SimTimeMod * delta_t);
+		checkFlightsInStorm();
+		checkFinishStorm();
+	}
+	pthread_mutex_unlock (&mutex);
 
 	if(flights.size()<max_flights)
 	{
@@ -174,6 +246,9 @@ Airport::step()
 		generate_flight();
 		pthread_mutex_unlock (&mutex);
 	}
+
+
+
 
 }
 
@@ -241,6 +316,38 @@ Airport::checkCollisions()
 	}
 }
 
+void
+Airport::checkFlightsInStorm()
+{
+	if(flights.empty() || storm==NULL ) return;
+
+	std::list<Flight*>::iterator it;
+
+	for(it = flights.begin(); it != flights.end(); ++it)
+	{
+		bool in=false;
+		float xf,yf, zf, xs, ys, zs;
+		float dist;
+
+		xf = (*it)->getPosition().get_x();
+		yf = (*it)->getPosition().get_y();
+		zf = (*it)->getPosition().get_z();
+		xs = storm->getPosition().get_x();
+		ys = storm->getPosition().get_y();
+		zs = storm->getPosition().get_z();
+
+		dist = sqrt((xf-xs)*(xf-xs)+(yf-ys)*(yf-ys));
+
+
+		in = dist < storm->getRadious() && fabs(zs-zf)<storm->getHeight();
+		(*it)->setInStorm(in);
+
+
+		//std::cerr<<"["<<(*it)->getId()<<" = "<<dist<<" < "<<storm->getRadious()<<std::endl;
+
+
+	}
+}
 
 void
 Airport::checkCrashes()
@@ -277,7 +384,7 @@ Airport::checkLandings()
 {
 	if(flights.empty()) return;
 
-	 //pthread_mutex_lock (&mutex);
+	//pthread_mutex_lock (&mutex);
 	std::list<Flight*>::iterator it;
 
 	it = flights.begin();
@@ -291,17 +398,20 @@ Airport::checkLandings()
 		{
 
 			std::cerr<<"Flight "<<(*it)->getId()<<" landed"<<std::endl;
+			points += (int)(*it)->getPoints();
+
 			it = removeFlight((*it)->getId());
 
 			std::cerr<<"*";
 
-			points += (int)(*it)->getPoints();
+      any_landing_ = false;
+
 
 			return;
 		}else
 			it++;
 	}
-	 //pthread_mutex_unlock (&mutex);
+	//pthread_mutex_unlock (&mutex);
 }
 
 void
@@ -312,11 +422,39 @@ Airport::UpdateSimTime(float inc)
 	if(SimTimeMod < 0) SimTimeMod = 0;
 }
 
+ATCDisplay::ATCDStorm
+Airport::getStorm(const Ice::Current&)
+{
+	pthread_mutex_lock (&mutex);
+	ATCDisplay::ATCDStorm ret;
+
+	if(storm==NULL)
+	{
+		ret.valid =false;
+		return ret;
+	}else
+		ret.valid =true;
+
+	ATCDisplay::ATCDPosition p;
+	p.x = storm->getPosition().get_x();
+	p.y = storm->getPosition().get_y();
+	p.z = storm->getPosition().get_z();
+
+	ret.pos = p;
+	ret.bearing = storm->getBearing();
+	ret.height = storm->getHeight();
+	ret.radious = storm->getRadious();
+	ret.speed = storm->getSpeed();
+
+	pthread_mutex_unlock (&mutex);
+	return ret;
+}
+
 ATCDisplay::ATCDFlights
 Airport::getFlights(const Ice::Current&)
 {
 
-	 pthread_mutex_lock (&mutex);
+	pthread_mutex_lock (&mutex);
 
 	//std::cerr<<"["<<flights.size()<<": ";
 	ATCDisplay::ATCDFlights ret;
@@ -339,6 +477,7 @@ Airport::getFlights(const Ice::Current&)
 			Route r= (*itr);
 
 			ATCDisplay::ATCDPosition p;
+			p.name = r.pos.get_name();
 			p.x = r.pos.get_x();
 			p.y = r.pos.get_y();
 			p.z = r.pos.get_z();
@@ -348,6 +487,7 @@ Airport::getFlights(const Ice::Current&)
 
 		//std::cerr<<"C";
 		ATCDisplay::ATCDPosition fp;
+		fp.name = (*it)->getPosition().get_name();
 		fp.x = (*it)->getPosition().get_x();
 		fp.y = (*it)->getPosition().get_y();
 		fp.z = (*it)->getPosition().get_z();
@@ -418,6 +558,8 @@ Airport::getPoints(const Ice::Current&)
 {
 	return points;
 }
+
+};  // namespace atcsim
 
 
 //void

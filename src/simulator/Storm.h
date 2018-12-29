@@ -1,5 +1,5 @@
 /*
- * IceComms.h
+ * Storm.h
  *
  *  Created on: 15/07/2014
  *      Author: paco
@@ -21,34 +21,38 @@
  *  You should have received a copy of the GNU General Public License
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <string>
 
-#ifndef ICECOMMS_H
-#define ICECOMMS_H
+#ifndef TORMENTA_H__
+#define TORMENTA_H__
 
-#include <Ice/Ice.h>
-#include "Singleton.h"
-#include "Airport.h"
+#include "Position.h"
+#include "Common.h"
 
 namespace atcsim{
 
-class IceComms: public Singleton<IceComms>
-{
+class Storm {
 public:
+	Storm(Position _pos, float _bearing, float _speed, float _radious, float _height);
+	virtual ~Storm();
 
-	IceComms();
+	void update(float delta_t);
+	void draw();
 
-	void startServer();
 
-	static const Ice::CommunicatorPtr& getIC() {return ic;};
-	static const Ice::ObjectAdapterPtr& getAdapter() {return adapter;};
+	Position getPosition() { return pos;};
+	float getBearing() { return bearing;};
+	float getSpeed() { return speed;};
+	float getRadious() { return radious;};
+	float getHeight() { return height;};
 
 private:
-	pthread_t tIceServer;
-	static void* iceServerThread(void *obj);
-	static Ice::CommunicatorPtr ic;
-	static Ice::ObjectAdapterPtr adapter;
+	Position pos, last_pos;
+	float bearing;
+	float radious, height;
+	float speed;
 };
 
-};  // namespace atcsim
+};  // namespace atcsim 
 
-#endif
+#endif  //  TORMENTA_H__

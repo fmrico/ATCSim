@@ -13,21 +13,35 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
+<<<<<<< HEAD
 
 set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
 set(Ice_LIBRARY_MACOS "/usr/local/Cellar/ice/3.7.1_1/lib/libIce.dylib")
 
 find_library(Ice_lib Ice)
+=======
+>>>>>>> 100ee3d79203c481c2861992202aac7d92112e8f
 
 find_package(OpenGL REQUIRED)
+
+set(Ice_LIBRARY "/usr/lib/x86_64-linux-gnu/libIce.so")
+set(IceUtil_LIBRARY "/usr/lib/x86_64-linux-gnu/libIceutil.so")
+
+find_package(Ice REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIR})
 
 find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIR}
+<<<<<<< HEAD
   src/lib/
   src/ICE/cpp
   src/simulator
   /usr/local/include # needed by APPLE
+=======
+	src/lib/
+	src/ICE/cpp
+  src/simulator
+>>>>>>> 100ee3d79203c481c2861992202aac7d92112e8f
 )
 find_package(Threads REQUIRED)
 
@@ -36,9 +50,16 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wno-deprecated-declarations")
 if ( CMAKE_COMPILER_IS_GNUCC )
     set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall -Wpedantic -Wextra ")
 endif()
+<<<<<<< HEAD
 
 ## Building ATCSIM #################################################
 
+=======
+
+
+## Building ATCSIM #################################################
+
+>>>>>>> 100ee3d79203c481c2861992202aac7d92112e8f
 set(_link_flags "-lice -liceutils")
 
 set(ATCSIM_SRCS

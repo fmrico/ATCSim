@@ -22,38 +22,33 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SINGLETON_H_
-#define SINGLETON_H_
+#ifndef SRC_LIB_SINGLETON_H_
+#define SRC_LIB_SINGLETON_H_
 
-#include <iostream>
+#include <string>
 
 template< class C >
 class Singleton {
+ public:
+static C* getInstance() {
+  if ( Singleton<C>::uniqueInstance_ == nullptr )
+    Singleton<C>::uniqueInstance_ = new C();
+  return Singleton<C>::uniqueInstance_;
+}
 
-public:
-	static C* getInstance()
-	{
-		if( Singleton<C>::uniqueInstance == NULL )
-			Singleton<C>::uniqueInstance = new C();
+static void removeInstance() {
+  if ( Singleton<C>::uniqueInstance_ != nullptr ) {
+    delete Singleton<C>::uniqueInstance_;
+    Singleton<C>::uniqueInstance_ = nullptr;
+  }
+}
 
-		return Singleton<C>::uniqueInstance;
-	}
-
-	static void removeInstance()
-	{
-		if( Singleton<C>::uniqueInstance != NULL )
-		{
-			delete Singleton<C>::uniqueInstance;
-			Singleton<C>::uniqueInstance = NULL;
-		}
-	}
-
-private:
-	static C *uniqueInstance;
+ private:
+  static C *uniqueInstance_;
 };
 
 // Initialize the static member CurrentInstance
 template< class C >
-C* Singleton<C>::uniqueInstance = NULL;
+C* Singleton<C>::uniqueInstance_ = nullptr;
 
-#endif /* SINGLETON_H_ */
+#endif  // SRC_LIB_SINGLETON_H_
