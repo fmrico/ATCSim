@@ -63,6 +63,9 @@ Airport::Airport() {
 	acum_ =  0;
 
   any_landing_ = false;
+
+	flight_name_ = "Ib";
+	velocidad_inicial_ = 200.0;
 }
 
 Airport::~Airport() {
@@ -70,6 +73,52 @@ Airport::~Airport() {
 	for(it = flights.begin(); it!=flights.end(); ++it)
 		delete(*it);
 	flights.clear();
+}
+
+void Airport::analiza_argmain(int argc, char* argv[]){
+
+  for(int i = 0; i < argc; i++){
+
+    std::string str = argv[i];
+
+    if(i+1 < argc){
+
+			if( str.compare("-f") == 0 )
+        try{
+					if(std::stoi(argv[i+1]) > 0)
+						this->max_flights = std::stoi(argv[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+          std::cerr << "Invalid argument:\""<<argv[i]<<" "<<argv[i+1]<<"\""<<std::endl;
+        }
+
+			if( str.compare("-n") == 0 )
+	    	try{
+	       	this->flight_name_ = argv[i+1];
+	      }
+	      catch (const std::invalid_argument& ia) {
+	        std::cerr << "Invalid argument:\""<<argv[i]<<" "<<argv[i+1]<<"\""<<std::endl;
+	      }
+
+			if( str.compare("-s") == 0 )
+		    try{
+		      this->SimTimeMod = std::stof(argv[i+1]);
+		    }
+		    catch (const std::invalid_argument& ia) {
+		      std::cerr << "Invalid argument:\""<<argv[i]<<" "<<argv[i+1]<<"\""<<std::endl;
+		    }
+
+      if( str.compare("-v") == 0 )
+        try{
+					if(std::stof(argv[i+1]) < CRASH_SPEED_MAX && std::stof(argv[i+1]) > CRASH_SPEED)
+        		this->velocidad_inicial_ = std::stof(argv[i+1]);
+        }
+        catch (const std::invalid_argument& ia) {
+          std::cerr << "Invalid argument:\""<<argv[i]<<" "<<argv[i+1]<<"\""<<std::endl;
+        }
+
+    }
+  }
 }
 
 
@@ -128,7 +177,7 @@ Airport::generate_flight()
 	std::cerr<<"Generate new flight";
 	float angle, x, y, z;
 	float bear, inc;
-	char id[6];
+	std::string id = flight_name_;
 
 	angle = toRadians((float)(rand() % 360 - 180));
 
@@ -141,10 +190,11 @@ Airport::generate_flight()
 
 	pos0.angles(ipos, bear, inc);
 
-	sprintf(id, "IB%4.4d", sec++);
+	id = id + std::to_string(sec++);
+
 	std::cerr<<": ["<<id;
 	Flight *aux;
-	aux = new Flight(id, ipos, bear, 0.0, 200.0);
+	aux = new Flight(id, ipos, bear, 0.0, velocidad_inicial_);
 	flights.push_back(aux);
 
 	if(flights.size() == 1)

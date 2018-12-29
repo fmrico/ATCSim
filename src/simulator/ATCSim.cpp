@@ -32,6 +32,8 @@ int main(int argc, char **argv)
 {
 	atcsim::IceComms::getInstance()->startServer();
 
+	atcsim::Airport::getInstance()->analiza_argmain(argc, argv);
+
 	while(true)
 	{
 		atcsim::Airport::getInstance()->step();
