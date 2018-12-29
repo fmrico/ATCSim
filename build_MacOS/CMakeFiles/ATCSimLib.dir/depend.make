@@ -397,6 +397,7 @@ CMakeFiles/ATCSimLib.dir/src/simulator/IceComms.cpp.o: /usr/local/include/IceUti
 CMakeFiles/ATCSimLib.dir/src/simulator/IceComms.cpp.o: /usr/local/include/IceUtil/UUID.h
 CMakeFiles/ATCSimLib.dir/src/simulator/IceComms.cpp.o: /usr/local/include/IceUtil/UndefSysMacros.h
 
+CMakeFiles/ATCSimLib.dir/src/simulator/Position.cpp.o: ../src/lib/Common.h
 CMakeFiles/ATCSimLib.dir/src/simulator/Position.cpp.o: ../src/simulator/Position.cpp
 CMakeFiles/ATCSimLib.dir/src/simulator/Position.cpp.o: ../src/simulator/Position.h
 

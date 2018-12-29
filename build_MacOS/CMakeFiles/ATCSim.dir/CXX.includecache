@@ -105,6 +105,10 @@ Airport.h
 /Users/Pablo/git/ATCSim/src/simulator/Airport.h
 
 /Users/Pablo/git/ATCSim/src/simulator/Position.h
+Common.h
+/Users/Pablo/git/ATCSim/src/simulator/Common.h
+string
+-
 
 /Users/Pablo/git/ATCSim/src/simulator/Storm.h
 string

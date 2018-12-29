@@ -68,7 +68,7 @@ CMakeFiles/ATCSim_cpplint: ../src/simulator/Position.h
 CMakeFiles/ATCSim_cpplint: ../src/simulator/Storm.cpp
 CMakeFiles/ATCSim_cpplint: ../src/simulator/Storm.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linting ATCSim_cpplint"
-	/usr/local/Cellar/cmake/3.12.4/bin/cmake -E chdir /Users/Pablo/git/ATCSim /usr/bin/python /Users/Pablo/git/ATCSim/cmake/cpplint.py --filter=-runtime/threadsafe_fn, --counting=detailed --extensions=cpp,hpp,h --linelength=250 src/lib/Common.h src/lib/Singleton.h src/simulator/AirController.cpp src/simulator/AirController.h src/simulator/Airport.cpp src/simulator/Airport.h src/simulator/Flight.cpp src/simulator/Flight.h src/simulator/IceComms.cpp src/simulator/IceComms.h src/simulator/Position.cpp src/simulator/Position.h src/simulator/Storm.cpp src/simulator/Storm.h
+	/usr/local/Cellar/cmake/3.12.4/bin/cmake -E chdir /Users/Pablo/git/ATCSim /usr/bin/python /Users/Pablo/git/ATCSim/cmake/cpplint.py --filter=-build/include,-readability/streams,-runtime/threadsafe_fn, --counting=detailed --extensions=cpp,hpp,h --linelength=250 src/lib/Common.h src/lib/Singleton.h src/simulator/AirController.cpp src/simulator/AirController.h src/simulator/Airport.cpp src/simulator/Airport.h src/simulator/Flight.cpp src/simulator/Flight.h src/simulator/IceComms.cpp src/simulator/IceComms.h src/simulator/Position.cpp src/simulator/Position.h src/simulator/Storm.cpp src/simulator/Storm.h
 
 ATCSim_cpplint: CMakeFiles/ATCSim_cpplint
 ATCSim_cpplint: CMakeFiles/ATCSim_cpplint.dir/build.make

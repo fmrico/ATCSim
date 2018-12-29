@@ -83,9 +83,15 @@ GL/glu.h
 -
 GL/gl.h
 -
+iomanip
+-
 iostream
 -
 math.h
+-
+string
+-
+vector
 -
 colours.h
 /Users/Pablo/git/ATCSim/src/CppGUI/colours.h
@@ -105,15 +111,13 @@ vector
 /Users/Pablo/git/ATCSim/src/CppGUI/TextDisplay.cpp
 TextDisplay.h
 /Users/Pablo/git/ATCSim/src/CppGUI/TextDisplay.h
-TextDisplay.h
-/Users/Pablo/git/ATCSim/src/CppGUI/TextDisplay.h
 string
 -
 
 /Users/Pablo/git/ATCSim/src/CppGUI/TextDisplay.h
 stdio.h
 -
-string.h
+string
 -
 OpenGL/gl.h
 -
@@ -140,6 +144,8 @@ Ice/Ice.h
 ATCDisplay.h
 /Users/Pablo/git/ATCSim/src/CppGUI/ATCDisplay.h
 time.h
+-
+string
 -
 
 /Users/Pablo/git/ATCSim/src/ICE/cpp/ATCDisplay.cpp

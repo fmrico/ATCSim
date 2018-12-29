@@ -61,7 +61,7 @@ CMakeFiles/cppgui_cpplint: ../src/CppGUI/colours.h
 CMakeFiles/cppgui_cpplint: ../src/CppGUI/cppgui.cpp
 CMakeFiles/cppgui_cpplint: ../src/lib/Singleton.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/Pablo/git/ATCSim/build_MacOS/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linting cppgui_cpplint"
-	/usr/local/Cellar/cmake/3.12.4/bin/cmake -E chdir /Users/Pablo/git/ATCSim /usr/bin/python /Users/Pablo/git/ATCSim/cmake/cpplint.py --filter=-runtime/threadsafe_fn, --counting=detailed --extensions=cpp,hpp,h --linelength=250 src/CppGUI/GUI.cpp src/CppGUI/GUI.h src/CppGUI/TextDisplay.cpp src/CppGUI/TextDisplay.h src/CppGUI/colours.h src/CppGUI/cppgui.cpp src/lib/Singleton.h
+	/usr/local/Cellar/cmake/3.12.4/bin/cmake -E chdir /Users/Pablo/git/ATCSim /usr/bin/python /Users/Pablo/git/ATCSim/cmake/cpplint.py --filter=-build/include,-readability/streams,-runtime/threadsafe_fn, --counting=detailed --extensions=cpp,hpp,h --linelength=250 src/CppGUI/GUI.cpp src/CppGUI/GUI.h src/CppGUI/TextDisplay.cpp src/CppGUI/TextDisplay.h src/CppGUI/colours.h src/CppGUI/cppgui.cpp src/lib/Singleton.h
 
 cppgui_cpplint: CMakeFiles/cppgui_cpplint
 cppgui_cpplint: CMakeFiles/cppgui_cpplint.dir/build.make

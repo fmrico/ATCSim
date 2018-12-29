@@ -23,7 +23,7 @@
  */
 
 #include <stdio.h>
-#include <string.h>
+#include <string>
 
 #ifdef __APPLE__
 #include <OpenGL/gl.h>
@@ -37,28 +37,25 @@
 
 #include "Singleton.h"
 
-#ifndef TEXTDISPLAY_H_
-#define TEXTDISPLAY_H_
+#ifndef SRC_CPPGUI_TEXTDISPLAY_H_
+#define SRC_CPPGUI_TEXTDISPLAY_H_
 
 class TextDisplay: public Singleton<TextDisplay> {
-public:
-private:
-	int frame;
-	int time;
-	int timebase;
-	char msj[255];
-	char msj1[255];
-	std::string projectName;
-	float fps;
+ private:
+    int frame;
+    int time;
+    int timebase;
+    char msj[255];
+    char msj1[255];
+    std::string projectName;
+    float fps;
 
-public:
-	TextDisplay();
-	~TextDisplay(void);
+ public:
+    TextDisplay();
+    ~TextDisplay(void);
 
-	void calculateFramesPerSecond(void);
-	void displayText(char *text, float x, float y, int width, int height, float R = 1.0f, float G = 1.0f, float B = 0.0f, void* font = GLUT_BITMAP_HELVETICA_18);
-	void displayFPS(float x, float y, int width, int height, float R = 1.0f, float G = 1.0f, float B = 0.0f);
-
+    void calculateFramesPerSecond(void);
+    void displayText(char *text, float x, float y, int width, int height, float R = 1.0f, float G = 1.0f, float B = 0.0f, void* font = GLUT_BITMAP_HELVETICA_18);
+    void displayFPS(float x, float y, int width, int height, float R = 1.0f, float G = 1.0f, float B = 0.0f);
 };
-
-#endif /* TEXTDISPLAY_H_ */
+#endif  // SRC_CPPGUI_TEXTDISPLAY_H_
