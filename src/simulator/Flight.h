@@ -21,11 +21,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <string>
+
 
 #ifndef FLIGHT_H_
 #define FLIGHT_H_
-
+#include <string>
 #include "Position.h"
 #include "Common.h"
 #include <list>
@@ -51,6 +51,7 @@ public:
 	Position getPosition() { return pos;};
 	float getInclination() { return inclination;};
 	float getBearing() { return bearing;};
+	float getInitBearing() { return init_bearing;};
 	float getSpeed() { return speed;};
 	void setSpeed(float tgt_speed) {speed = checkSpeedLimits(tgt_speed);}
 	float getPoints() {return points;};
@@ -64,7 +65,7 @@ public:
 private:
 	std::string id;
 	Position pos, last_pos;
-	float bearing, inclination;
+	float init_bearing, bearing, inclination;
 	float speed, w_speed;
 	std::list<Route> route;
 	bool focused;
