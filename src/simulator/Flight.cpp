@@ -68,6 +68,7 @@ Flight::update(float delta_t)
 {
 	float trans;
 	Position CPpos;
+	float distXY_CP = 1.0f;
 
 	if(routed())
 	{
@@ -95,7 +96,13 @@ Flight::update(float delta_t)
 
 		float goal_speed, diff_speed, acc;
 
-		goal_speed = checkSpeedLimits(route.front().speed);
+		//mantener la velocidad durante el giro
+		if(fabs(new_w) < MAX_FLIFGT_W*0.9){
+			goal_speed = checkSpeedLimits(route.front().speed);
+		}else{
+			goal_speed = speed;
+		}
+		//goal_speed = checkSpeedLimits(route.front().speed);
 		acc = (goal_speed - speed);
 
 		if(fabs(acc)>MAX_ACELERATION) acc = (acc/fabs(acc))*MAX_ACELERATION;
@@ -104,8 +111,26 @@ Flight::update(float delta_t)
 
 		//std::cout<<"["<<id<<"]speed = "<<speed<<"\tnew = "<<goal_speed<<"\t["<<acc<<"]\t"<<std::endl;
 
-	}else
+		//gire antes de llegar al CP
+		if(route.size()>=2){
+			Position CPpos_next;
+			std::list<Route>::iterator it = route.begin();
+			CPpos_next = (++it)->pos;
+
+			float alpha;
+			if(0.0 <= pos.distX_EjeBody(CPpos, CPpos_next)){ //saber si el CPpos_next esta adelante o atras del CPpos
+				alpha = M_PI - pos.get_angle(CPpos, CPpos_next);
+			}else{
+				alpha = pos.get_angle(CPpos, CPpos_next);
+			}
+
+			distXY_CP = fabs(speed / (MAX_FLIFGT_W * tan(alpha/2)));
+		}
+
+
+	}else{
 		inclination = 0.0;
+	}
 
 	last_pos = pos;
 
@@ -119,7 +144,8 @@ Flight::update(float delta_t)
 //	if(pos.distance(last_pos) > pos.distance(CPpos))
 //		route.pop_front();
 
-	if(pos.distance(CPpos)<DIST_POINT)
+	//if(pos.distance(CPpos)<DIST_POINT)
+	if(pos.distance(CPpos)<DIST_POINT || pos.distanceXY(CPpos)<=distXY_CP)
 		route.pop_front();
 
 	if(inStorm)

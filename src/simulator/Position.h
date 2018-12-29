@@ -50,6 +50,9 @@ public:
 	void set_z(float _z) {z = _z;};
 
 	float distance(Position pos);
+	float distanceXY(Position pos);
+	float distX_EjeBody(Position pos1, Position pos2);
+	float get_angle(Position pos1, Position pos2);
 	void angles(Position pos, float &bearing, float &inclination);
 
 private:

@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/CMakeFiles/googletest"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/CMakeFiles/googletest.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/CMakeFiles/googletest-complete.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-install.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-download.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-update.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-patch.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-configure.rule"
+		},
+		{
+			"file" : "/home/alberto/Documentos/git_ATC/ATCSim/build/googletest-prefix/src/googletest-stamp/googletest-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest"
+		],
+		"name" : "googletest"
+	}
+}

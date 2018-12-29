@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -Wno-deprecated-declarations -Wall -Wpedantic -Wextra  -g   CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o  -o ATCSim -Wl,-rpath,/home/alberto/Documentos/git_ATC/ATCSim/build /usr/lib/x86_64-linux-gnu/libIce.so -lpthread libATCSimLib.so /usr/lib/x86_64-linux-gnu/libIce.so 
