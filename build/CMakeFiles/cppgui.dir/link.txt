@@ -1,1 +1,0 @@
-/usr/bin/c++  -g -Wno-deprecated-declarations  -rdynamic CMakeFiles/cppgui.dir/src/CppGUI/GUI.cpp.o CMakeFiles/cppgui.dir/src/CppGUI/TextDisplay.cpp.o CMakeFiles/cppgui.dir/src/ICE/cpp/ATCDisplay.cpp.o CMakeFiles/cppgui.dir/src/CppGUI/cppgui.cpp.o  -o cppgui -lIce -lIceUtil -lpthread -lGL -lGLU -lglut -lXmu -lXi 

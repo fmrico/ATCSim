@@ -1,1 +1,0 @@
-/usr/bin/c++  -g -Wno-deprecated-declarations  -rdynamic CMakeFiles/ATCSim.dir/src/simulator/ATCSim.cpp.o  -o ATCSim -Wl,-rpath,/home/alumnos/pasensio/Escritorio/universidad/programacion/cpp/git/ATCSim/build -lIce -lIceUtil -lpthread libATCSimLib.so -lIce -lIceUtil 
