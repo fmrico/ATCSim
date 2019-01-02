@@ -6,7 +6,7 @@
 
 TEST(FlightTest, id)
 {
-  Flight f1("IB001", Position(0,0,0), 0.0, 0.0, 0.0);
+  atcsim::Flight f1("IB001", atcsim::Position(0,0,0), 0.0, 0.0, 0.0);
   ASSERT_EQ(f1.getId(), "IB001");
 }
 
