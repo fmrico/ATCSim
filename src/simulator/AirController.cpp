@@ -26,7 +26,6 @@
 #include "Airport.h"
 #include "Flight.h"
 #include "Position.h"
-#include "CircuitRoute.h"
 #include <list>
 #include <fstream>
 
@@ -34,94 +33,45 @@ namespace atcsim{
 
 AirController::AirController() {
 	// TODO Auto-generated constructor stub
-    loadNavPoints();
-	loadNavCircuits();
+
 }
 
 AirController::~AirController() {
 	// TODO Auto-generated destructor stub
 }
 
-
-void setFinalApproach(Flight *f){
-    // Final approach
-    Position pos0(3500.0, 0.0, 100.0);
-    Position pos1(1500.0, 0.0, 50.0);
-    Position pos2(200.0, 0.0, 25.0);
-    Position pos3(-750.0, 0.0, 25.0);
-
-    Route r0, r1, r2, r3;
-
-    r0.pos = pos0;
-    r0.speed = 500.0;
-    r1.pos = pos1;
-    r1.speed = 100.0;
-    r2.pos = pos2;
-    r2.speed = 19.0;
-    r3.pos = pos3;
-    r3.speed = 15.0;
-    //-----------------
-
-    f->getRoute()->push_back(r0);
-    f->getRoute()->push_back(r1);
-    f->getRoute()->push_back(r2);
-    f->getRoute()->push_back(r3);
-}
-
-void setRoute(Flight *f, std::string routeId){
-    std::vector<Position> route = getRouteCircuit(routeId);
-
-    std::vector<Position>::iterator it;
-    for(it = route.begin(); it != route.end(); it++){
-        Route r;
-        r.speed = 200;
-        r.pos = (*it);
-        f->getRoute()->push_back(r);
-    }
-}
-
-
-
-
-
-
 void
 AirController::doWork()
 {
-    std::list<Flight*> flights = Airport::getInstance()->getFlights();
-    std::list<Flight*>::iterator it;
+  std::list<Flight*> flights = Airport::getInstance()->getFlights();
+  std::list<Flight*>::iterator it;
 
+  Position pos0(3500.0, 0.0, 100.0);
+  Position pos1(1500.0, 0.0, 50.0);
+  Position pos2(200.0, 0.0, 25.0);
+  Position pos3(-750.0, 0.0, 25.0);
 
+  Route r0, r1, r2, r3;
 
-    // Test
-    Route test0, test1, test2;
-    test0.pos = getRoutePoint("MORAL");
-    test0.speed = 200;
-    test1.pos = getRoutePoint("TOBEK");
-    test1.speed = 150;
-    test2.pos = getRoutePoint("ASBIN");
-    test2.speed = 120;
-    //-----------------
+  r0.pos = pos0;
+  r0.speed = 500.0;
+  r1.pos = pos1;
+  r1.speed = 100.0;
+  r2.pos = pos2;
+  r2.speed = 19.0;
+  r3.pos = pos3;
+  r3.speed = 15.0;
 
-    for(it = flights.begin(); it!=flights.end(); ++it)
+  for(it = flights.begin(); it!=flights.end(); ++it)
+  {
+    if((*it)->getRoute()->empty())
     {
-        if((*it)->getRoute()->empty())
-        {
-            if( ((*it)->getPosition().get_y() < 0) )
-                setRoute((*it), "SouthWest");
-            else
-                setRoute((*it), "SouthEast");
-
-            setFinalApproach((*it));
-    	}
-    }
+      (*it)->getRoute()->push_back(r3);
+      (*it)->getRoute()->push_front(r2);
+      (*it)->getRoute()->push_front(r1);
+      (*it)->getRoute()->push_front(r0);
+		}
+	}
 }
-
-
-
-
-
-
-
 
 }  // namespace atcsim
