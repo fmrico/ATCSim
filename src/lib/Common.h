@@ -110,6 +110,18 @@ const double pi_4 = pi * 0.25;
 const double pi3_4 = pi * 0.75;
 /** constant for an expression used by the gaussian function*/
 const double sqrt2pi = sqrt(2.0*pi);
+/** constant to convert from m/s to knots*/
+const double ms2kt = 1.94384;
+/** constant to convert from knots to m/s*/
+const double kt2ms = 1 / ms2kt;     // 0.51444
+/** constant to convert from meters to feet*/
+const double m2ft = 3.28084;
+/** constant to convert from feet to meters*/
+const double ft2m = 1 / m2ft;       // 0.3048
+/** constant to convert from meters to nautical miles*/
+const double m2nm = 0.000539957;
+/** constant to convert from nautical miles to meters*/
+const double nm2m = 1852;
 ///@}
 
 
