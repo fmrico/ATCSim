@@ -48,8 +48,8 @@ public:
 
 	std::list<Flight*> getFlights() {return flights;};
 	Storm* getStorm() {return storm;};
-    Flight* getFocused(){return (*focus);};
-    void UpdateSimTime(float inc);
+  Flight* getFocused(){return (*focus);};
+  void UpdateSimTime(float inc);
 
 	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
 	virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
@@ -84,13 +84,15 @@ private:
 
 	struct timeval last_ts;
 	Position final_pos;
+	Position final_pos2;
+
 	int sec;
 	int points;
 	int max_flights;
 	long crono;
-    float SimTimeMod;
+  float SimTimeMod;
 
-    pthread_mutex_t mutex;
+  pthread_mutex_t mutex;
 
 	float acum_;
 

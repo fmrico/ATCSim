@@ -51,6 +51,10 @@ Airport::Airport() {
 	final_pos.set_y(LANDING_POS_Y);
 	final_pos.set_z(LANDING_POS_Z);
 
+	final_pos2.set_x(LANDING_POS_XX);
+	final_pos2.set_y(LANDING_POS_YY);
+	final_pos2.set_z(LANDING_POS_ZZ);
+
 	srand (time(NULL));
 	sec = 0;
 	points = INIT_POINTS;
@@ -392,7 +396,8 @@ Airport::checkLandings()
 	while(it != flights.end())
 	{
 
-		if((final_pos.distance((*it)->getPosition()) < LANDING_DIST) &&
+		if(((final_pos.distance((*it)->getPosition()) < LANDING_DIST) ||
+				(final_pos2.distance((*it)->getPosition()) < LANDING_DIST)) &&
 				(toDegrees(normalizePi(fabs((*it)->getBearing() - toRadians(LANDING_BEAR))))<LANDING_BEAR_MAX_ERROR) &&
 				((*it)->getSpeed()<LANDING_SPEED))
 		{
@@ -530,7 +535,22 @@ Airport::getAirportInfo(const Ice::Current&)
 	lstrip0.orientation = 0.0;
 
 	ret.airportLandstrips.push_back(lstrip0);
+
+	ATCDisplay::ATCDLandStrip lstrip1;
+
+	ATCDisplay::ATCDPosition lsp2;
+	lsp2.x = LANDING_POS_XX;
+	lsp2.y = LANDING_POS_YY;
+	lsp2.z = LANDING_POS_ZZ;
+
+	lstrip1.length = LANDING_STRIP_L;
+	lstrip1.width = LANDING_STRIP_W;
+	lstrip1.pos = lsp2;
+	lstrip1.orientation = 0.0;
+
+	ret.airportLandstrips.push_back(lstrip1);
 	ret.radious = AIRPORT_DISTANCE_MAX;
+
 
 	return ret;
 }
