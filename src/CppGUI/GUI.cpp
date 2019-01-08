@@ -400,7 +400,12 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
         float lineSpace = 320;
         float lineVertPos = flight.pos.x - lineSpace;
 
-        ATCDisplay::ATCDPosition nextPos = *route.begin();
+        std::vector<ATCDisplay::ATCDPosition>::iterator auxIt;
+        auxIt = route.begin();
+
+        ATCDisplay::ATCDPosition nextPos;
+        if(auxIt != route.end())
+            nextPos = *auxIt;
 
         std::string textArray[3];
         // Show flight ID
