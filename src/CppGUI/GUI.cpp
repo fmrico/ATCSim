@@ -300,63 +300,32 @@ GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
 	glPushMatrix();
 	glColor3f(0.329412f,0.329412f, 0.329412f);
 
-	//capa horizontal de la tormenta
+  //Dibujar la esfera del centro
 
 	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
-	glutSolidSphere(storm.radious, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z);
-	glTranslatef(storm.pos.x+storm.radious, storm.pos.y, storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x-storm.radious, -storm.pos.y, -storm.pos.z);
-	glTranslatef(storm.pos.x+(storm.radious/sqrt(2.0)), storm.pos.y+(storm.radious/sqrt(2.0)), storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x-(storm.radious/sqrt(2.0)),- storm.pos.y-(storm.radious/sqrt(2.0)), -storm.pos.z);
-	glTranslatef(storm.pos.x, storm.pos.y+ storm.radious ,storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y- storm.radious,- storm.pos.z);
-	glTranslatef(storm.pos.x-(storm.radious/sqrt(2.0)), storm.pos.y+(storm.radious/sqrt(2.0)), storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x+(storm.radious/sqrt(2.0)),- storm.pos.y-(storm.radious/sqrt(2.0)), -storm.pos.z);
-	glTranslatef(storm.pos.x-storm.radious, storm.pos.y, storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x+storm.radious, -storm.pos.y, -storm.pos.z);
-	glTranslatef(storm.pos.x+(storm.radious/sqrt(2.0)), storm.pos.y-(storm.radious/sqrt(2.0)), storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x-(storm.radious/sqrt(2.0)),- storm.pos.y+(storm.radious/sqrt(2.0)), -storm.pos.z);
-	glTranslatef(storm.pos.x-(storm.radious/sqrt(2.0)), storm.pos.y-(storm.radious/sqrt(2.0)), storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x+(storm.radious/sqrt(2.0)),- storm.pos.y+(storm.radious/sqrt(2.0)), -storm.pos.z);
-	glTranslatef(storm.pos.x, storm.pos.y- storm.radious, storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y+ storm.radious,- storm.pos.z);
+	glutSolidSphere(storm.height/2, 30, 30);
+  glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z);
 
-	//capa vertical de la tormenta
+  int i;
+  int j;
+  //K numero de circulos que caben a lo largo del radio de la tormenta
+  int K = storm.radious/(storm.height/2);
+  for(j=1; j<=K; j++){
+    float beta = 0;
+    //N numero de circulos que caben a lo largo del perimetro de la tormenta
+    int N = ((2*pi*storm.radious)-(j*(storm.height/2)))/storm.height;
+    //ALPHA separación en gradianes entre cada circulo
+    float alpha = (360/N)*pi/180;
 
-	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z+storm.radious);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z-storm.radious);
-	glTranslatef(storm.pos.x, storm.pos.y+(storm.radious/sqrt(2.0)), storm.pos.z+(storm.radious/sqrt(2.0)));
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x,- storm.pos.y-(storm.radious/sqrt(2.0)), -storm.pos.z-(storm.radious/sqrt(2.0)));
-	glTranslatef(storm.pos.x, storm.pos.y+ storm.radious ,storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y- storm.radious,- storm.pos.z);
-	glTranslatef(storm.pos.x, storm.pos.y+(storm.radious/sqrt(2.0)), storm.pos.z-(storm.radious/sqrt(2.0)));
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x,- storm.pos.y-(storm.radious/sqrt(2.0)), -storm.pos.z+(storm.radious/sqrt(2.0)));
-	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z-storm.radious);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z+storm.radious);
-	glTranslatef(storm.pos.x, storm.pos.y-(storm.radious/sqrt(2.0)), storm.pos.z+(storm.radious/sqrt(2.0)));
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x,- storm.pos.y+(storm.radious/sqrt(2.0)), -storm.pos.z-(storm.radious/sqrt(2.0)));
-	glTranslatef(storm.pos.x, storm.pos.y-(storm.radious/sqrt(2.0)), storm.pos.z-(storm.radious/sqrt(2.0)));
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x,- storm.pos.y+(storm.radious/sqrt(2.0)), -storm.pos.z+(storm.radious/sqrt(2.0)));
-	glTranslatef(storm.pos.x, storm.pos.y- storm.radious, storm.pos.z);
-	glutSolidSphere(storm.radious/2, 30, 30);
-	glTranslatef(-storm.pos.x, -storm.pos.y+ storm.radious,- storm.pos.z);
-
+    for(i=0; i<=N; i++){
+      float posx = (storm.radious-(j*(storm.height/2)))*cos(beta);
+      float posy = (storm.radious-(j*(storm.height/2)))*sin(beta);
+      glTranslatef(storm.pos.x+posx, storm.pos.y+posy, storm.pos.z);
+      glutSolidSphere(storm.height/2, 30, 30);
+      glTranslatef(-storm.pos.x-posx, -storm.pos.y-posy, -storm.pos.z);
+      beta = beta + alpha;
+    }
+  }
 
 	glPopMatrix();
 }
