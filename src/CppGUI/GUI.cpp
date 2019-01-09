@@ -296,13 +296,40 @@ void
 GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
     // std::cerr<<"("<<storm.pos.x<<", "<<storm.pos.y<<", "<<storm.pos.z<<") ["<<storm.height<<","<<storm.radious<<", "<<storm.speed<<"]"<<std::endl;
 
-    // Podemos pintar muchas esferas, o polígonos
-    glPushMatrix();
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
+	//Podemos pintar muchas esferas, o poligonos
+	glPushMatrix();
+	glColor3f(0.329412f,0.329412f, 0.329412f);
 
-    glutWireTorus(storm.height, storm.radious-storm.height/2.0, 30, 30);
-    glPopMatrix();
+  //Dibujar la esfera del centro
+
+	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
+	glutSolidSphere(storm.height/2, 30, 30);
+  glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z);
+
+  int i;
+  int j;
+  //k numero de circulos que caben a lo largo del radio de la tormenta
+  int k = storm.radious/(storm.height/2);
+  for(j=0; j<k; j++){
+    float beta = 0;
+    //n numero de circulos que caben a lo largo del perimetro de la tormenta
+    //se redondea al entero mayor para que siempre dibuje el ultimo circulo
+    float p = (((2*pi*storm.radious)-(j*(storm.height/2)))/storm.height);
+    int n=ceil(p);
+    //alpha separación en gradianes entre cada circulo
+    float alpha = (360/n)*pi/180;
+
+    for(i=0; i<n; i++){
+      float posx = (storm.radious-(j*(storm.height/2)))*cos(beta);
+      float posy = (storm.radious-(j*(storm.height/2)))*sin(beta);
+      glTranslatef(storm.pos.x+posx, storm.pos.y+posy, storm.pos.z);
+      glutSolidSphere(storm.height/2, 30, 30);
+      glTranslatef(-storm.pos.x-posx, -storm.pos.y-posy, -storm.pos.z);
+      beta = beta + alpha;
+    }
+  }
+
+	glPopMatrix();
 }
 
 void
