@@ -296,6 +296,35 @@ void
 GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
     // std::cerr<<"("<<storm.pos.x<<", "<<storm.pos.y<<", "<<storm.pos.z<<") ["<<storm.height<<","<<storm.radious<<", "<<storm.speed<<"]"<<std::endl;
 
+  GLfloat qaBlackGray[] = {0.8, 0.8, 0.8,1.0};
+	GLfloat qaWhite[] = {0.5, 0.5, 1.0, 0.5};
+	GLfloat qaBlue[] = {0.0, 0.5, 0.8, 1.0}; //blue light Color
+	GLfloat xRotated, yRotated, zRotated;
+
+	GLfloat qaAmbientLight[]    = {0.2, 0.2, 0.2, 0.2};
+	GLfloat qaDiffuseLight[]    = {0.8, 0.8, 0.8, 0.2};
+	GLfloat qaSpecularLight[]    = {0.5, 0.5, 0.5, 0.2};
+	GLfloat emitLight[] = {0.9, 0.9, 0.9, 0.01};
+	GLfloat Noemit[] = {0.0, 0.0, 0.0, 1.0};
+	 // Light source position
+
+	GLfloat qaLightPosition[]    = {20000, 20000, 7000, 0.5};
+	// Enable lighting
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+	 // Set lighting intensity and color
+	glLightfv(GL_LIGHT0, GL_AMBIENT, qaAmbientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, qaDiffuseLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, qaSpecularLight);
+
+	// Set the light position
+	glLightfv(GL_LIGHT0, GL_POSITION, qaLightPosition);
+	xRotated = yRotated = zRotated = 0.0;
+	zRotated += 0.02;
+	glPushMatrix();
+	glColor3f(0.329412f,0.329412f, 0.329412f);
+
 	//Podemos pintar muchas esferas, o poligonos
 	glPushMatrix();
 	glColor3f(0.329412f,0.329412f, 0.329412f);
@@ -328,6 +357,17 @@ GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
       beta = beta + alpha;
     }
   }
+
+  glPopMatrix();
+
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, qaBlackGray);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, qaBlue);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, qaWhite);
+
+	    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 70);
+			glColorMaterial ( GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE ) ;
+
+	glDisable(GL_LIGHTING);
 
 	glPopMatrix();
 }
