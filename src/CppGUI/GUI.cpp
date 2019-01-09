@@ -308,16 +308,18 @@ GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
 
   int i;
   int j;
-  //K numero de circulos que caben a lo largo del radio de la tormenta
-  int K = storm.radious/(storm.height/2);
-  for(j=1; j<=K; j++){
+  //k numero de circulos que caben a lo largo del radio de la tormenta
+  int k = storm.radious/(storm.height/2);
+  for(j=0; j<k; j++){
     float beta = 0;
-    //N numero de circulos que caben a lo largo del perimetro de la tormenta
-    int N = ((2*pi*storm.radious)-(j*(storm.height/2)))/storm.height;
-    //ALPHA separación en gradianes entre cada circulo
-    float alpha = (360/N)*pi/180;
+    //n numero de circulos que caben a lo largo del perimetro de la tormenta
+    //se redondea al entero mayor para que siempre dibuje el ultimo circulo
+    float p = (((2*pi*storm.radious)-(j*(storm.height/2)))/storm.height);
+    int n=ceil(p);
+    //alpha separación en gradianes entre cada circulo
+    float alpha = (360/n)*pi/180;
 
-    for(i=0; i<=N; i++){
+    for(i=0; i<n; i++){
       float posx = (storm.radious-(j*(storm.height/2)))*cos(beta);
       float posy = (storm.radious-(j*(storm.height/2)))*sin(beta);
       glTranslatef(storm.pos.x+posx, storm.pos.y+posy, storm.pos.z);
