@@ -2,7 +2,9 @@
 #include "gtest/gtest.h"
 #include "Position.h"
 
+
 using namespace atcsim;
+
 
 TEST(PositionTest, empty_constructor)
 {
@@ -93,6 +95,6 @@ TEST(PositionTest, zero_angles)
 int main(int argc, char* argv[])
 {
 	::testing::InitGoogleTest(&argc, argv);
-	
+
 	return RUN_ALL_TESTS();
 }
