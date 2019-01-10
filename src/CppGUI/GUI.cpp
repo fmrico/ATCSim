@@ -72,8 +72,21 @@ const float GUI::field_of_view_angle = 60;
 const float GUI::x_near = 1.0f;
 const float GUI::x_far = 40000.0f;
 
+bool isUnitsSI = false;
+
 ATCDisplay::AirportInterfacePrx GUI::airportsim;
 ATCDisplay::ATCDAirport GUI::airportinfo;
+
+float CheckBearing(float bearing){
+    if(!isUnitsSI){
+        bearing = (180 - bearing);
+        if(bearing < 0)
+            bearing += 360;
+        else if(bearing > 360)
+            bearing -= 360;
+    }
+    return bearing;
+}
 
 GUI::GUI(int argc, char *argv[]) {
     glutInit(&argc, argv);
@@ -168,6 +181,10 @@ GUI::keyboard(unsigned char key, int mousePositionX, int mousePositionY) {
 
     case 'd':
         dlat -= desp;
+        break;
+
+    case 'u':
+        isUnitsSI = !isUnitsSI;
         break;
 
     case '+':
@@ -279,13 +296,40 @@ void
 GUI::DrawStorm(ATCDisplay::ATCDStorm storm) {
     // std::cerr<<"("<<storm.pos.x<<", "<<storm.pos.y<<", "<<storm.pos.z<<") ["<<storm.height<<","<<storm.radious<<", "<<storm.speed<<"]"<<std::endl;
 
-    // Podemos pintar muchas esferas, o polígonos
-    glPushMatrix();
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
+	//Podemos pintar muchas esferas, o poligonos
+	glPushMatrix();
+	glColor3f(0.329412f,0.329412f, 0.329412f);
 
-    glutWireTorus(storm.height, storm.radious-storm.height/2.0, 30, 30);
-    glPopMatrix();
+  //Dibujar la esfera del centro
+
+	glTranslatef(storm.pos.x, storm.pos.y, storm.pos.z);
+	glutSolidSphere(storm.height/2, 30, 30);
+  glTranslatef(-storm.pos.x, -storm.pos.y, -storm.pos.z);
+
+  int i;
+  int j;
+  //k numero de circulos que caben a lo largo del radio de la tormenta
+  int k = storm.radious/(storm.height/2);
+  for(j=0; j<k; j++){
+    float beta = 0;
+    //n numero de circulos que caben a lo largo del perimetro de la tormenta
+    //se redondea al entero mayor para que siempre dibuje el ultimo circulo
+    float p = (((2*pi*storm.radious)-(j*(storm.height/2)))/storm.height);
+    int n=ceil(p);
+    //alpha separación en gradianes entre cada circulo
+    float alpha = (360/n)*pi/180;
+
+    for(i=0; i<n; i++){
+      float posx = (storm.radious-(j*(storm.height/2)))*cos(beta);
+      float posy = (storm.radious-(j*(storm.height/2)))*sin(beta);
+      glTranslatef(storm.pos.x+posx, storm.pos.y+posy, storm.pos.z);
+      glutSolidSphere(storm.height/2, 30, 30);
+      glTranslatef(-storm.pos.x-posx, -storm.pos.y-posy, -storm.pos.z);
+      beta = beta + alpha;
+    }
+  }
+
+	glPopMatrix();
 }
 
 void
@@ -373,8 +417,78 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
     gluSphere(quadratic, COLLISION_DISTANCE/2.0f, 32, 32);
     glPopMatrix();
 
+    ATCDisplay::ATCDRoute route = flight.flightRoute;
+
+    // Only show labels if zenital camera
+    if( (cam_alpha > M_PI-0.1 && cam_alpha < M_PI+0.1) &&
+        (cam_beta > -M_PI-0.1 && cam_beta < -M_PI+0.1) ){
+
+        // Draw information label
+        float lineSpace = 320;
+        float lineVertPos = flight.pos.x - lineSpace;
+
+        std::vector<ATCDisplay::ATCDPosition>::iterator auxIt;
+        auxIt = route.begin();
+
+        ATCDisplay::ATCDPosition nextPos;
+        if(auxIt != route.end())
+            nextPos = *auxIt;
+
+        std::string textArray[3];
+        // Show flight ID
+        textArray[0] = flight.id;
+
+        // Show altitude in hundred of feet
+        std::string flightAltShow = std::to_string((int)(flight.pos.z * (isUnitsSI ? 1.0 : m2ft) * 0.01));
+        for(int i=flightAltShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[1] += "0";
+        textArray[1] += flightAltShow;
+
+        // Show Vertical Speed trend
+        if(toDegrees(flight.inclination) < -1.0)
+            textArray[1] += "-";    // descending
+        else if(toDegrees(flight.inclination) > 1.0)
+            textArray[1] += "+";    // ascending
+        else
+            textArray[1] += "=";    // level flight
+
+        // Show next authorized altitude
+        textArray[1] += " ";
+        std::string flightAuthAltShow = std::to_string((int)(nextPos.z * (isUnitsSI ? 1.0 : m2ft) * 0.01));
+        for(int i=flightAuthAltShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[1] += "0";
+        textArray[1] += flightAuthAltShow;
+
+        // Show speed in knots
+        std::string flightSpeedShow = std::to_string((int)(flight.speed * (isUnitsSI ? 1.0 : ms2kt)));
+        for(int i=flightSpeedShow.length(); i<3; i++) // Fill with left zeroes
+            textArray[2] += "0";
+        textArray[2] += flightSpeedShow;
+
+        // Show next authorized waypoint or heading
+        textArray[2] += " ";
+        if(nextPos.name != ""){
+            textArray[2] += nextPos.name;
+        }else{
+            std::string bearing = std::to_string((int)CheckBearing(toDegrees(flight.bearing)));
+            for(int i=bearing.length(); i<3; i++) // Fill with left zeroes
+                textArray[2] += "0";
+            textArray[2] += bearing;
+        }
+
+        for(int i=0; i<sizeof(textArray)/sizeof(textArray[0]); i++){
+            glRasterPos3f(lineVertPos, flight.pos.y + COLLISION_DISTANCE, flight.pos.z);
+            for (std::string::iterator it = textArray[i].begin(); it != textArray[i].end(); it++) {
+                char c = *it;
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, c);
+            }
+            lineVertPos += lineSpace;
+        }
+    }//if camera
+
+
     if (flight.focused) {
-        ATCDisplay::ATCDRoute route = flight.flightRoute;
+        //ATCDisplay::ATCDRoute route = flight.flightRoute;
 
         std::vector<ATCDisplay::ATCDPosition>::iterator it;
         it = route.begin();
@@ -385,13 +499,17 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
         snprintf(pos_str, sizeof(pos_str), "Points: %5.5lf ", flight.points);
         textDisplay->displayText(pos_str, 15, 95, GUI::win_width, GUI::win_height, YELLOW, GLUT_BITMAP_HELVETICA_12);
 
-        snprintf(pos_str, sizeof(pos_str), "Position: (%lf, %lf, %lf) m", flight.pos.x, flight.pos.y, flight.pos.z);
+        snprintf(pos_str, sizeof(pos_str), "Position: (%.2lf, %.2lf, %.0lf) %s",
+            flight.pos.x * (isUnitsSI ? 1.0 : m2nm),
+            flight.pos.y * (isUnitsSI ? 1.0 : m2nm),
+            flight.pos.z * (isUnitsSI ? 1.0 : m2ft),
+            (isUnitsSI ? "m" : "nm / ft"));
         textDisplay->displayText(pos_str, 15, 115, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
-        snprintf(pos_str, sizeof(pos_str), "Bearing: %lf deg", toDegrees(flight.bearing));
+        snprintf(pos_str, sizeof(pos_str), "Bearing: %.2lf deg", CheckBearing(toDegrees(flight.bearing)));
         textDisplay->displayText(pos_str, 15, 135, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
-        snprintf(pos_str, sizeof(pos_str), "Inclination: %lf deg", toDegrees(flight.inclination));
+        snprintf(pos_str, sizeof(pos_str), "Inclination: %.2lf deg", toDegrees(flight.inclination));
         textDisplay->displayText(pos_str, 15, 155, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
-        snprintf(pos_str, sizeof(pos_str), "Speed: %lf m/sec", flight.speed);
+        snprintf(pos_str, sizeof(pos_str), "Speed: %.2lf %s", flight.speed * (isUnitsSI ? 1.0 : ms2kt), (isUnitsSI ? "m/s" : "kt"));
         textDisplay->displayText(pos_str, 15, 175, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
 
 
@@ -462,13 +580,18 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
                 snprintf(charAux, sizeof(charAux), z_str.c_str());
 
                 if ((*it).name == "") {
-                    snprintf(pos_str, sizeof(pos_str), "Position: (%.2lf, %.2lf, %.2lf) m", (*it).x, (*it).y, (*it).z);
+                    snprintf(pos_str, sizeof(pos_str), "Position: (%.2lf, %.2lf, %.0lf) %s",
+                    (*it).x * (isUnitsSI ? 1.0 : m2nm),
+                    (*it).y * (isUnitsSI ? 1.0 : m2nm),
+                    (*it).z * (isUnitsSI ? 1.0 : m2ft),
+                    (isUnitsSI ? "m" : "nm / ft"));
                 } else {
                     std::string nameStr = (*it).name;
                     char* charStr = new char[nameStr.length()+1];
                     snprintf(charStr, sizeof(charStr), nameStr.c_str());
                     // snprintf(pos_str, 255, "Wpt: %s (%.2lf, %.2lf) m @ %.2f m", charStr, (*it).wpt.lat, (*it).wpt.lon, (*it).alt);
-                    snprintf(pos_str, sizeof(pos_str), "Waypoint: %s @ %.2f m", charStr, (*it).z);
+                    snprintf(pos_str, sizeof(pos_str), "Waypoint: %s @ %.0f %s",
+                        charStr, (*it).z * (isUnitsSI ? 1.0 : m2ft),(isUnitsSI ? "m" : "ft"));
                 }
                 textDisplay->displayText(pos_str, 25, 250+(20*c), GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
                 c++;
@@ -514,16 +637,17 @@ GUI::DrawAirport() {
     snprintf(points_txt, sizeof(points_txt), "Time speed: x%3.1f", airportsim->getSimT());
     textDisplay->displayText(points_txt, 10, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     char help_txt[255];
-    snprintf(help_txt, sizeof(help_txt), "Press Mouse3 and move mouse to change orientation");
+    snprintf(help_txt, sizeof(help_txt), "Press Mouse2 and move mouse to change orientation");
     textDisplay->displayText(help_txt, GUI::win_width-310, GUI::win_height-5, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+
     snprintf(help_txt, sizeof(help_txt), "<Tab> Change flight info");
-    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-200, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-220, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     snprintf(help_txt, sizeof(help_txt), "<w>Move camera forward");
-    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-180, GUI::win_width,
-GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-200, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+    snprintf(help_txt, sizeof(help_txt), "<u> Change units");
+    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-180, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     snprintf(help_txt, sizeof(help_txt), "<+>Speed up time");
-    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-160, GUI::win_width,
-GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
+    textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-160, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     snprintf(help_txt, sizeof(help_txt), "<->Slow down time");
     textDisplay->displayText(help_txt, GUI::win_width-160, GUI::win_height-140, GUI::win_width, GUI::win_height, WHITE, GLUT_BITMAP_HELVETICA_12);
     snprintf(help_txt, sizeof(help_txt), "<s>Move camera backward");
