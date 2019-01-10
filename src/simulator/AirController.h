@@ -22,21 +22,21 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef AIRCONTROLLER_H_
-#define AIRCONTROLLER_H_
+#ifndef SRC_SIMULATOR_AIRCONTROLLER_H_
+#define SRC_SIMULATOR_AIRCONTROLLER_H_
 
 #include "Singleton.h"
 
 namespace atcsim{
 
 class AirController: public Singleton<AirController> {
-public:
-	AirController();
-	virtual ~AirController();
+ public:
+  AirController();
+  virtual ~AirController();
 
-	void doWork();
+  void doWork();
 };
 
 };  // namespace atcsim
 
-#endif /* AIRCONTROLLER_H_ */
+#endif  // SRC_SIMULATOR_AIRCONTROLLER_H_

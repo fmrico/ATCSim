@@ -22,8 +22,8 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SIMULATOR_AIRPORT_H__
-#define SIMULATOR_AIRPORT_H__
+#ifndef SRC_SIMULATOR_AIRPORT_H_
+#define SRC_SIMULATOR_AIRPORT_H_
 
 #include "Singleton.h"
 #include "Flight.h"
@@ -33,71 +33,68 @@
 
 #include <list>
 
-namespace atcsim{
+namespace atcsim {
 
-class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface
-{
-public:
-	Airport();
-	virtual ~Airport();
+class Airport: public Singleton<Airport>, public ATCDisplay::AirportInterface {
+ public:
+  Airport();
+  virtual ~Airport();
 
-	void step();
-	//void draw();
+  void step();
+  // void draw();
 
-    void NextFocus();
+  void NextFocus();
 
-	std::list<Flight*> getFlights() {return flights;};
-	Storm* getStorm() {return storm;};
-    Flight* getFocused(){return (*focus);};
-    void UpdateSimTime(float inc);
+  std::list<Flight*> getFlights() {return flights;}
+  Storm* getStorm() {return storm;}
+  Flight* getFocused() {return (*focus);}
+  void UpdateSimTime(float inc)
 
-	virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
-	virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
-	virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
-	virtual void UpdateSimT(float inc, const Ice::Current&);
-	virtual void NextFocus(const Ice::Current&);
-	virtual float getSimT(const Ice::Current&);
-	virtual int getMaxFlights(const Ice::Current&);
-	virtual int getPoints(const Ice::Current&);
+  virtual ATCDisplay::ATCDFlights getFlights(const Ice::Current&);
+  virtual ATCDisplay::ATCDStorm getStorm(const Ice::Current&);
+  virtual ATCDisplay::ATCDAirport getAirportInfo(const Ice::Current&);
+  virtual void UpdateSimT(float inc, const Ice::Current&);
+  virtual void NextFocus(const Ice::Current&);
+  virtual float getSimT(const Ice::Current&);
+  virtual int getMaxFlights(const Ice::Current&);
+  virtual int getPoints(const Ice::Current&);
 
   void book_landing() {any_landing_ = true;}
   bool is_booked_landing() { return any_landing_;}
 
 
-private:
+ private:
+  void checkLandings();
+  void checkCollisions();
+  void checkCrashes();
+  void checkFinishStorm();
+  void generate_flight();
+  void generate_storm();
+  void checkFlightsInStorm();
 
-	void checkLandings();
-	void checkCollisions();
-	void checkCrashes();
-	void checkFinishStorm();
-	void generate_flight();
-	void generate_storm();
-	void checkFlightsInStorm();
+  std::list<Flight*>::iterator removeFlight(std::string id);
 
-	std::list<Flight*>::iterator removeFlight(std::string id);
+  std::list<Flight*> flights;
+  std::list<Flight*>::iterator focus;
 
-	std::list<Flight*> flights;
-	std::list<Flight*>::iterator focus;
-
-	Storm *storm;
+  Storm *storm;
 
 
-	struct timeval last_ts;
-	Position final_pos;
-	int sec;
-	int points;
-	int max_flights;
-	long crono;
-    float SimTimeMod;
+  struct timeval last_ts;
+  Position final_pos;
+  int sec;
+  int points;
+  int max_flights;
+  int64 crono;
+  int64 SimTimeMod;
 
-    pthread_mutex_t mutex;
+  pthread_mutex_t mutex;
 
-	float acum_;
+  float acum_;
 
   bool any_landing_;
-
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
-#endif  // SIMULATOR_AIRPORT_H__
+#endif  // SRC_SIMULATOR_AIRPORT_H_

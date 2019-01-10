@@ -29,20 +29,16 @@
 #include <list>
 #include <fstream>
 
-namespace atcsim{
+namespace atcsim {
 
 AirController::AirController() {
-	// TODO Auto-generated constructor stub
-
+  // TODO(my_username): Auto-generated constructor stub
 }
-
 AirController::~AirController() {
-	// TODO Auto-generated destructor stub
+  // TODO(my_username): Auto-generated destructor stub
 }
-
 void
-AirController::doWork()
-{
+AirController::doWork() {
   std::list<Flight*> flights = Airport::getInstance()->getFlights();
   std::list<Flight*>::iterator it;
 
@@ -62,16 +58,12 @@ AirController::doWork()
   r3.pos = pos3;
   r3.speed = 10.0;
 
-  for(it = flights.begin(); it!=flights.end(); ++it)
-  {
-    if((*it)->getRoute()->empty())
-    {
+for(it = flights.begin(); it != flights.end(); ++it) {
+  if ((*it)->getRoute()->empty()) {
       (*it)->getRoute()->push_back(r3);
       (*it)->getRoute()->push_front(r2);
       (*it)->getRoute()->push_front(r1);
-      (*it)->getRoute()->push_front(r0);
-		}
-	}
+      (*it)->getRoute()->push_front(r0);}
+  }
 }
-
 }  // namespace atcsim
