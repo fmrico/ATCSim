@@ -158,7 +158,7 @@ Airport::NextFocus(const Ice::Current&)
 void
 Airport::NextFocus()
 {
-	//if(flights.empty()) return;
+	if(flights.empty()) return;
 
 	if(flights.size() == 1)
 	{
