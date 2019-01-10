@@ -1,0 +1,11 @@
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/rebuild_cache.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/Position_test.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/ATCSim.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/edit_cache.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/Flight_test.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/ATCSimLib.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/cppgui.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/ATCSim_cpplint.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/test.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/cppgui_cpplint.dir
+/home/alumnos/rsousa/Escritorio/issue/ATCSim/ATCSim/build/CMakeFiles/googletest.dir

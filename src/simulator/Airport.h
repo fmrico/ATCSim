@@ -44,6 +44,8 @@ public:
 	void step();
 	//void draw();
 
+	void analiza_argmain(int argc, char* argv[]);
+
     void NextFocus();
 
 	std::list<Flight*> getFlights() {return flights;};
@@ -95,6 +97,9 @@ private:
 	float acum_;
 
   bool any_landing_;
+
+	float velocidad_inicial_;
+	std::string flight_name_;
 
 };
 
