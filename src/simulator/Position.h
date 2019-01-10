@@ -25,6 +25,7 @@
 #ifndef POSITION_H_
 #define POSITION_H_
 
+#include "Common.h"
 #include <string>
 
 namespace atcsim{
@@ -32,7 +33,9 @@ namespace atcsim{
 class Position {
 public:
 	Position();
+	Position(float _x, float _y);
 	Position(float _x, float _y, float _z);
+	Position(std::string _name, float _x, float _y);
 	Position(std::string _name, float _x, float _y, float _z);
 	virtual ~Position();
 
@@ -47,6 +50,9 @@ public:
 	void set_z(float _z) {z = _z;};
 
 	float distance(Position pos);
+	float distanceXY(Position pos);
+	float distX_EjeBody(Position pos1, Position pos2);
+	float get_angle(Position pos1, Position pos2);
 	void angles(Position pos, float &bearing, float &inclination);
 
 private:

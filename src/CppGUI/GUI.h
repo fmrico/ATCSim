@@ -22,8 +22,8 @@
  *  along with ATCSim.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_H_
-#define GUI_H_
+#ifndef SRC_CPPGUI_GUI_H_
+#define SRC_CPPGUI_GUI_H_
 
 #define KEY_ESCAPE 27
 
@@ -34,44 +34,40 @@
 #include <vector>
 
 class GUI {
-public:
-	GUI(int argc, char *argv[]);
-	virtual ~GUI();
+ public:
+    GUI(int argc, char *argv[]);
+    virtual ~GUI();
 
+    void init(ATCDisplay::AirportInterfacePrx as);
+    void run();
 
-	void init(ATCDisplay::AirportInterfacePrx as);
-	void run();
+    static void DrawFlight(ATCDisplay::ATCDFlight flight);
+    static void DrawStorm(ATCDisplay::ATCDStorm storm);
+    static void DrawAirport();
 
-	static void DrawFlight(ATCDisplay::ATCDFlight flight);
-	static void DrawStorm(ATCDisplay::ATCDStorm storm);
-	static void DrawAirport();
+    static ATCDisplay::ATCDFlight getFlightFocused();
+    static const int win_width;
+    static const int win_height;
+    static const int wpt_size;
 
-	static ATCDisplay::ATCDFlight getFlightFocused();
-	static const int win_width;
-	static const int win_height;
-	static const int wpt_size;
+ private:
+    static const float field_of_view_angle;
+    static const float x_near;
+    static const float x_far;
 
-private:
+    static void render();
+    static void step();
 
-	static const float field_of_view_angle;
-	static const float x_near;
-	static const float x_far;
+    static void keyboard(unsigned char key, int mousePositionX, int mousePositionY);
+    static void processMouseFunc(int button, int state, int x, int y);
+    static void processMouseMotion(int x, int y);
+    static int mousebutton;
+    static int mousestate;
+    static int mousex, mousey;
+    static float cam_alpha, cam_beta;
+    static float cam_x, cam_y, cam_z;
 
-	static void render();
-	static void step();
-
-	static void keyboard(unsigned char key, int mousePositionX, int mousePositionY);
-	static void processMouseFunc(int button, int state, int x, int y);
-	static void processMouseMotion(int x, int y);
-	static int mousebutton;
-	static int mousestate;
-	static int mousex, mousey;
-	static float cam_alpha, cam_beta;
-	static float cam_x, cam_y, cam_z;
-
-	static ATCDisplay::AirportInterfacePrx airportsim;
-	static ATCDisplay::ATCDAirport airportinfo;
-
+    static ATCDisplay::AirportInterfacePrx airportsim;
+    static ATCDisplay::ATCDAirport airportinfo;
 };
-
-#endif /* GUI_H_ */
+#endif  // SRC_CPPGUI_GUI_H_
