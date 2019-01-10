@@ -29,49 +29,85 @@
 #include <list>
 #include <fstream>
 
-namespace atcsim{
+namespace atcsim {
 
-AirController::AirController() {
-	// TODO Auto-generated constructor stub
+	AirController::AirController() {
+		// TODO Auto-generated constructor stub
 
-}
+	}
 
-AirController::~AirController() {
-	// TODO Auto-generated destructor stub
-}
+	AirController::~AirController() {
+		// TODO Auto-generated destructor stub
+	}
 
-void
-AirController::doWork()
-{
-  std::list<Flight*> flights = Airport::getInstance()->getFlights();
-  std::list<Flight*>::iterator it;
+	void crearRuta(Flight *fl)
+	{
+		int x = fl->getPosition().get_x();
+		int y = fl->getPosition().get_y();
+		int z = fl->getPosition().get_z();
 
-  Position pos0(3500.0, 0.0, 100.0);
-  Position pos1(1500.0, 0.0, 50.0);
-  Position pos2(200.0, 0.0, 25.0);
-  Position pos3(-750.0, 0.0, 25.0);
+		Route ruta[4];
 
-  Route r0, r1, r2, r3;
+		int este_oeste;
+		if (y > 0) este_oeste = -1;
+		else este_oeste = 1;
 
-  r0.pos = pos0;
-  r0.speed = 500.0;
-  r1.pos = pos1;
-  r1.speed = 100.0;
-  r2.pos = pos2;
-  r2.speed = 19.0;
-  r3.pos = pos3;
-  r3.speed = 15.0;
-
-  for(it = flights.begin(); it!=flights.end(); ++it)
-  {
-    if((*it)->getRoute()->empty())
-    {
-      (*it)->getRoute()->push_back(r3);
-      (*it)->getRoute()->push_front(r2);
-      (*it)->getRoute()->push_front(r1);
-      (*it)->getRoute()->push_front(r0);
+		Position p0((x + 200), (y + (200 * este_oeste)), z);
+		Position p1(x, (y + (400 * este_oeste)), z);
+		Position p2((x - 200), (y + (200 * este_oeste)), z);
+		Position p3(x, y, z);
+		Position posiciones[4] = { p0,p1,p2,p3 };
+		for (int i = 0; i < 4; i++)
+		{
+			ruta[i].pos = posiciones[i];
+			ruta[i].speed = 20;
+			fl->getRoute()->push_back(ruta[i]);
 		}
 	}
-}
 
+
+	void
+	AirController::doWork()
+	{
+		std::list<Flight*> flights = Airport::getInstance()->getFlights();
+		std::list<Flight*>::iterator it;
+
+		Position pos_aterrizaje_0(3500.0, 0.0, 100.0);
+		Position pos_aterrizaje_1(1500.0, 0.0, 50.0);
+		Position pos_aterrizaje_2(200.0, 0.0, 25.0);
+		Position pos_aterrizaje_3(-750.0, 0.0, 25.0);
+
+		Route ra0, ra1, ra2, ra3;
+
+		ra0.pos = pos_aterrizaje_0;
+		ra0.speed = 500.0;
+		ra1.pos = pos_aterrizaje_1;
+		ra1.speed = 200.0;
+		ra2.pos = pos_aterrizaje_2;
+		ra2.speed = 50.0;
+		ra3.pos = pos_aterrizaje_3;
+		ra3.speed = 15.0;
+
+
+		if (!Airport::getInstance()->is_booked_landing()) {
+			Flight* primero = flights.front();
+			primero->getRoute()->clear();     //limpia la ruta de vuelo
+		}
+		for (it = flights.begin(); it != flights.end(); ++it)
+		{
+			if ((*it)->getRoute()->empty())
+			{
+				if (Airport::getInstance()->is_booked_landing()) {
+					crearRuta((*it));
+				}
+				else {
+					Airport::getInstance()->book_landing();
+					(*it)->getRoute()->push_back(ra0);
+					(*it)->getRoute()->push_back(ra1);
+					(*it)->getRoute()->push_back(ra2);
+					(*it)->getRoute()->push_back(ra3);
+				}
+			}
+		}
+	}
 }  // namespace atcsim
