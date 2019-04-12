@@ -221,16 +221,16 @@ inline float normalDist(float x, float mu, float st) {
 }
 
 
-// you can write i.e.  3.5km is equal to 3500 m
-constexpr long double operator"" km ( long double km )
+// you can write i.e.  3.5_km is equal to 3500 m
+constexpr long double operator"" _km ( long double _km )
 {
-    return km*1000;
+    return _km*1000;
 }
 
-// you can write i.e.  3.5mi is equal to 56327 m
-constexpr long double operator"" mi ( long double mi )
+// you can write i.e.  3.5_mi is equal to 56327 m
+constexpr long double operator"" _mi ( long double _mi )
 {
-    return mi*1609.34;
+    return _mi*1609.34;
 }
 
 
