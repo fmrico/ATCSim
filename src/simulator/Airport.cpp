@@ -280,8 +280,8 @@ Airport::removeFlight(std::string id)
 		it++;
 	}
 	return flights.begin();
-
 }
+
 
 void
 Airport::checkCollisions()
@@ -289,8 +289,6 @@ Airport::checkCollisions()
 	if(flights.empty()) return;
 
 	std::list<Flight*>::iterator i,j;
-	bool removed = false;
-
 
 	i =  flights.begin();
 
