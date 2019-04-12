@@ -38,7 +38,6 @@
 
 int main(int argc, char* argv[]) {
     int status = 0;
-    int count = 0;
     Ice::CommunicatorPtr ic;
     GUI gui(argc, argv);
 
