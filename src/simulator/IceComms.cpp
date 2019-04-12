@@ -101,4 +101,4 @@ IceComms::startServer()
 	pthread_create(&tIceServer, NULL, iceServerThread, NULL);
 }
 
-};  // namespace atcsim 
+}  // namespace atcsim 

@@ -67,7 +67,7 @@ Storm::update(float delta_t)
 
 }
 
-};  // namespace atcsim 
+}  // namespace atcsim 
 //
 //void
 //Storm::draw()
