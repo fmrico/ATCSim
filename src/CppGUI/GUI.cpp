@@ -638,7 +638,7 @@ GUI::DrawFlight(ATCDisplay::ATCDFlight flight) {
 void
 GUI::DrawAirport() {
     glBegin(GL_QUADS);
-    glColor3f(0.2f, 0.2f, 0.2f);
+    glColor3f(0.4f, 0.8f, 0.1f);
     glVertex3f(-airportinfo.radious, airportinfo.radious, 0.0f);
     glVertex3f(airportinfo.radious, airportinfo.radious, 0.0f);
     glVertex3f(airportinfo.radious, -airportinfo.radious, 0.0f);
@@ -648,7 +648,7 @@ GUI::DrawAirport() {
     ATCDisplay::ATCDLandStrip lstrip = (*airportinfo.airportLandstrips.begin());
 
     glBegin(GL_QUADS);
-    glColor3f(1.0f, 1.0f, 0.0f);
+    glColor3f(GREY);
     glVertex3f(0.0f, -(lstrip.width/2.0), 0.01f);
     glVertex3f(0.0f, lstrip.width, 0.01f);
     glVertex3f(-lstrip.length, lstrip.width, 0.01f);
