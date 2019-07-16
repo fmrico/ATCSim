@@ -43,6 +43,7 @@ AirController::~AirController() {
 void
 AirController::doWork()
 {
+
   std::list<Flight*> flights = Airport::getInstance()->getFlights();
   std::list<Flight*>::iterator it;
 

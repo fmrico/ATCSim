@@ -48,6 +48,7 @@ set(ATCSIM_SRCS
   src/simulator/Position.h src/simulator/Position.cpp
   src/simulator/AirController.h src/simulator/AirController.cpp
   src/simulator/IceComms.h src/simulator/IceComms.cpp
+  src/simulator/CircuitRoute.h src/simulator/CircuitRoute.cpp
   src/ICE/cpp/ATCDisplay.h src/ICE/cpp/ATCDisplay.cpp
   src/lib/Singleton.h
   src/lib/Common.h
