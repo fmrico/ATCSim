@@ -72,7 +72,7 @@ Position::~Position() {
 
 std::string Position::check_name(std::string name)
 {
-	ushort max_length = 5;
+	unsigned short max_length = 5;
 	std::string aux;
 	// Limit name to 5 characters
 	if(name.length() > max_length)

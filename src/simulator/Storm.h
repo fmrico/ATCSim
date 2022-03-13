@@ -53,6 +53,6 @@ private:
 	float speed;
 };
 
-};  // namespace atcsim 
+}  // namespace atcsim 
 
 #endif  //  TORMENTA_H__

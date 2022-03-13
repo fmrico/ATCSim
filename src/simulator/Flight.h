@@ -77,6 +77,6 @@ private:
 	float checkSpeedLimits(float tgt_speed);
 };
 
-};  // namespace atcsim
+}  // namespace atcsim
 
 #endif /* FLIGHT_H_ */
