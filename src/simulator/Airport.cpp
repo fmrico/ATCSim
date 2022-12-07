@@ -89,13 +89,11 @@ Airport::checkFinishStorm()
 		storm=NULL;
 		std::cerr<<"Storm gone"<<std::endl;
 	}
-
 }
 
 void
 Airport::generate_storm()
 {
-
 	float angle, x, y, z, rad, height, bearing, speed;
 
 	//Storm Pos
@@ -117,14 +115,11 @@ Airport::generate_storm()
 	speed = ((float)rand() / RAND_MAX)*(STORM_MAX_SPEED-STORM_MIN_SPEED)+STORM_MIN_SPEED;
 	Position ipos(x, y, z);
 	storm = new Storm(ipos, bearing, speed, rad, height);
-
 }
 
 void
 Airport::generate_flight()
 {
-
-
 	std::cerr<<"Generate new flight";
 	float angle, x, y, z;
 	float bear, inc;
@@ -152,11 +147,13 @@ Airport::generate_flight()
 	std::cerr<<"]"<<std::endl;
 }
 
+
 void
 Airport::NextFocus(const Ice::Current&)
 {
 	NextFocus();
 }
+
 
 void
 Airport::NextFocus()
@@ -247,10 +244,9 @@ Airport::step()
 		pthread_mutex_unlock (&mutex);
 	}
 
-
-
-
 }
+
+
 
 
 std::list<Flight*>::iterator
@@ -268,7 +264,8 @@ Airport::removeFlight(std::string id)
 			{
 				delete(*it);
 				focus = flights.erase(it);
-				(*focus)->setFocused(true);
+				if(flights.size() > 1)
+					(*focus)->setFocused(true);
 				return focus;
 			}else
 			{
